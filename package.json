@@ -1,0 +1,42 @@
+{
+  "name": "parrafo-digital",
+  "version": "1.0.0",
+  "description": "Palo-Mango-Solutions__Parrafo-Digital",
+  "main": "app.js",
+  "scripts": {
+    "test": "standard && node user.js",
+    "dev": "nodemon app"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julscampa/Palo-de-Mango-Solutions.git"
+  },
+  "keywords": [
+    "proyecto1-crubWebApp"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julscampa/Palo-de-Mango-Solutions/issues"
+  },
+  "homepage": "https://github.com/julscampa/Palo-de-Mango-Solutions#readme",
+  "dependencies": {
+    "blueimp-file-upload": "^9.32.0",
+    "body-parser": "^1.19.0",
+    "cloudinary-core": "^2.6.3",
+    "cloudinary-jquery-file-upload": "^2.6.3",
+    "connect": "^3.7.0",
+    "express": "^4.17.1",
+    "jquery": "^3.4.1",
+    "mongoose": "^5.6.1",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1",
+    "nodemailer": "^6.2.1"
+  },
+  "devDependencies": {
+    "jshint": "^2.10.2",
+    "nodemon": "^1.19.1",
+    "standard": "^12.0.1"
+  }
+}
