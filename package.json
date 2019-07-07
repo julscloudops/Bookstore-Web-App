@@ -4,7 +4,7 @@
   "description": "Palo-Mango-Solutions__Parrafo-Digital",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,9 @@
   },
   "homepage": "https://github.com/julscampa/Palo-de-Mango-Solutions#readme",
   "dependencies": {
+    "@hapi/joi": "^15.1.0",
     "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "jquery": "^3.4.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.3",
     "morgan": "^1.9.1",

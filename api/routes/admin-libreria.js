@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 // const nodemailer = require('package');
 
 const adminLibreria = require('../models/admin-libreria');

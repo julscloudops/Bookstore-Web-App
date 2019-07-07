@@ -1331,9 +1331,5 @@ function popularDistrito() {
 }
 
 
-selectProvincias.addEventListener('click', popularCanton);
-selectCantones.addEventListener('click', popularDistrito);
-
-optionProvincias.addEventListener('click', popularCanton);
-optionCantones.addEventListener('click', popularDistrito);
-
+selectProvincias.addEventListener('change', popularCanton);
+selectCantones.addEventListener('change', popularDistrito);

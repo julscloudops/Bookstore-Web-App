@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //   createdAt: {type: Date, required: true, default: Date.now, expires: 43200}
 // });
 
-const adminLibreriaSchema = mongoose.Schema({
+const modeloAdminLibreria = mongoose.Schema({
   _id: mongoose.Schema.Types.ObjectId,
   email: { type: String, 
            required: true,
@@ -28,4 +28,4 @@ const adminLibreriaSchema = mongoose.Schema({
   direccion: {type: String}
 });
 
-module.exports = mongoose.model('adminLibreria', adminLibreriaSchema);
+module.exports = mongoose.model('adminLibreria', modeloAdminLibreria);

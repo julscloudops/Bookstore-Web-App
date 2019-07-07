@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
-const checkAuth = require('../middleware/check-authentication');
-
+const checkToken = require('../middleware/check-token');
+ 
 // Configuración para poder subir imagenes
 const storage = multer.diskStorage({
 destination: function(req, file, cb){
@@ -30,7 +30,7 @@ const upload = multer({
 fileFilter: fileFilter
 });  
 
-const Libro = require('../models/libros');
+const Libro = require('../models/libro');
 
 //Maneja los GET requests a /libros
 router.get('/', (req, res, next) => {
@@ -65,7 +65,7 @@ router.get('/', (req, res, next) => {
           });
         });
 
-      router.post('/', upload.single('imagenLibro'), checkAuth, (req, res, next) => {
+      router.post('/', upload.single('imagenLibro'), checkToken, (req, res, next) => {
         const libro = new Libro({
           _id: new mongoose.Types.ObjectId(),
           name: req.body.name,
@@ -124,7 +124,7 @@ router.get('/', (req, res, next) => {
           })
       });
 
-      router.patch('/:idLibro', checkAuth, (req, res, next) => {
+      router.patch('/:idLibro', checkToken, (req, res, next) => {
         const id = req.params.idLibro;
         // const updateOps = {};
         // for(const ops of req.body){
@@ -149,7 +149,7 @@ router.get('/', (req, res, next) => {
         });
       });
 
-      router.delete('/:idLibro', checkAuth, (req, res, next) => {
+      router.delete('/:idLibro', checkToken, (req, res, next) => {
         const id = req.params.idLibro;
         Libro.remove({_id: id})
           .exec()
