@@ -1,6 +1,5 @@
 //Validación de datos
 const Joi = require('@hapi/joi');
-const jwt = require('jsonwebtoken');
 
 //Validación de registro para el usuario
 const registerValidation = (data) => {
@@ -43,19 +42,8 @@ function passwordGenerator() {
 
 // console.log(passwordGenerator());
 
-function checkToken (req, res, next){
-  const token = req.header('auth-token');
-  if(!token) return res.status(401).sned('Acceso denegado');
-  try {
-    const verified = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = verified;
-  } catch (err) {
-    res.status(400).send('Token invalido');
-  }
 
-}
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.passwordGenerator = passwordGenerator;
-module.exports.checkToken = checkToken;

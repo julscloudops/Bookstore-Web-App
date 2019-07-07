@@ -38,4 +38,16 @@ router.get('/', async (req,res) => {
   }
 });
 
+router.get('/:idLibreria', async (req,res) => {
+  try {
+    const libreria = Libreria.findById(req.params.idLibreria);
+      res.json(libreria);
+  } catch(err){
+
+  }
+
+  console.log(req.params.idLibreria);
+
+})
+
 module.exports = router;
