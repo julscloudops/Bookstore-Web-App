@@ -15,30 +15,44 @@
       <h2 class="fadeIn second">Registro administrador de librería</h2>
       <form method="POST" action="/admin-libreria/registro">
 
-        <input 
-        type="text"  
-        class="nombre fadeIn second"
-         name="name" 
+        <input
+        type="text" 
+         class="nombre fadeIn second"
+         name="firstName" 
          placeholder="nombre">
 
         <input 
         type="text"  
         class="apellido fadeIn second" 
-        name="apellido" 
+        name="lastName" 
         placeholder="apellido">
 
-        <input type="email" id="email" class="fadeIn second" name="email" placeholder="correo electrónico" required>
+        <input 
+        type="email"
+        class="fadeIn second" 
+        name="email" 
+        placeholder="correo electrónico" 
+        required>
 
-        <input type="tel" id="telefono" class="fadeIn second" name="telefono" placeholder="teléfono" pattern="[0-9]{4}-[0-9]{4}" required>
+        <input 
+        type="tel" 
+        class="fadeIn second" 
+        name="phone" 
+        placeholder="teléfono">
 
         <div class="flexbox-fecha-genero">
           <div>
-            <label for="fechaNacimiento" class="fadeIn second">Fecha de nacimiento</label>
-            <input type="date" id="fechaNacimiento" class="fadeIn second" name="fechaNacimiento" required>
+            <label for="birthDate" class="fadeIn second">Fecha de nacimiento</label>
+            <input 
+            type="date"
+            class="fadeIn second"
+             name="birthDate">
           </div>
           <div class="genero">
-            <label for="genero" class="fadeIn second">Género</label>
-            <select name="genero"  id="genero" class="fadeIn second">
+            <label for="gender" class="fadeIn second">Género</label>
+            <select 
+            name="gender"  
+            class="fadeIn second">
               <option value="">Hombre</option>
               <option value="">Mujer</option>
               <option value="">Otro</option>
@@ -46,8 +60,10 @@
           </div>
         </div>
         <div>
-          <label for="tipoIdentificacion" class="fadeIn second">Tipo de cedula</label>
-          <select id="tipoIdentificacion" class="fadeIn second" required>
+          <label for="idType" class="fadeIn second">Tipo de cedula</label>
+          <select
+          name="idType"
+          class="fadeIn second">
             <option value="">Seleccione tipo de identificación</option>
             <option value="nacional">Nacional</option>
             <option value="residente">Residente</option>
@@ -57,7 +73,7 @@
             pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
         </div>
 
-        <div class="ubicacion" >
+        <div class="location" >
           <div>
             <label for="provincia" class="fadeIn second">Provincia</label>
             <select id="provincia" class="fadeIn second" required>

@@ -1,24 +1,24 @@
 //Validación de datos
 const Joi = require('@hapi/joi');
 
-//Validación de registro para el usuario
-const registerValidation = (data) => {
-  const schema = {
-    firstname: Joi.string().min(6).required(),
-    lastName: Joi.string().min(6).required(),
-    email: Joi.string().min(6).required().email(),        
-    phone: Joi.string().regex(/^\d{4}-\d{4}/).required(),
-    birthDate : Joi.date().max('1-1-2004').iso(),
-    gender: Joi.string().required(),
-    idType: Joi.string().required(),          
-    id: Joi.string().min(6).required(),
-    provincia: Joi.string().required(),
-    canton: Joi.string().required(),
-    distrito: Joi.string().required(),
-    location: Joi.string().required()    
-  };
-  return Joi.validate(data, schema);
-};
+// //Validación de registro para el usuario
+// const registerValidation = (data) => {
+//   const schema = {
+//     // firstname: Joi.string.min(6),
+//     // lastName: Joi.string.min(6),
+//     email: Joi.string.min(6).required().email()    
+//     // phone: Joi.string.regex(/^\d{4}-\d{4}/),
+//     // birthDate : Joi.date.max('1-1-2004').iso(),
+//     // gender: Joi.string,
+//     // idType: Joi.string,          
+//     // id: Joi.string.min(6),
+//     // provincia: Joi.string,
+//     // canton: Joi.string,
+//     // distrito: Joi.string,
+//     // location: Joi.string    
+//   };
+//   return Joi.validate(data, schema);
+// };
 
 //Validación de login para el usuario
 const loginValidation = (data) => {
@@ -44,6 +44,6 @@ function passwordGenerator() {
 
 
 
-module.exports.registerValidation = registerValidation;
+// module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.passwordGenerator = passwordGenerator;

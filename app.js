@@ -4,7 +4,7 @@ const express = require('express'),
       app = express();
 
 //Configuración
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3000);
 
 
 //Inicialización del servidor
@@ -59,7 +59,7 @@ app.use((req, res, next) => {
 // Importación de las rutas
 
 // const adminGlobal = require('./api/routes/admin-global');
-// const adminLibreria = require('./api/routes/admin-libreria');
+const adminLibreria = require('./api/routes/admin-libreria');
 const usuario = require('./api/routes/usuario');
 const libros = require('./api/routes/libros');
 const librerias = require('./api/routes/librerias');
@@ -67,7 +67,7 @@ const librerias = require('./api/routes/librerias');
 //Rutas 
 
 app.use('/usuario', usuario);
-// app.use('/admin-libreria', adminLibreria);
+app.use('/admin-libreria', adminLibreria);
 // app.use('/admin-global', adminGlobal);
 app.use('/libros', libros);
 app.use('/librerias', librerias);

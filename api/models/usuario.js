@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const modeloUsuario = new mongoose.Schema({
           firstName: {type: String},
           lastName: {type: String},
-          email: { type: String, required: true, unique: true},        
+          email: { type: String, required: true, unique: true},     
           phone: {type: String},
           birthDate : {type: Date},
           gender: {type: String},
@@ -12,16 +12,11 @@ const modeloUsuario = new mongoose.Schema({
           provincia: {type: String},
           canton: {type: String},
           distrito: {type: String},
-          direction: {type: String,
+          direction: {type: String},
           password: {type: String},
-          // resetPasswordToken: {type: String},
-          // resetPasswordExpires: {type: Date},
-          // isVerified: { type: Boolean, default: false},
-          // isAdmin: {type: Boolean, default: false}
-
-          }
-
-});
+          isVerified: { type: Boolean, default: false}
+          
+        });
 
 
 

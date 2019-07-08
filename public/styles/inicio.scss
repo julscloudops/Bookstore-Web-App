@@ -25,10 +25,7 @@ body {
   align-items: center;
   background: #dad2d2;
   padding-right: 0.4%;
-  padding-bottom: 1%;
 }
-
-
 .down-arrow {
   background: #DF8931;
   width: 14px;
@@ -55,7 +52,7 @@ body {
   font-family: 'Montserrat';
   font-weight: 200;
   background: #DF8931;
-  width: 100%;
+  width: 235px;
   height: 12px;
   padding: 25px;
   padding-left: 45px;
@@ -69,6 +66,7 @@ body {
 
   &::placeholder {
     color: #821E00;
+    width: 100%;
   }
 
   &:focus {
@@ -84,47 +82,48 @@ body {
   cursor: pointer;
 }
 
-.search-contain p {
-  color: #821E00;
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: .6em;
-  text-align: center;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 2s;
-  position: absolute;
-  top: 11%;
-  left: 25%;
+// .search-contain p {
+//   color: #821E00;
+//   font-weight: 400;
+//   text-transform: uppercase;
+//   font-size: .6em;
+//   text-align: center;
+//   visibility: hidden;
+//   opacity: 0;
+//   transition: opacity 2s;
+//   // position: absolute;
+//   // top: 11%;
+//   // left: 25%;
 
 
-}
+// }
 
 .categorias {
   background: #DF8931;
   width: 128px;
   height: 12px;
-  padding: 25px;
+  padding: 25px;  
+  margin: 0 25% 0 0;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
-  margin: 0  16% 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-  
+
 
 .categorias a {
   text-decoration: none;
   color: #821E00;
-  font-weight: bold;  
+  font-weight: bold;
 }
 
 .categorias a:hover {
-  text-decoration:none;
-  color: #821E00;;
-  
+  text-decoration: none;
+  color: #821E00;
+  ;
+
 }
 
 
@@ -210,8 +209,9 @@ body {
 
 // Ofertas
 
-.ofertas-carousel {
-}
+// .ofertas-carousel {
+
+// }
 
 
 // Carousel ultimos lanzamientos
@@ -232,7 +232,7 @@ body {
 .footer-container {
   width: 100%;
   background: #821E00;
-  color:#f3eded;
+  color: #f3eded;
   padding: 3em 0;
   border-top-right-radius: 40px;
   transform: skewY(2deg);

@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
 
+*:focus {
+  outline: none;
+}
+ 
 body {
   margin: 0;
   padding: 0;
@@ -9,13 +13,16 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23f5c16c' stroke-width='0' stroke-opacity='0' %3E%3Ccircle fill='%23821e00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23892301' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23902802' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23972d04' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%239e3205' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23a53807' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23ac3e09' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23b2440a' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b84a0c' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23bf510f' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23c55711' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23cb5e13' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23d06516' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23d66c19' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23dc731b' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23e17a1f' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23e08228' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23df8931' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
   background-attachment: fixed;
   background-size: cover;
-
 }
 
+.userAvatar {
+  width: 20%;
+  margin-bottom: 1%;
+}
 
 a {
-  color:#821e00;
-  display:inline-block;
+  color: #821e00;
+  display: inline-block;
   text-decoration: none;
   font-weight: 400;
 }
@@ -25,20 +32,16 @@ h2 {
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  display:inline-block;
-  margin: 40px 8px 10px 8px; 
+  display: inline-block;
+  margin: 40px 8px 10px 8px;
   color: #cccccc;
 }
 
-
-
-.wrapper {
+.wrapperForm {
   display: flex;
   align-items: center;
-  flex-direction: column; 
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
-  min-height: 100%;
   padding: 20px;
 }
 
@@ -51,8 +54,8 @@ h2 {
   max-width: 450px;
   position: relative;
   padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
@@ -77,42 +80,21 @@ h2.active {
   border-bottom: 2px solid #821e00;
 }
 
-
-input[type=button], input[type=submit], input[type=reset]  {
+input[type=submit] {
+  width: 30%;
   background-color: #821e00;
   border: none;
   color: white;
-  padding: 15px 80px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
   -webkit-box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
   box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 5px 20px 40px 20px;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  margin: 10px 20px 40px 20px;
 }
 
-input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #821e00;
-}
-
-input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
-  -moz-transform: scale(0.95);
-  -webkit-transform: scale(0.95);
-  -o-transform: scale(0.95);
-  -ms-transform: scale(0.95);
-  transform: scale(0.95);
-}
-
-input[type=text] {
+input {
   background-color: #F3EDED;
   border: none;
   color: #0d0d0d;
@@ -121,8 +103,8 @@ input[type=text] {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 5px;
-  width: 85%;
+  margin: 1% 0;
+  width: 60%;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
@@ -133,18 +115,14 @@ input[type=text] {
   border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text]:focus {
+
+input:focus {
   background-color: #fff;
   border-bottom: 2px solid #821e00;
 }
 
-input[type=text]:placeholder {
-  color: #cccccc;
-}
 
-
-
-/* ANIMATIONS */
+/* Animate.css */
 
 /* Simple CSS3 Fade-in-down Animation */
 .fadeInDown {
@@ -162,6 +140,7 @@ input[type=text]:placeholder {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
   }
+
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -175,6 +154,7 @@ input[type=text]:placeholder {
     -webkit-transform: translate3d(0, -100%, 0);
     transform: translate3d(0, -100%, 0);
   }
+
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -183,23 +163,49 @@ input[type=text]:placeholder {
 }
 
 /* Simple CSS3 Fade-in Animation */
-@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 
 .fadeIn {
-  opacity:0;
-  -webkit-animation:fadeIn ease-in 1;
-  -moz-animation:fadeIn ease-in 1;
-  animation:fadeIn ease-in 1;
+  opacity: 0;
+  -webkit-animation: fadeIn ease-in 1;
+  -moz-animation: fadeIn ease-in 1;
+  animation: fadeIn ease-in 1;
 
-  -webkit-animation-fill-mode:forwards;
-  -moz-animation-fill-mode:forwards;
-  animation-fill-mode:forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 
-  -webkit-animation-duration:1s;
-  -moz-animation-duration:1s;
-  animation-duration:1s;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  animation-duration: 1s;
 }
 
 .fadeIn.first {
@@ -243,7 +249,7 @@ input[type=text]:placeholder {
   color: #821e00;
 }
 
-.underlineHover:hover:after{
+.underlineHover:hover:after {
   width: 100%;
 }
 
@@ -253,16 +259,4 @@ input[type=text]:placeholder {
 
 
 
-/* OTHERS */
 
-*:focus {
-    outline: none;
-} 
-
-#icon {
-  width:60%;
-}
-
-* {
-  box-sizing: border-box;
-}

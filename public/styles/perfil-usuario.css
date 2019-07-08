@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+
+@import './navbar.css';
+@import './footer.css';
+
+
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+  background-color: #f3eded;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+

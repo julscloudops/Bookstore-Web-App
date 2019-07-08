@@ -1,23 +1,22 @@
 const express = require('express'),
-  router = express.Router(),
-  bcrypt = require('bcrypt'),
-  jwt = require('jsonwebtoken'),
-  nodemailer = require('nodemailer'),
-  User = require('../models/usuario');
+      router = express.Router(),
+      bcrypt = require('bcrypt'),
+      jwt = require('jsonwebtoken'),
+      nodemailer = require('nodemailer'),
+      User = require('../models/usuario');
 
 
 // Importa las funciones para validar los datos de las rutas de registro y login
 const {
-  registerValidation,
   loginValidation,
   passwordGenerator
 } = require('../middleware/validation');
 
 
-// //Iniciar sesión
-// router.get('/login', (req, res) => {
-//  res.redirect('/login.html');
-// });
+//Iniciar sesión
+router.get('/login', (req, res) => {
+ res.redirect('/login.html');
+});
 
 router.post('/login', async (req, res) => {
 
@@ -28,12 +27,12 @@ router.post('/login', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   //Busca que no exista otro usuario con el mismo email
-  const emailExist = await User.findOne({
+  const user = await User.findOne({
     email: req.body.email
   });
-  if (!emailExist) return res.status(400).send('El email es incorrecto');
+  if (!user) return res.status(400).send('El email es incorrecto');
 
-  const validPass = await bcrypt.compare(req.body.password, User.password);
+  const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send('La contraseña es incorrecta');
 
   res.redirect('/inicio.html');
@@ -55,7 +54,7 @@ router.post('/registro', async (req, res) => {
 
   //   //Se valida el correo electrónico antes de ingresarlo a la base de datos
   // const {error} = registerValidation(req.body);
-  //   if(error) return res.status(400).send(error.details[0].message);
+  // if(error) return res.status(400).send(error.details[0].message);
 
   //Busca que no exista otro usuario con el mismo email
   const emailExist = await User.findOne({
@@ -63,8 +62,33 @@ router.post('/registro', async (req, res) => {
   });
   if (emailExist) return res.status(400).send('El correo electrónico ya se encuentra registrado');
 
-   let randomPass = passwordGenerator();
-   console.log(randomPass);
+// Crea una contraseña autogenerada
+ let randomPass = passwordGenerator();
+
+  // Permite utilizar el correo parrafodigitaltest
+  let transporter = nodemailer.createTransport({
+    service: "Gmail",
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_PASS
+    }
+  });
+  let url = 'http://localhost:3000/usuario/login';
+
+  let mailOptions = transporter.sendMail({
+    from: '"Parrafo Digital" <parrafodigitaltest@gmail.com>',
+    to: req.body.email,
+    subject: "Email de confirmación",
+    // text: `Su contraseña es ${randomPass}`,
+    html: `Su contraseña es ${randomPass}, ingrese a este link para iniciar sesión: <a href="${url}">${url}</a>`
+
+  });
+
+  console.log(`Mensaje enviado a ${req.body.email}`);
+
+// Hash password
+const salt = await bcrypt.genSalt(10);
+const hashedPassword = await bcrypt.hash(randomPass, salt);
 
   //Se crea un nuevo usuario
   const newUser = new User({
@@ -80,154 +104,22 @@ router.post('/registro', async (req, res) => {
     canton: req.body.canton,
     distrito: req.body.distrito,
     direction: req.body.location,
-    password: randomPass
+    password: hashedPassword
   });
 
 
   // Nos muestra los contenidos del post request que se hace al servidor
   console.log(req.body);
 
-
   // Guarda el nuevo usuario en la base de datos
   const savedUser = await newUser.save();
-
-
-  // Permite utilizar el correo parrafodigitaltest
-  let transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS
-    }
-  });
-
-
-  let mailOptions = transporter.sendMail({
-    from: '"Parrafo Digital" <parrafodigitaltest@gmail.com>',
-    to: req.body.email,
-    subject: "Email de comfirmación",
-    text: "Esta es su contraseña autogenerada",
-    html: `Ingrese a este link para confirmar su correo electrónico: <a href=""></a>`
-
-  });
-
-  console.log(`Mensaje enviado a ${req.body.email}`);
+ 
   res.send(res.redirect('/registro-exitoso.html'));
 
 
 });
 
 
-
-
-
-//   let errors = [];
-// //Verifica que no exista otro usuario con el mismo correo electrónico 
-//   User.find({email: email})
-//   .then(user => {
-//     if(user){
-//       errors.push({msg: 'El correo electrónico ya se encuentra registrado'});
-//  res.redirect('/registro-usuario.html');
-//     } else {
-//      
-//   })
-//   .catch(err => console.log(err));
-//     }
-//   })
-
-
-
-
-
-// // Registro
-// router.post('/registro', (req, res, next) => {
-//   User.find({
-//       email: req.body.email
-//     })
-//     .exec()
-//     .then(user => {
-//       if (user.length >= 1) {
-//         return res.status(409).json({
-//           message: 'El correo electrónico ingresado ya se encuentra registrado en la aplicación'
-//         });
-//       } else {
-//         bcrypt.hash(req.body.password, 10, (err, hash) => {
-//           if (err) {
-//             return res.status(500).json({
-//               error: err
-//             });
-//           } else {
-//             const user = new User({
-//               _id: mongoose.Types.ObjectId(),
-//               email: req.body.email,
-//               password: hash
-//             });
-//             user.save()
-//               .then(result => {
-//                 res.status(201).json({
-//                   message: 'Usuario creado'
-//                 });
-//               })
-//               .catch(err => {
-//                 console.log(err);
-//                 res.status(500).json({
-//                   error: err
-//                 });
-//               });
-//           }
-//         });
-//       }
-//     })
-// });
-
-
-
-// // Iniciar Sesión
-// router.post('/iniciar-sesion', (req, res, next) => {
-//   User.find({
-//       email: req.body.email
-//     })
-//     .exec()
-//     .then(user => {
-//       if (user.length < 1) {
-//         return res.status(401).json({
-//           message: 'El proceso de autentificación tuvo un fallo'
-//         });
-//       }
-//       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
-//         if (err) {
-//           return res.status(401).json({
-//             message: 'El proceso de autentificación tuvo un fallo'
-//           });
-//         }
-//         if (result) {
-//           const token = jwt.sign({
-
-//               email: user[0].email,
-//               idUsuario: user[0]._id
-
-//             },
-//             process.env.JWT_KEY, {
-//               expiresIn: "1h"
-//             }
-//           );
-//           return res.status(200).json({
-//             message: 'El proceso de autentificación fue exitoso!',
-//             token: token
-//           });
-//         }
-//         return res.status(401).json({
-//           message: 'El proceso de autentificación tuvo un fallo'
-//         });
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: err
-//       })
-//     });
-// });
 
 
 
