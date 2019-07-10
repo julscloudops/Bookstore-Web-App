@@ -1,4 +1,108 @@
 @import './navbar.css';
 @import './footer.css';
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  background: #f3eded;
+  
+  display: grid;
+  grid-template-columns: 14% auto auto auto;
+  grid-template-rows: 10% 25% 25% 25% 12%;
+  grid-gap: 1em;
+  grid-template-areas:
+    "header header header header"
+    "side-bar grid1 grid2 grid3"
+    "side-bar grid4 grid5 grid6"
+    "side-bar grid7 grid8 grid9"
+    "footer footer footer footer";
+}
+
+.navbar-container {
+  grid-area: header;
+}
+
+.side-bar {
+  grid-area: side-bar;
+  background: #DF8931;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #DF8931; 
+  margin-left: 2%; 
+}
+
+.grid1 {
+  grid-area: grid1;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+}
+
+.grid2 {
+  grid-area: grid2;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px #F5C16C; 
+}
+
+.grid3 {
+  grid-area: grid3;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C;
+  margin-right: 2%; 
+ 
+}
+
+.grid4 {
+  grid-area: grid4;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C;
+}
+
+
+.grid5 {
+  grid-area: grid5;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+}
+
+.grid6 {
+  grid-area: grid6;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+  margin-right: 2%; 
+
+}
+
+.grid7 {
+  grid-area: grid7;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+}
+.grid8 {
+  grid-area: grid8;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+}
+.grid9 {
+  grid-area: grid9;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+  margin-right: 2%; 
+
+}
+
+
+footer {
+  grid-area: footer;
+  margin-top: 7%;
+}

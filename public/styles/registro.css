@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css'; */
+
 
 * {
   box-sizing: border-box;
@@ -56,6 +58,40 @@ label {
 
 }
 
+
+.file-container {
+  text-align: center;
+  width: 50%;
+  background-color: #f3eded;
+  border: 2px solid #821e00;
+  border-left: none;
+  border-right: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+
+input[type='file']{
+  display: none;
+}
+.browse-btn:focus{
+  outline: none;
+}
+
+.file-info {
+  font-size: 0.7em;
+}
+
+.browse-btn {
+  font-size: 0.8em;
+  background:#821e00;
+  color: #F3EDED;
+  padding: 15px;
+  padding-left: 16px;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 
 .nombre,
 .apellido {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="styles/registro-autor.css">
+   
+   <title>Registro autor </title>
+</head>
+
+<body>
+
+   <!--Navbar-->
+   <div class="navbar-container">
+      <img src="images/pdlogo.png" alt="parrafo digital logo" class="logo">
+      <div class="down-arrow">
+         <img src="images/downarrow.svg" id="filter-btn" alt="filters">
+      </div>
+      <div class="search-contain">
+         <img src="images/searchicon.svg" id="search-btn" alt="search button">
+         <input type="text" id="search" placeholder="">
+         <!-- <p id="tip">Presione enter para buscar</p> -->
+      </div>
+      <div class="categorias">
+         <a href="">Categorías</a>
+      </div>
+      <div class="reading-club">
+         <img src="images/grupos.svg" id="group-btn" alt="reading club button">
+      </div>
+      <div class="shopping-cart">
+         <img src="images/carrito.svg" id="shopping-btn" alt="shopping cart button">
+      </div>
+      <div class="notificaciones">
+         <img src="images/notifications.svg" id="notifications-button" alt="notifications button">
+      </div>
+      <div class="avatar">
+         <img src="images/avatar.svg" id="avatar-btn" alt="avatar button">
+      </div>
+   </div>
+
+   <!--Formulario-->
+   <div class="wrapper ">
+      <div class="formulario">
+         <h2>Registrar autor</h2>
+         <form 
+         method="POST"  
+         action="/autor/registro"
+         enctype="multi-part/form-data">
+            
+             <input 
+             type="text" 
+             class="name" 
+             name="authorName"
+              placeholder="nombre autor"
+              autocomplete="off">
+
+
+            <label for="decription">Descripción</label>
+             <textarea 
+             name="description"
+             class="description fadeIn second" 
+             cols="40" 
+             rows="10"></textarea>  
+           
+             <div class="file-container">
+                <input 
+                  type="file"  
+                  id="real-input"          
+                  class="authorImg"
+                  name="authorImg"
+                  accept=".png, .jpg, .jpeg"
+                  required>
+                 <button class="browse-btn">
+                   Buscar archivo
+                 </button>
+               <span class="file-info">Ingrese una imagen para el autor</span>
+             </div>
+            
+
+            <input 
+            type="submit" 
+            class="enviar" 
+            value="Submit">
+         </form>
+      </div>
+   </div>
+   <footer>
+      <div class="footer-container">
+         <div class="container">
+            <a href="#">
+               <img src="images/pdlogo-footer.png" alt="parrafo digital logo" class="footerLogo">
+            </a>
+            <p class="address">San Jose, 11801<br>Costa Rica</p>
+            <ul class="footer-links">
+               <li><a href="#">Términos y condiciones</a></li>
+               <li><a href="#">Política de privacidad</a></li>
+            </ul>
+         </div>
+      </div>
+   </footer>
+
+   <!-- //Carga el javascript para que funcione la barra de búsquedas -->
+   <script src="scripts/search-bar.js"></script>
+
+   <!-- Activa el funcionamiento del botón para subir imágenes -->
+   <script src="scripts/upload-button.js"></script>
+
+<script>
+
+  
+   </script>
+</body>
+
+</html>

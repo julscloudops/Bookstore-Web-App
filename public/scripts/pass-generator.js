@@ -9,5 +9,4 @@ function passwordGenerator() {
 }
 
 
-
 module.exports.passwordGenerator = passwordGenerator;

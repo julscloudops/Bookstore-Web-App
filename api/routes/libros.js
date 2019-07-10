@@ -2,16 +2,16 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const multer = require('multer');
-const checkToken = require('../middleware/check-token');
- 
-// Configuración para poder subir imagenes
+const LibrosController = require('../controllers/libros');;
+
+//Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
-destination: function(req, file, cb){
-cb(null, './uploads');
-},
-filename: function(req, file, cb){
-cb(null, new Date().toISOString() + file.originalname);
-}
+  destination: function(req, file, cb){
+  cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + '-' + new Date().toISOString());
+  }
 });
 
 const fileFilter = (req, file, cb) => {
@@ -20,15 +20,15 @@ if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
   cb(null, true);
 } else {
   cb(null, false);
-}
-};
+}};
 
 const upload = multer({
-  storage: storage, limits: {
-  fileSize: 1024 * 2014 * 5
-},
-fileFilter: fileFilter
-});  
+  storage: storage,
+  fileFilter: fileFilter,
+  limits: {
+    fileSize: 100000
+  }
+});
 
 const Libro = require('../models/libro');
 
@@ -65,40 +65,37 @@ router.get('/', (req, res, next) => {
           });
         });
 
-      router.post('/', upload.single('imagenLibro'), checkToken, (req, res, next) => {
-        const libro = new Libro({
-          _id: new mongoose.Types.ObjectId(),
-          name: req.body.name,
-          author: req.body.author,
-          genre: req.body.genre,
-          imagenLibro: req.file.path
-        });
-        libro
-          .save()
-          .then(result => {
-            console.log(result);
-          })
-          .catch(err => console.log(err));
-        res.status(201).json({
-          message: 'Libro creado exitosamente!',
-          libroCreado: {
-            name: result.name,
-            author: result.author,
-            genre: result.genre,
-            _id: result._id,
-            request: {
-              type: 'GET',
-              url: "http://localhost:8080/libros/"+result._id
-            }
-          }
-        });
-        next();
-      });
+//Registrar libro
+router.post('/', upload.single('bookImg'), async (req, res) => {
+
+  //Muestra el objeto que crea Multer para guardar la imagen
+  console.log(req.file.path);
+
+  const newBook = await new Libro({
+      ISBN : req.body.ISBN,
+      title: req.body.title,
+      author: req.body.author,
+      genre: req.body.genre,
+      editorial: req.body.editorial,     
+      price : req.body.price,
+      bookImg: req.file.path
+    });
+        
+  });
+  try {
+    const savedBook = await newBook.save();
+    res.json(savedBook);
+  } catch (err) {
+    res.status(400).send(err);
+
+  }
+
+});
 
       router.get('/:idLibro', (req, res, next) => {
         const id = req.params.idLibro;
         Libro.findById(id)
-        .select('name author genre _id imagenLibro')
+        .select('ISBN name author genre bookImg')
           .exec()
           .then(doc => {
             console.log("From database", doc);
@@ -124,7 +121,7 @@ router.get('/', (req, res, next) => {
           })
       });
 
-      router.patch('/:idLibro', checkToken, (req, res, next) => {
+      router.patch('/:idLibro', (req, res, next) => {
         const id = req.params.idLibro;
         // const updateOps = {};
         // for(const ops of req.body){
@@ -149,7 +146,7 @@ router.get('/', (req, res, next) => {
         });
       });
 
-      router.delete('/:idLibro', checkToken, (req, res, next) => {
+      router.delete('/:idLibro', (req, res, next) => {
         const id = req.params.idLibro;
         Libro.remove({_id: id})
           .exec()

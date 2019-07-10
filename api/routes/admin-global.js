@@ -1,12 +1,20 @@
-const express = require('express');
-const router = express.Router();
-const mongoose = require('mongoose');
+const express = require('express'),
+      router = express.Router(),
+      bcrypt = require('bcrypt'),
+      nodemailer = require('nodemailer'),
+      adminGlobal = require('../models/admin-global');
 
+router.post('/nuevo', async (req, res) => {
 
-// router.post('/nuevo', (req, res) => {
-// console.log(req.body);
-// res.send('Ok');
-// });
+  const nuevoAdminGlobal = new adminGlobal({
+          firstName: {type: String},
+          lastName: {type: String},
+          email: { type: String, required: true, unique: true},        
+          password: {type: String}
+  })
 
+  const savedAdminGlobal = await nuevoAdminGlobal.save();
+  res.json(savedAdminGlobal);
+    });
 
 module.exports = router;

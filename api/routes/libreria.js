@@ -3,13 +3,12 @@ const express = require('express'),
       Libreria = require('../models/libreria');
 
 
-
- router.post('/', async (req, res) => {
+ router.post('/registro', async (req, res) => {
 
    //Se crea una nueva libreria
   const newLibreria = new Libreria({
-    nombreComercial: req.body.firstName,
-    nombreFantasia: req.body.lastName, 
+    nombreComercial: req.body.nombreComercial,
+    nombreFantasia: req.body.nombreFantasia, 
     description: req.body.description,
     provincia: req.body.provincia, 
     canton: req.body.canton, 
@@ -21,7 +20,7 @@ const express = require('express'),
   try { 
     console.log(req.body);
     const savedLibreria = await newLibreria.save();
-    res.json(newLibreria);
+    res.json(savedLibreria);
   } catch(err){
     res.json({message: err});
   }

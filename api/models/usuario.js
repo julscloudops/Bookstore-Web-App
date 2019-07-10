@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 const modeloUsuario = new mongoose.Schema({
+          avatar: {type: String},
           firstName: {type: String},
           lastName: {type: String},
           email: { type: String, required: true, unique: true},     

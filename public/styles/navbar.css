@@ -1,32 +1,45 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 
+/* Esta linea es para tener los settings básicos estándarizados */
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  /* background: #f3eded; */
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+         
+          
+}
+
 .wrapper {
-  background-color: #f3eded;
+  background: #F3EDED;
 }
 
 /*Navbar*/
 
 
 .logo {
-  width: 15%;
+  width: 12%;
 }
 
 .navbar-container {
+  background: #f3eded;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  box-shadow: 2px 2px 1px #f3eded;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #dad2d2;
   padding-right: 0.4%;
 }
 
 .down-arrow {
   background: #DF8931;
-  width: 14px;
-  height: 12px;
-  padding: 25px;
+  padding: 20px;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;

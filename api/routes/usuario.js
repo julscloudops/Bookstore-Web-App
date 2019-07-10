@@ -1,10 +1,9 @@
 const express = require('express'),
-      router = express.Router(),
-      bcrypt = require('bcrypt'),
-      jwt = require('jsonwebtoken'),
-      nodemailer = require('nodemailer'),
-      User = require('../models/usuario');
-
+  router = express.Router(),
+  multer = require('multer');
+  bcrypt = require('bcrypt'),
+  nodemailer = require('nodemailer'),
+  User = require('../models/usuario');
 
 // Importa las funciones para validar los datos de las rutas de registro y login
 const {
@@ -13,10 +12,37 @@ const {
 } = require('../middleware/validation');
 
 
+//Settings de Multer, permite subir imagenes a la página
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+  cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + '-' + new Date().toISOString());
+  }
+});
+
+const upload = multer({
+storage: storage,
+limits: {
+fileSize: 100000
+}
+});
+
+
+router.get('/', async (req, res) => {
+
+})
+
+router.get('/inicio', async (req, res) => {
+res.sendFile('public/inicio.html', {root: './'});
+
+})
+
 //Iniciar sesión
 router.get('/login', (req, res) => {
- res.redirect('/login.html');
-});
+res.sendFile('public/login.html', {root: './'});
+})
 
 router.post('/login', async (req, res) => {
 
@@ -34,23 +60,20 @@ router.post('/login', async (req, res) => {
 
   const validPass = await bcrypt.compare(req.body.password, user.password);
   if (!validPass) return res.status(400).send('La contraseña es incorrecta');
+  
+res.sendFile('public/inicio.html', {root: './'});
 
-  res.redirect('/inicio.html');
-  res.send('Inicio de sesión exitoso!');
-
-  // Crea y asigna un token
-  const token = jwt.sign({
-    _id: User._id
-  }, process.env.JWT_SECRET);
-  res.header('auth-token', token);
 });
 
-//Registro
-router.get('/registro', (req, res) => {
-  res.redirect('registro-usuario.html')
-});
 
-router.post('/registro', async (req, res) => {
+router.get('/registro', async (req, res) => {
+res.redirect('/public/registro-usuario.html');
+})
+
+//Registrar usuario
+router.post('/registro', upload.single('avatar'), async (req, res) => {
+  console.log(req);
+  console.log(req.file.path);
 
   //   //Se valida el correo electrónico antes de ingresarlo a la base de datos
   // const {error} = registerValidation(req.body);
@@ -62,8 +85,8 @@ router.post('/registro', async (req, res) => {
   });
   if (emailExist) return res.status(400).send('El correo electrónico ya se encuentra registrado');
 
-// Crea una contraseña autogenerada
- let randomPass = passwordGenerator();
+  // Crea una contraseña autogenerada
+  let randomPass = passwordGenerator();
 
   // Permite utilizar el correo parrafodigitaltest
   let transporter = nodemailer.createTransport({
@@ -73,6 +96,7 @@ router.post('/registro', async (req, res) => {
       pass: process.env.GMAIL_PASS
     }
   });
+
   let url = 'http://localhost:3000/usuario/login';
 
   let mailOptions = transporter.sendMail({
@@ -86,12 +110,13 @@ router.post('/registro', async (req, res) => {
 
   console.log(`Mensaje enviado a ${req.body.email}`);
 
-// Hash password
-const salt = await bcrypt.genSalt(10);
-const hashedPassword = await bcrypt.hash(randomPass, salt);
+  // Hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(randomPass, salt);
 
   //Se crea un nuevo usuario
   const newUser = new User({
+    avatar: req.file.path,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
@@ -107,40 +132,20 @@ const hashedPassword = await bcrypt.hash(randomPass, salt);
     password: hashedPassword
   });
 
+  try {
+    //Guarda el nuevo usuario en la base de datos
+    const savedUser = await newUser.save();
 
-  // Nos muestra los contenidos del post request que se hace al servidor
-  console.log(req.body);
+    // Nos muestra los contenidos del post request que se hace al servidor
+    console.log(savedUser);
+    res.sendFile('public/registro-exitoso.html', {root: './'});
 
-  // Guarda el nuevo usuario en la base de datos
-  const savedUser = await newUser.save();
- 
-  res.send(res.redirect('/registro-exitoso.html'));
+  } catch (err) {
+    res.status(400).send(err);
+
+  }
 
 
 });
-
-
-
-
-
-
-
-// router.delete('/:idUsuario', (req, res, next) => {
-//   User.remove({
-//       _id: req.params.idUsuario
-//     })
-//     .exec()
-//     .then(result => {
-//       res.status(200).json({
-//         message: 'Usuario eliminado'
-//       });
-//     })
-//     .catch(err => {
-//       console.log(err);
-//       res.status(500).json({
-//         error: err
-//       });
-//     });
-// });
 
 module.exports = router;

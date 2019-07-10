@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600');
-@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+/* 
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600&display=swap');@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap'); */
 @import './footer.css';
 
 body {
@@ -29,7 +29,7 @@ ul {
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .mainLogo {
@@ -69,7 +69,7 @@ ul {
     height: 8px;
     padding: 25px;
     padding-left: 65px;
-    margin-top:8%;
+    margin-top: 8%;
     border-radius: 20px;
     border: none;
     color: #821E00;
@@ -138,7 +138,7 @@ h1 {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 1.4em;
-    
+
 
 
 }
@@ -149,10 +149,10 @@ h1 {
 }
 
 .scroll {
-        width: 30px;
-        margin-bottom: 2%;
-        animation: move 1s infinite alternate;
-    }
+    width: 30px;
+    margin-bottom: 2%;
+    animation: move 1s infinite alternate;
+}
 
 .orange-container {
     width: 100%;
@@ -211,6 +211,7 @@ h1 {
     background: #F5C16C;
     padding: 4em 0 2em;
     margin-top: -3%;
+    box-shadow: 2px 2px 4px #F5C16C;
 }
 
 .review-container ul li:first-child {
@@ -242,10 +243,51 @@ figcaption {
     z-index: 4;
 }
 
+.registroLibreria {
+    display: flex;
+    border-radius: 30px;
+    background-color: #DF8931;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 2px 2px 6px 6px #DF8931;
+}
+
+.infoRegistro {
+    display: inline;
+    text-align: left;
+    padding: 1% 2%;
+}
+.registroTexto {
+    font-weight: 200;
+    color: #f3eded;
+    padding: 6% 0;
+    font-size: 20px;
+
+}
+
+.booksImg {
+width: 8%;
+padding-right: 0.4%;
+margin: -12px 0;
+}
+
+.mensajesImg {
+width: 8%;
+padding-right: 0.4%;
+margin: -12px 0;
+}
+
+.historialImg {
+width: 8%;
+padding-right: 0.4%;
+margin: -12px 0;
+}
 
 .libreriaImg {
     border-radius: 40px;
-    width: 30%;
+    width: 40%;
+    padding: 1%;
+  
 }
 
 @media only screen and (min-width: 650px) {
@@ -259,7 +301,7 @@ figcaption {
         margin: 0;
     }
 
-  
+
     .orange-container {
         margin: 0;
     }

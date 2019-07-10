@@ -11,12 +11,33 @@
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro usuario</h2>
-      <form method="POST" action="/usuario/registro">
+      <form 
+      action="/usuario/registro"
+      method="POST" 
+      enctype="multi-part/form-data">
+
+      <div class="file-container">
+          <input 
+            type="file"  
+            id="real-input"          
+            class="userAvatar"
+            name="avatar"
+            accept=".png, .jpg, .jpeg"
+            required>
+           <button class="browse-btn">
+             Buscar archivo
+           </button>
+
+         <span class="file-info">Ingrese su avatar</span>
+       </div>
+      
+
         <input 
         type="text" 
         class="nombre fadeIn second" 
         name="firstName" 
         placeholder="nombre"
+        autocomplete="off"
         required>
 
         <input 
@@ -24,6 +45,7 @@
         class="apellido fadeIn second" 
         name="lastName" 
         placeholder="apellido"
+        autocomplete="off"
         required>
 
         <input 
@@ -31,6 +53,7 @@
         class="fadeIn second" 
         name="email" 
         placeholder="correo electrónico" 
+        autocomplete="off"
         required>
 
         <input 
@@ -38,6 +61,7 @@
         class="fadeIn second" 
         name="phone" 
         placeholder="teléfono"
+        autocomplete="off"
         required>
 
         <div class="flexbox-fecha-genero">
@@ -76,6 +100,7 @@
           class="cedula fadeIn second" 
           name="id" 
           placeholder="identificación"
+          autocomplete="off"
           required>
         </div>
 
@@ -118,13 +143,19 @@
         type="text" 
         class="direccion fadeIn second" 
         name="direction" 
-        placeholder="dirección exacta" 
+        placeholder="dirección exacta"
+        autocomplete="off" 
         required>
         <input 
         type="submit" 
         class="enviar fadeIn fourth" value="Enviar">
       </form>
-      <script src="./scripts/provincias-cantones-distritos.js"></script>
+
+
+   <script src="scripts/provincias-cantones-distritos.js"></script>
+
+   <!-- Activa el funcionamiento del botón para subir imágenes -->
+   <script src="scripts/upload-button.js"></script>
     
     </div>
   </div>

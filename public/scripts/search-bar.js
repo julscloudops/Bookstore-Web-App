@@ -13,7 +13,6 @@
       search.style.cursor = 'text';
       search.focus();
       typeWriter();
-
     });
 
     function typeWriter() {

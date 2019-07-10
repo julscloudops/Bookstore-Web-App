@@ -1,5 +1,12 @@
-
 /* Footer */
+
+.footer-container::before {
+  background: none;
+}
+
+.footer-container::after {
+  background: none;
+}
 
 .footerLogo {
   width: 15%;

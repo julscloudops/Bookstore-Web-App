@@ -13,18 +13,20 @@
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro librería</h2>
-      <form method="POST" action="/libreria">
+      <form method="POST" action="/libreria/registro">
         <input 
         type="text" 
         class="nombres fadeIn second" 
         name="nombreComercial"
-       placeholder="nombre comercial">
+       placeholder="nombre comercial"
+       autocomplete="off">
 
         <input 
         type="text" 
         class="nombres fadeIn second"
          name="nombreFantasia"
-          placeholder="nombre fantasia">
+          placeholder="nombre fantasia"
+          autocomplete="off">
 
           <div>
             <label for="decription">Descripción</label>
@@ -32,8 +34,8 @@
             name="description"
             class="description fadeIn second" 
             cols="30" 
-            rows="10">
-          </textarea>
+            rows="10"
+            wrap="physical"></textarea>
           </div>
 
 
@@ -76,7 +78,8 @@
         type="text"
         class="direction fadeIn second" 
         name="direction"
-        placeholder="dirección exacta">
+        placeholder="dirección exacta"
+        autocomplete="off">
        
         <input type="submit" class="enviar fadeIn fourth" value="Enviar">
       </form>

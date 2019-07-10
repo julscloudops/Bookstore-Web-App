@@ -7,9 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Parrafo digital</title>
     <link rel="stylesheet" href="styles/index.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
+    <meta http-equiv="Content-Security-Policy" 
+    content="default-src *">
+
     <link rel="shortcut icon" img-src=" " type="image/png" href="images/favicon.ico">
 
 
@@ -20,7 +21,7 @@
         <img src="images/pdlogo.png" alt="parrafo digital logo" class="mainLogo">
         <div class="search-contain">
             <img src="images/searchicon.svg" id="search-btn" alt="search button">
-            <input type="text" id="search" placeholder="">
+            <input type="text" id="search" name="search" placeholder="" autofocus>
             <p id="tip">Presione enter para buscar</p>
         </div>
         <ul>
@@ -48,19 +49,19 @@
             <ul>
                 <li>
                     <img src="images/icon-2.svg" alt="Calendar icon">
-                    <p>¿No quieres gastar dinero? Tranquilo! Aca podes intercambiar libros con otros lectores que vivan
+                    <p>¿No quieres gastar dinero? ¡Tranquilo! Aca podes intercambiar libros con otros lectores que vivan
                         cerca de ti!</p>
                 </li>
                 <li>
                     <img src="images/icon-1.svg" alt="Calendar icon">
 
-                    <p>Construye tu propia comunidad, organiza clubes de lectura para discutir sobre tus libros
+                    <p>¡Construye tu propia comunidad, organiza clubes de lectura para discutir sobre tus libros
                         favoritos!</p>
                 </li>
 
                 <li>
                     <img src="images/icon-3.svg" alt="Calendar icon">
-                    <p>Compra tus libros favoritos desde la comodidad de tu celular, sea en formato PDF o físico!</p>
+                    <p>¡Compra tus libros favoritos desde la comodidad de tu celular, sea en formato PDF o físico!</p>
                 </li>
             </ul>
         </div>
@@ -91,9 +92,18 @@
     </div>
     <div class="container">
         <h2>¿Tienes una librería?</h2>
-        <img class="libreriaImg" src="images/landing-libreria.png" alt="">
-    
-    <a href="registro-admin-libreria.html" class="registrar-footer">REGÍSTRATE</a>
+        <div class="registroLibreria">
+            <div class="infoRegistro">
+                <h3 class="registroTexto"><img class="booksImg" src="images/stack-of-books.svg" alt=""> ¡Vende tus
+                    libros en nuestra plataforma!</h3>
+                <h3 class="registroTexto"><img class="mensajesImg" src="images/mensajes.svg" alt=""> ¡Cultiva una
+                    relación mas cercana con tus clientes!</h3>
+                <h3 class="registroTexto"><img class="historialImg" src="images/historial.svg" alt=""> ¡Manten un
+                    historial de ventas de todos tus libros!</h3>
+            </div>
+            <img class="libreriaImg" src="images/landing-libreria.png" alt="">
+        </div>
+        <a href="registro-admin-libreria.html" class="registrar-footer">REGÍSTRATE</a>
     </div>
 
     <footer>

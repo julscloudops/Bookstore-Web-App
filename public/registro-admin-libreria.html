@@ -19,26 +19,30 @@
         type="text" 
          class="nombre fadeIn second"
          name="firstName" 
-         placeholder="nombre">
+         placeholder="nombre"
+         autocomplete="off">
 
         <input 
         type="text"  
         class="apellido fadeIn second" 
         name="lastName" 
-        placeholder="apellido">
+        placeholder="apellido"
+        autocomplete="off">
 
         <input 
         type="email"
         class="fadeIn second" 
         name="email" 
         placeholder="correo electrónico" 
-        required>
+        required
+        autocomplete="off">
 
         <input 
         type="tel" 
         class="fadeIn second" 
         name="phone" 
-        placeholder="teléfono">
+        placeholder="teléfono"
+        autocomplete="off">
 
         <div class="flexbox-fecha-genero">
           <div>
@@ -96,8 +100,16 @@
           </div>
         </div>
 
-        <input type="text" id="direccion" class="direccion fadeIn second" name="direccion" placeholder="dirección exacta">
-        <input type="submit" class="enviar fadeIn fourth" value="Enviar">
+        <input 
+        type="text" 
+        class="direccion fadeIn second" 
+        name="direccion" 
+        placeholder="dirección exacta"
+        autocomplete="off">
+        <input 
+        type="submit" 
+        class="enviar fadeIn fourth" 
+        value="Enviar">
       </form>
 
 

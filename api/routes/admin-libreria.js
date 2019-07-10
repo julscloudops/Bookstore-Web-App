@@ -1,13 +1,11 @@
 const express = require('express'),
       router = express.Router(),
       bcrypt = require('bcrypt'),
-      jwt = require('jsonwebtoken'),
       nodemailer = require('nodemailer'),
       adminLibreria = require('../models/admin-libreria');
 
 const { passwordGenerator } = require('../middleware/validation');
-      
-      
+       
 //Registro
 
 router.post('/registro', async (req, res) => {
@@ -69,8 +67,9 @@ const hashedPassword = await bcrypt.hash(randomPass, salt);
 
   // Guarda el nuevo administrador en la base de datos
   const savedAdminLibreria = await newAdminLibreria.save();
+  res.json(savedAdminLibreria);
  
-  res.send(res.redirect('/registro-exitoso.html'));
+res.redirect('/registro-exitoso.html');
 
 });
 

@@ -1,17 +1,61 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
-
 @import './navbar.css';
 @import './footer.css';
 
-
-
 body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  font-family: 'Montserrat';
-  background-color: #f3eded;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  background: #F3EDED;
+  display: grid;
+  grid-template-columns: 15% 15% 15% 15% auto;
+  grid-template-rows: 10% 35% 30% 35% 12%;
+  grid-gap: 1em;
+  grid-template-areas:
+    "header header header header header"
+    "perfil perfil perfil libros libros"
+    "info info info libros libros"
+    "clubes clubes clubes libros libros"
+    "footer footer footer footer footer";
 }
 
+.navbar-container {
+  grid-area: header;
+}
+
+.perfil-usuario {
+  grid-area: perfil;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C; 
+  margin-left: 1%;
+}
+
+.info-usuario {
+  grid-area: info;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C;  
+  margin-left: 1%;
+
+}
+
+.libros-usuario {
+  grid-area: libros;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C;  
+  margin-right: 0.2%;
+
+}
+
+.clubes-usuario {
+  grid-area: clubes;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 2px 2px 3px 2px #F5C16C;  
+  margin-left: 1%;
+
+}
+
+
+footer {
+  margin-top: 7%;
+  grid-area: footer;
+}
