@@ -11,10 +11,7 @@
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro usuario</h2>
-      <form 
-      action="/usuario/registro"
-      method="POST" 
-      enctype="multi-part/form-data">
+      <form>
 
       <div class="file-container">
           <input 
@@ -22,8 +19,7 @@
             id="real-input"          
             class="userAvatar"
             name="avatar"
-            accept=".png, .jpg, .jpeg"
-            required>
+            accept=".png, .jpg, .jpeg">
            <button class="browse-btn">
              Buscar archivo
            </button>
@@ -33,22 +29,25 @@
       
 
         <input 
+        id="firstName"
         type="text" 
-        class="nombre fadeIn second" 
+        class="text fadeIn second" 
         name="firstName" 
         placeholder="nombre"
         autocomplete="off"
         required>
 
         <input 
+        id="lastName"
         type="text" 
-        class="apellido fadeIn second" 
+        class="text fadeIn second" 
         name="lastName" 
         placeholder="apellido"
         autocomplete="off"
         required>
 
         <input 
+        id="email"
         type="email" 
         class="fadeIn second" 
         name="email" 
@@ -57,6 +56,7 @@
         required>
 
         <input 
+        id="phone"
         type="tel"
         class="fadeIn second" 
         name="phone" 
@@ -68,6 +68,7 @@
           <div>
             <label for="fechaNacimiento" class="fadeIn second">Fecha de nacimiento</label>
             <input 
+            id="birthDate"
             type="date"
             class="fadeIn second" 
             name="birthDate"
@@ -76,6 +77,7 @@
           <div class="genero">
             <label for="gender" class="fadeIn second">Género</label>
             <select 
+            id="gender"
             name="gender"
             class="fadeIn second">
               <option value="Hombre">Hombre</option>
@@ -87,6 +89,7 @@
         <div>
           <label for="idType" class="fadeIn second">Tipo de cedula</label>
           <select 
+          id="idType"
           class="fadeIn second"
           name="idType"
           required>
@@ -96,6 +99,7 @@
             <option value="Extranjero">Extranjero</option>
           </select>
           <input 
+          id="id"
           type="text" 
           class="cedula fadeIn second" 
           name="id" 
@@ -140,6 +144,7 @@
         </div>
 
         <input 
+        id="direction"
         type="text" 
         class="direccion fadeIn second" 
         name="direction" 
@@ -147,6 +152,7 @@
         autocomplete="off" 
         required>
         <input 
+        id="submit" 
         type="submit" 
         class="enviar fadeIn fourth" value="Enviar">
       </form>
@@ -154,8 +160,11 @@
 
    <script src="scripts/provincias-cantones-distritos.js"></script>
 
-   <!-- Activa el funcionamiento del botón para subir imágenes -->
-   <script src="scripts/upload-button.js"></script>
+   <!-- Activa el funcionamiento del botón para subir imágenes
+   <script src="scripts/upload-button.js"></script> -->
+
+   <!-- Permite guardar el formulario en la base de datos -->
+   <script src="scripts/controller-usuario.js"></script>
     
     </div>
   </div>

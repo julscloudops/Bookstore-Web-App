@@ -1,13 +1,11 @@
 const mongoose = require('mongoose');
 
 const authorModel = new mongoose.Schema({
-          authorName: {type: String},
+          name: {type: String},
           description: {type: String},
-          authorImg: {type: String}
-          
+          imgUrl: {type: String},
+          cloudinary_id: {type: String}
 });
-
-
 
 module.exports = mongoose.model('Autor', authorModel);
 

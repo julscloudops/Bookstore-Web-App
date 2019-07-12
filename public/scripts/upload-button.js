@@ -1,16 +1,18 @@
-const uploadButton = document.querySelector('.browse-btn');
-const fileInfo = document.querySelector('.file-info');
-const realInput = document.getElementById('real-input');
+// document.querySelector("html").classList.add('js');
 
-uploadButton.addEventListener('click', (e) => {
-  realInput.click();
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
 });
-
-realInput.addEventListener('change', () => {
-  const name = realInput.value.split(/\\|\//).pop();
-  const truncated = name.length > 20 
-    ? name.substr(name.length - 20) 
-    : name;
-  
-  fileInfo.innerHTML = truncated;
-});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  

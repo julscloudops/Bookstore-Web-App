@@ -2,9 +2,9 @@ const express = require('express'),
       router = express.Router(),
       bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
-      adminGlobal = require('../models/admin-global');
+      adminGlobal = require('./admin-global-model');
 
-router.post('/nuevo', async (req, res) => {
+router.post('/registro', async (req, res) => {
 
   const nuevoAdminGlobal = new adminGlobal({
           firstName: {type: String},

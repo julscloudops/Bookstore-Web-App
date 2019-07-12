@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),
-      Libreria = require('../models/libreria');
+      Libreria = require('./model');
 
 
  router.post('/registro', async (req, res) => {

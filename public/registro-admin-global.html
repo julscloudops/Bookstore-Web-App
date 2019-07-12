@@ -12,24 +12,27 @@
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro administrador global</h2>
-      <form method="POST" action="/admin-global/nuevo">
+      <form>
         <input 
         type="text" 
-        class="nombre fadeIn second" 
+        class="text fadeIn second" 
         name="firstName" 
-        placeholder="nombre">
+        placeholder="nombre"
+        autocomplete="off">
 
         <input 
         type="text" 
-        class="apellido fadeIn second" 
+        class="text fadeIn second" 
         name="lastName" 
-        placeholder="apellido" >
+        placeholder="apellido" 
+        autocomplete="off">
 
         <input 
         type="email"  
         class="fadeIn second" 
         name="email" 
         placeholder="correo electrónico"
+        autocomplete="off"
         required>
 
         <input 
@@ -37,7 +40,8 @@
         class="fadeIn second" 
         name="phone" 
         placeholder="teléfono" 
-        pattern="[0-9]{4}-[0-9]{4}" 
+        pattern="[0-9]{4}-[0-9]{4}"
+        autocomplete="off" 
         required>
         <input 
         type="submit"

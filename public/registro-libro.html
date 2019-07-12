@@ -6,9 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="styles/registro-autor.css">
-   <script class="jsbin" src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-   <title>Registro autor </title>
+   
+   <title>Registro libro</title>
 </head>
 
 <body>
@@ -44,45 +43,59 @@
    <!--Formulario-->
    <div class="wrapper ">
       <div class="formulario">
-         <h2>Registrar autor</h2>
-         <form  id="form" method="POST" action="http://localhost:3000/autor/registro" enctype="multipart/form-data">
+         <h2>Registrar libro</h2>
+         <form>
+          <input 
+          id="title"
+          type="text" 
+          class="text fadeIn second" 
+          name="title"
+          placeholder="título"
+          autocomplete="off">
+  
+          <input 
+          id="author"
+          type="text" 
+          class="text fadeIn second"
+          name="author"
+          placeholder="nombre del autor"
+          autocomplete="off">
 
-            <input  
-            id="name"
-            type="text" 
-            class="name" 
-            name="name" 
-            placeholder="nombre autor" 
-            autocomplete="off">
+      <input 
+          id="ISBN"
+          type="number"
+          class="longText fadeIn second" 
+          name="ISBN"
+          placeholder="ingrese el número de ISBN"
+          autocomplete="off">
+            <div>
 
+              <select name="genre" id="genre">Género</select>
+              <select name="editorial" id="editorial"></select>
 
-            <label for="decription">Descripción</label>
-            <textarea  
-            id="description" 
-            class="description fadeIn second" 
-            name="description" 
-            cols="40"
-            rows="10"></textarea>
-
-               <div class="input-file-container">
-                  <input
-                  id="img"  
-                  type="file"  
-                  class="input-file" 
-                  name="img"
-                  accept=" .png, .jpg, .jpeg"
-                  hidden
-                  > 
-                 
-                
-                 
-                  <label tabindex="0" for="img" class="input-file-trigger">Ingresar foto del autor</label>
-               </div>
-               <p class="file-return"></p>
+              <input 
+              id="price"
+              type="number"
+              name="price"
+              placeholder="precio"
+              >
+              <label for="decription">Descripción</label>
+              <textarea 
+              id="description"
+              name="description"
+              class="description fadeIn second" 
+              cols="30" 
+              rows="10"
+              wrap="physical"></textarea>
+            </div>
+  
+          
          
-            <input 
-            id="submit"
-            type="submit">
+          <input 
+          id="submit"
+          type="submit" 
+          class="enviar fadeIn fourth">
+        </form>
          </form>
       </div>
    </div>
@@ -104,11 +117,10 @@
    <!-- //Carga el javascript para que funcione la barra de búsquedas -->
    <script src="scripts/search-bar.js"></script>
 
-   <!-- Permite subir imágenes -->
-   <script src="scripts/upload-button.js"></script>
+   <script src="scripts/controller-libro.js"></script>
 
+   <!-- Activa el funcionamiento del botón para subir imágenes -->
+   <!-- <script src="scripts/upload-button.js"></script> -->
 
-   <script src="scripts/controller-autor.js"></script>
 </body>
-
 </html>

@@ -1,18 +1,25 @@
 const express = require('express'),
       mongoose = require('mongoose'),
       morgan = require('morgan'),
+      cloudinary = require('cloudinary'),
       app = express();
 
 //Configuración
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 3000);
 
 //Inicialización del servidor
 app.listen(app.get('port'), () => {
   console.log('El servidor esta corriendo en el puerto', app.get('port'));
 });
 
-// Muestra en consola los HTTP requests que se hacen al servidor
-app.use(morgan('dev'));
+// Permite subir las imagenes a la nube
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+
 
 // Permite utilizar environment variables para guardar la contraseña de la base de datos
 const dotenv = require('dotenv');
@@ -26,7 +33,6 @@ mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process
     console.log('La base de datos fue conectada exitosamente!')
   });
 
-mongoose.Promise = global.Promise;
 mongoose.set('useCreateIndex', true);
 
 
@@ -43,52 +49,38 @@ app.use((req, res, next) => {
   next();
 });
 
+// Muestra en consola los HTTP requests que se hacen al servidor
+app.use(morgan('dev'));
 
 //Middleware and Body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 // Establecer la ruta para archivos estáticos
-app.use(express.static('public'));
+app.use(express.static('./public'));
+
 
 // Importación de las rutas
-const adminGlobal = require('./api/routes/admin-global');
-const adminLibreria = require('./api/routes/admin-libreria');
-const usuario = require('./api/routes/usuario');
-// const libros = require('./api/routes/libros');
-const libreria = require('./api/routes/libreria');
-const sucursal = require('./api/routes/sucursal');
-const autor = require('./api/routes/autor');
+// const adminGlobal = require('./api/components/admin-global/routes');
+// const adminLibreria = require('./api/components/admin-libreria/routes');
+const usuario = require('./api/components/usuario/routes');
+const libreria = require('./api/components/libreria/routes');
+const sucursal = require('./api/components/sucursal/routes');
+const autor = require('./api/components/autor/routes');
+const libro = require('./api/components/libro/routes');
 
 
-//Rutas 
-app.use('/admin-global', adminGlobal);
+//Rutas
+// app.use('/admin-global', adminGlobal); 
+// app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);
-app.use('/admin-libreria', adminLibreria);
-// app.use('/libros', libros);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);
 app.use('/autor', autor);
-
-
-
-// // Salir sesión
-// app.get('/logout', function(req, res, next) {
-//   if (req.session) {
-//     // Elimina el cookie de la sesión
-//     req.session.destroy(function(err) {
-//       if(err) {
-//         return next(err);
-//       } else {
-//         return res.redirect('/index.html');
-//       }
-//     });
-//   }
-// });
-
-
+app.use('/libro', libro);
 
 module.exports = app;
+
 
 
 

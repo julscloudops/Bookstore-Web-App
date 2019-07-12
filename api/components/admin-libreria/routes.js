@@ -2,16 +2,14 @@ const express = require('express'),
       router = express.Router(),
       bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
-      adminLibreria = require('../models/admin-libreria');
+      adminLibreria = require('./model');
 
-const { passwordGenerator } = require('../middleware/validation');
+const { passwordGenerator } = require('../../middleware/password-generator');
        
 //Registro
-
 router.post('/registro', async (req, res) => {
 
-//Busca que no exista otro usuario con el mismo email
-  const emailExist = await adminLibreria.findOne({
+const emailExist = await adminLibreria.findOne({
     email: req.body.email
   });
   if (emailExist) return res.status(400).send('El correo electrónico ya se encuentra registrado');

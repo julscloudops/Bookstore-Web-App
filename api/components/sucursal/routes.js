@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),
-      Sucursal  = require('../models/libreria');
+      Sucursal  = require('./model');
 
 
  router.post('/registro', async (req, res) => {

@@ -1,1 +1,0 @@
-const Libro = require('../models/libro');
