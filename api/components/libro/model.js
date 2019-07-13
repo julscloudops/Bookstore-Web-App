@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
 const modeloLibro = mongoose.Schema({
-  ISBN : {type : String},
+  author : {type : String},
+  price: { type: Number},
   title: { type: String},
-  author: { type: String},
+  isbn: { type: String},
   genre: { type: String},
   editorial: {type : String},        
-  price : {type : Number},
   description: {type: String},
-  bookImg: { type: String,}
+  imgUrl: { type: String},
+  cloudinary_id: {type: String},
 });
     
      

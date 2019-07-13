@@ -1,52 +1,36 @@
 const express = require('express'),
       router = express.Router(),
-      bcrypt = require('bcrypt'),
-      nodemailer = require('nodemailer'),
-      apiUsuario = require('./api');
+      multer = require('multer'),
+      usuarioController = require('./controller');
 
+//Settings de Multer, permite subir imagenes a la página
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+  cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + '-' + new Date().toISOString());
+  }
+});
 
-//Listar usuarios
-router.get('/', async (req, res) => {
+const fileFilter = (req, file, cb) => {
+if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+  cb(null, true);
+} else {
+  cb(null, false);
+}};
 
-})
-
-
-// router.get('/inicio', async (req, res) => {
-// res.sendFile('public/inicio.html', {root: './'});
-
-// // })
-
-//Iniciar sesión
-router.get('/login', (req, res) => {
-res.sendFile('public/login.html', {root: './'});
-})
-
-router.post('/login', async (req, res) => {
- 
-  //Busca que no exista otro usuario con el mismo email
-  const user = await User.findOne({
-    email: req.body.email
-  });
-
-  if (!user) return res.status(400).send('El email es incorrecto');
-
-  const validPass = await bcrypt.compare(req.body.password, user.password);
-  if (!validPass) return res.status(400).send('La contraseña es incorrecta');
-  
-res.sendFile('public/inicio.html', {root: './'});
-
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter
 });
 
 
-// router.get('/registro', async (req, res) => {
-// res.redirect('registro-usuario.html');
-// });
+
+//Inicio de sesión usuario
+router.post('/login', usuarioController.loginUsuario);
 
 //Registrar usuario
-router.post('/registro', (req, res) => {
-  
-  apiUsuario.registrarUsuario(req, res);
-
-});
+router.post('/registro', upload.single("img"), usuarioController.registrarUsuario);
 
 module.exports = router;

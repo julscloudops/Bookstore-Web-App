@@ -1,15 +1,24 @@
-const bcrypt = require('bcrypt'),
+const cloudinary = require('cloudinary');
+      bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
       User = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
 const {passwordGenerator} = require('../../middleware/password-generator');
 
-module.exports.registrarUsuario = async (req, res) => {
+// Permite subir las imagenes a la nube
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
 
-  console.log(req.body.data);
-  console.log(req.body);
   
+exports.registrarUsuario = async (req, res) => {
+
+  console.log(req.file);
+  console.log(req.body);
+
 //Busca que no exista otro usuario con el mismo email
 const emailExist = await User.findOne({
   email: req.body.email
@@ -45,6 +54,9 @@ console.log(`Mensaje enviado a ${req.body.email}`);
 const salt = await bcrypt.genSalt(10);
 const hashedPassword = await bcrypt.hash(randomPass, salt);
 
+// Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
+const result = await cloudinary.v2.uploader.upload(req.file.path);
+
 //Se crea un nuevo usuario
 const newUser = new User({
   firstName: req.body.firstName,
@@ -59,21 +71,33 @@ const newUser = new User({
   canton: req.body.canton,
   distrito: req.body.distrito,
   direction: req.body.direction,
+  imgUrl: result.url,
+  cloudinary_id: result.public_id,
   password: hashedPassword
 });
 
-try {
-  //Guarda el nuevo usuario en la base de datos
-  const savedUser = await newUser.save();
 
-  // Nos muestra los contenidos del post request que se hace al servidor
-  console.log(savedUser);
-  res.sendFile('public/registro-exitoso.html', {root: './'});
+//Guarda el nuevo usuario en la base de datos
+const savedUser = await newUser.save();
+console.log(savedUser);
 
-} catch (err) {
-  res.status(400).send(err);
+res.send("Registro exitoso!");
 
 }
 
+exports.loginUsuario = (req, res) => {
+   //Busca que no exista otro usuario con el mismo email
+   const usuario = User.findOne({
+    email: req.body.email
+   });
+
+  if (!usuario) return res.status(400).send('El email es incorrecto');
+
+  const validPass = bcrypt.compare(req.body.password, usuario.password);
+  if (!validPass) return res.status(400).send('La contraseña es incorrecta');
+  
+res.redirect('/inicio.html');
+
 
 }
+ 

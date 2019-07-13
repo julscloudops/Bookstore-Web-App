@@ -1,7 +1,6 @@
 const express = require('express'),
       mongoose = require('mongoose'),
       morgan = require('morgan'),
-      cloudinary = require('cloudinary'),
       app = express();
 
 //Configuración
@@ -11,15 +10,6 @@ app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), () => {
   console.log('El servidor esta corriendo en el puerto', app.get('port'));
 });
-
-// Permite subir las imagenes a la nube
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
-});
-
-
 
 // Permite utilizar environment variables para guardar la contraseña de la base de datos
 const dotenv = require('dotenv');
@@ -34,6 +24,17 @@ mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process
   });
 
 mongoose.set('useCreateIndex', true);
+
+
+// var fileupload =  require('express-fileupload');
+// app.use(fileupload());
+// var cloudinary = require('cloudinary').v2;
+
+
+// app.post('/upload', (req, res) => {
+//   const file = req.file.photo;
+//   console.log(file);
+// });
 
 
 //Se encarga de los errores CORS
@@ -58,6 +59,8 @@ app.use(express.json());
 
 // Establecer la ruta para archivos estáticos
 app.use(express.static('./public'));
+app.use(express.static('./public/uploads'));
+
 
 
 // Importación de las rutas
@@ -80,6 +83,7 @@ app.use('/autor', autor);
 app.use('/libro', libro);
 
 module.exports = app;
+
 
 
 

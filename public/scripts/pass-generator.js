@@ -8,5 +8,4 @@ function passwordGenerator() {
   return retVal;
 }
 
-
 module.exports.passwordGenerator = passwordGenerator;

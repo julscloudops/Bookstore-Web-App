@@ -2,15 +2,14 @@ const cloudinary = require('cloudinary');
 const Autor = require('./model');
 
 // Permite subir las imagenes a la nube
-cloudinary.config({
+  cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET
 });
   
-
 //Registrar autor
-exports.registrar_autor =  async(req, res) => {
+exports.registrar_autor = async(req, res) => {
 
 console.log(req.body);
 
@@ -30,15 +29,15 @@ console.log(result);
   });
 
 const savedAuthor = await newAuthor.save();
-console.log('El autor ha sido registrado exitosamente');
-
-  // .then(
-  //   function(result){
-  //     console.log(result);
-  //     console.log('El autor ha sido registrado exitosamente');
-  //   }).catch(
-  //   function(err){
-  //     console.log(err);
-  //   });
+console.log('El autor ha sido registrado exitosamente')
+.then(
+    function(result){
+      console.log(result);
+      console.log('El autor ha sido registrado exitosamente');
+    }).catch(
+    function(err){
+      console.log(err);
+    });
 }
+
 

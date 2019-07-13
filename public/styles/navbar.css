@@ -6,8 +6,13 @@
   box-sizing: border-box;
 }
 
-/*Navbar*/
+*{
+  outline-color: #DF8931;
+}
 
+
+
+/*Navbar*/
 .logo {
   width: 12%;
 }

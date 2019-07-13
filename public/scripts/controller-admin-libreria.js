@@ -22,7 +22,7 @@ event.preventDefault();
   };
 
 
-  fetch('http://localhost:8080/admin-libreria/registro', {
+  fetch('http://localhost:3000/admin-libreria/registro', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

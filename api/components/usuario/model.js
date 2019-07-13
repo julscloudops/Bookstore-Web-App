@@ -13,6 +13,8 @@ const modeloUsuario = new mongoose.Schema({
             canton: {type: String},
             distrito: {type: String},
             direction: {type: String},
+            imgUrl: {type: String},
+            cloudinary_id: {type: String},
             password: {type: String}
         });
 

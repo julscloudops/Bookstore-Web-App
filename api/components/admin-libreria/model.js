@@ -14,10 +14,7 @@ const modeloAdminLibreria = new mongoose.Schema({
           distrito: {type: String},
           direction: {type: String},
           password: {type: String},
-          isVerified: { type: Boolean, default: false}
-
         });
-
 
 module.exports = mongoose.model('adminLibreria', modeloAdminLibreria);
 

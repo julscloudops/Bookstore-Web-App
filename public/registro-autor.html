@@ -6,8 +6,6 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" href="styles/registro-autor.css">
-   <script class="jsbin" src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
    <title>Registro autor </title>
 </head>
 
@@ -45,44 +43,23 @@
    <div class="wrapper ">
       <div class="formulario">
          <h2>Registrar autor</h2>
-         <form  id="form" method="POST" action="http://localhost:3000/autor/registro" enctype="multipart/form-data">
+         <form id="form">
 
-            <input  
-            id="name"
-            type="text" 
-            class="name" 
-            name="name" 
-            placeholder="nombre autor" 
-            autocomplete="off">
+            <input id="name" type="text" class="name" name="name" placeholder="nombre" autocomplete="off">
 
 
             <label for="decription">Descripción</label>
-            <textarea  
-            id="description" 
-            class="description fadeIn second" 
-            name="description" 
-            cols="40"
-            rows="10"></textarea>
+            <textarea id="description" class="description fadeIn second" name="description" cols="40"
+               rows="10"></textarea>
 
-               <div class="input-file-container">
-                  <input
-                  id="img"  
-                  type="file"  
-                  class="input-file" 
-                  name="img"
-                  accept=" .png, .jpg, .jpeg"
-                  hidden
-                  > 
-                 
-                
-                 
-                  <label tabindex="0" for="img" class="input-file-trigger">Ingresar foto del autor</label>
-               </div>
+            <div class="input-file-container">
+               <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" hidden>
+               <label for="img" class="input-file-trigger">Ingresar foto del autor</label>
                <p class="file-return"></p>
-         
-            <input 
-            id="submit"
-            type="submit">
+            </div>
+            <input id="submit" class="submit-btn" type="submit" value="Enviar">
+
+
          </form>
       </div>
    </div>

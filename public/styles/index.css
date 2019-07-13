@@ -223,6 +223,8 @@ figure {
     padding: 0;
 }
 
+
+
 figcaption {
     font-weight: bold;
     color: #821E00;
@@ -249,7 +251,7 @@ figcaption {
     background-color: #DF8931;
     width: 80%;
     margin: 0 auto;
-    box-shadow: 2px 2px 6px 6px #DF8931;
+    box-shadow: 2px 2px 5px 5px #DF8931;
 }
 
 .infoRegistro {

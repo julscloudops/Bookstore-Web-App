@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-/* @import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css'; */
-
 
 * {
   box-sizing: border-box;
 }
+
+*{
+  outline-color: #DF8931;
+}
+
 
 body {
   margin: 0;
@@ -22,7 +25,6 @@ body {
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  min-height: 100%;
   padding: 15px;
 }
 
@@ -42,7 +44,7 @@ h2 {
   font-weight: bold;
   text-transform: uppercase;
   display: inline-block;
-  margin: 8% 0;
+  margin: 4% 0;
   color: black;
   border-bottom: 2px solid #821e00;
 
@@ -116,21 +118,21 @@ input[type="email"] {
   margin-bottom: 1%;
 }
 
-.flexbox-fecha-genero {
+.flexbox {
   display: flexbox;
   margin-bottom: 4% 0;
 }
 
-.flexbox-fecha-genero input[type="date"] {
+.flexbox input[type="date"] {
   width: 100%;
 }
 
-.flexbox-fecha-genero select {
+.flexbox select {
   margin: 8% 0;
   width: 100%;
 }
 
-.flexbox-fecha-genero div {
+.flexbox div {
   display: inline-block;
 }
 
@@ -196,7 +198,7 @@ select {
   font-size: 10px;
 }
 
-.direccion {
+.direction {
   width: 92%;
   padding: 10px;
   font-size: 14px;
@@ -204,10 +206,11 @@ select {
   background-color: #F3EDED;
   border-radius: 5px 5px 5px 5px;
   text-align: center;
+  margin-bottom: 2%;
 }
 
 
-input[type=submit] {
+.submit-btn {
   background-color: #821e00;
   border: none;
   color: #f3eded;
@@ -217,16 +220,9 @@ input[type=submit] {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
   box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 4% 0;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 2%;
 }
 
 input:focus {
@@ -246,15 +242,12 @@ select:focus {
   font-size: 14px;
   border: 2px solid #f6f6f6;
   border-radius: 5px 5px 5px 5px;
-}
-
-textarea {
   resize: none;
   width: 80%;
-  height: 80px;
+  height: 80px
 }
 
-textarea:focus {
+.description:focus {
   border: 3px solid #821e00;
   outline: none;
 }
@@ -262,6 +255,49 @@ textarea:focus {
 input:focus::-webkit-input-placeholder { 
   color:transparent; 
 }
+
+/* Botón para subir imagenes */
+
+.input-file-trigger {
+  display: block;
+  padding: 14px 15px;
+  background: #821e00;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 400;
+  transition: all .4s;
+  cursor: pointer;
+  border-radius: 5px 5px 5px 5px;
+  width: 80%;
+  margin: 0 auto;}
+
+.input-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+
+.file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.file-return:not(:empty):before {
+  content: "Archivo escogido: ";
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 1%;
+}
+
 
 
 /* Animate.css */

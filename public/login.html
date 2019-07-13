@@ -16,25 +16,28 @@
       
           <!-- Avatar del usuario -->
           <div class="fadeIn first">
-            <img src="images/user1.png" id="icon" class="userAvatar" alt="User Icon" />
+            <img src="images/default-avatar.svg" id="avatar" class="userAvatar" alt="User Icon" />
           </div>
       
           <!-- Forma de iniciar sesión -->
-          <form method="POST" action="/usuario/login"> 
+          <form> 
             <input 
+            id="email"
             type="text" 
             class="fadeIn second"
              name="email" 
              placeholder="correo electrónico">
 
             <input 
+            id="password"
             type="password" 
             class="fadeIn third" 
             name="password" 
             placeholder="contraseña">
             <input 
+            id="submit"
             type="submit" 
-            class="fadeIn fourth" 
+            class="submit-btn fadeIn fourth" 
             value="Enviar">
           </form>
       
@@ -50,5 +53,7 @@
         </div>
       </div>
     </div>
+
+    <script src="scripts/loginUsuario.js"></script>
 </body>
 </html>

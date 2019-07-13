@@ -1,4 +1,4 @@
-// document.querySelector("html").classList.add('js');
+// let uploadedFile = document.getElementById('img').files[0];
 
 var fileInput  = document.querySelector( ".input-file" ),  
     button     = document.querySelector( ".input-file-trigger" ),

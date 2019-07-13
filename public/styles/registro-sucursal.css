@@ -176,7 +176,7 @@ select {
 }
 
 
-input[type=submit] {
+.submit-btn {
   background-color: #821e00;
   border: none;
   color: #f3eded;

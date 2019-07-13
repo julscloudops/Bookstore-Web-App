@@ -80,7 +80,7 @@ h2.active {
   border-bottom: 2px solid #821e00;
 }
 
-input[type=submit] {
+.submit-btn {
   width: 30%;
   background-color: #821e00;
   border: none;

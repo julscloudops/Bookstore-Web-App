@@ -119,10 +119,13 @@
              name="longitude"
               placeholder="longitud"
               autocomplete="off">
-             <input 
-             type="submit" 
-             class="enviar" 
-             value="Enviar">
+              <div class="input-file-container">
+               <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" hidden>
+               <label for="img" class="input-file-trigger">Ingresar foto del autor</label>
+               <p class="file-return"></p>
+            </div>
+            
+             <button id="submit"  class="submit-btn">Enviar</button> 
           </form>
        </div>
     </div>

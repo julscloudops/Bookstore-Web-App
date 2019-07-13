@@ -2,7 +2,7 @@ const express = require('express'),
       router = express.Router(),
       bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
-      adminGlobal = require('./admin-global-model');
+      adminGlobal = require('./model');
 
 router.post('/registro', async (req, res) => {
 

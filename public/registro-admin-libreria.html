@@ -14,8 +14,8 @@
     <div class="formulario">
       <h2 class="fadeIn second">Registro administrador de librería</h2>
       <form>
-
         <input
+        id="firstName"
         type="text" 
          class="text fadeIn second"
          name="firstName" 
@@ -23,6 +23,7 @@
          autocomplete="off">
 
         <input 
+        id="lastName"
         type="text"  
         class="text fadeIn second" 
         name="lastName" 
@@ -30,6 +31,7 @@
         autocomplete="off">
 
         <input 
+        id="email"
         type="email"
         class="fadeIn second" 
         name="email" 
@@ -38,6 +40,7 @@
         autocomplete="off">
 
         <input 
+        id="phone"
         type="tel" 
         class="fadeIn second" 
         name="phone" 
@@ -48,6 +51,7 @@
           <div>
             <label for="birthDate" class="fadeIn second">Fecha de nacimiento</label>
             <input 
+            id="birthDate"
             type="date"
             class="fadeIn second"
              name="birthDate">
@@ -55,6 +59,7 @@
           <div class="genero">
             <label for="gender" class="fadeIn second">Género</label>
             <select 
+            id="gender"
             name="gender"  
             class="fadeIn second">
               <option value="">Hombre</option>
@@ -66,6 +71,7 @@
         <div>
           <label for="idType" class="fadeIn second">Tipo de cedula</label>
           <select
+          id="idType"
           name="idType"
           class="fadeIn second">
             <option value="">Seleccione tipo de identificación</option>
@@ -73,7 +79,13 @@
             <option value="residente">Residente</option>
             <option value="extranjero">Extranjero</option>
           </select>
-          <input type="text" id="cedula" class="cedula fadeIn second" name="cedula" placeholder="identificación"
+          <input 
+          id="id" 
+          name="id" 
+          type="text" 
+          class="cedula fadeIn second" 
+         
+          placeholder="identificación"
             pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
         </div>
 
@@ -87,26 +99,36 @@
 
           <div>
             <label for="canton" class="fadeIn second">Cantón</label>
-            <select id="canton" class="fadeIn second" required>
+            <select 
+            id="canton" 
+            name="canton"
+            class="fadeIn second" 
+            required>
               <option id="optionCantones" value="">Seleccione un cantón</option>
             </select>
           </div>
 
           <div>
             <label for="distrito" class="fadeIn second">Distrito</label>
-            <select id="distrito" class="fadeIn second" required>
+            <select 
+            id="distrito" 
+            name="distrito"
+            class="fadeIn second" 
+            required>
               <option id="optionDistritos" value="">Seleccione un distrito</option>
             </select>
           </div>
         </div>
 
         <input 
+        id="direction" 
+        name="direction" 
         type="text" 
         class="direccion fadeIn second" 
-        name="direccion" 
         placeholder="dirección exacta"
         autocomplete="off">
         <input 
+        id="submit"
         type="submit" 
         class="enviar fadeIn fourth" 
         value="Enviar">
@@ -114,6 +136,7 @@
 
 
       <script src="./scripts/provincias-cantones-distritos.js"></script>
+      <script src="./scripts/controller-admin-libreria.js"></script>
 
     </div>
   </div>

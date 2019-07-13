@@ -13,7 +13,7 @@
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro librería</h2>
-      <form method="POST" action="/libreria/registro">
+      <form>
         <input 
         type="text" 
         class="text fadeIn second" 
@@ -80,6 +80,11 @@
         name="direction"
         placeholder="dirección exacta"
         autocomplete="off">
+        <div class="input-file-container">
+          <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" hidden>
+          <label for="img" class="input-file-trigger">Ingresar foto del autor</label>
+          <p class="file-return"></p>
+       </div>
        
         <input type="submit" class="enviar fadeIn fourth" value="Enviar">
       </form>
