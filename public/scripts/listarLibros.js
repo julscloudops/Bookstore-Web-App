@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', listarLibros);
-document.addEventListener('DOMContentLoaded', getRatings);
+// document.addEventListener('DOMContentLoaded', getRatings);
 
 async function listarLibros() {
 
@@ -11,7 +11,7 @@ async function listarLibros() {
   console.log(data);
 
   //Client-side rendering del catalogo, el ciclo va a iterar por cada uno de libros registrados dentro de la aplicación.
-  for(i = 0; i < 8; i++) {
+  for(i = 0; i < data.length; i++) {
 
     const container = document.getElementById('grid-container'); 
     const book = document.createElement('div');
