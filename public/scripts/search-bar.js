@@ -1,4 +1,15 @@
-    const searchBtn = document.getElementById('search-btn');
+const avatar = document.getElementById('avatar');
+const dropdown = document.getElementById('dropdown');
+
+avatar.addEventListener('mouseover', () => {
+  dropdown.style.visibility = 'visible';
+});
+
+dropdown.addEventListener('mouseleave', () => {
+  dropdown.style.visibility = 'hidden';
+})
+   
+   const searchBtn = document.getElementById('search-btn');
     const search = document.getElementById('search');
     const tip = document.getElementById('tip');
     

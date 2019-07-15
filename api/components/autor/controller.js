@@ -34,6 +34,8 @@ console.log('El autor ha sido registrado exitosamente')
     function(result){
       console.log(result);
       console.log('El autor ha sido registrado exitosamente');
+      res.set('Content-Type', 'text/html');
+      res.send('inicio.html');
     }).catch(
     function(err){
       console.log(err);

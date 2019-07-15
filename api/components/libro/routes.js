@@ -1,7 +1,10 @@
 const express = require('express'),
       router = express.Router(),
-      multer = require('multer');
-     libroController = require('./controller');
+      multer = require('multer'),
+      libroController = require('./controller');
+
+
+     app = require('../../../app');
 
 
 
@@ -27,11 +30,13 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
+router.get('/', libroController.listarLibros);
+
 //Registrar libro
 router.post('/registro', upload.single('img'), libroController.registrarLibro);
 
 
-
+module.exports = router;
 
 
 
@@ -78,7 +83,6 @@ router.post('/registro', upload.single('img'), libroController.registrarLibro);
 
 
 
-module.exports = router;
 
 
 //   // const newBook = await new Libro({

@@ -1,15 +1,25 @@
 @import './navbar.css';
 @import './footer.css';
 
-
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
   font-family: 'Montserrat';
-  background-color: #f3eded;
+  background: #f3eded;
+  color: #f3eded;
 }
 
-.ultimos-lanzamientos-carousel {
-  margin-bottom: 12%;
+.carousel {
+  margin: 2% 0;
+}
+
+.list {
+  display: flex;
+  text-align: center;
+}
+
+.book a img {
+  width: 40%;
+
 }

@@ -8,13 +8,12 @@ function registrarLibro(event) {
 const formData = new FormData();
 formData.append('author', document.getElementById('author').value);
 formData.append('price', document.getElementById('price').value);
+formData.append('title', document.getElementById('title').value);
 formData.append('isbn', document.getElementById('isbn').value);
 formData.append('genre', document.getElementById('genre').value);
 formData.append('editorial', document.getElementById('editorial').value);
 formData.append('description', document.getElementById('description').value);
 formData.append('img', document.getElementById('img').files[0]);
-
-console.log(formData);
 
 const url = 'http://localhost:3000/libro/registro';
 
@@ -25,8 +24,8 @@ const url = 'http://localhost:3000/libro/registro';
      
 fetch(url, fetchOptions)
 .then(res => res.json())
-.catch(error => console.errors('Error:', error) )
-.then(res => console.log('Sucess:', JSON.stringify(res)));
+.then(res => console.log('Sucess:', JSON.stringify(res)))
+.catch(error => console.error('Error:', error));
 
 }
 

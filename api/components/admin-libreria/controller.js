@@ -1,19 +1,27 @@
 const bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
+      cloudinary = require('cloudinary'),
       adminLibreria = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
-const {passwordGenerator} = require('../../middleware/password-generator');
+const { passwordGenerator } = require('../../middleware/password-generator');
+const { ageCalculator } = require('../../middleware/age-calculator');
 
-module.exports.registrarAdminLibreria = async (req, res) => {
 
-  console.log(req.body);
+// Permite subir las imagenes a la nube
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
 
-//Busca que no exista otro usuario con el mismo email
+  
+exports.registrarAdminLibreria = async (req, res) => {
+
+//Busca que no exista otro administrador con el mismo email
 const emailExist = await adminLibreria.findOne({
   email: req.body.email
 });
-
 if (emailExist) return res.status(400).send('El correo electrónico ya se encuentra registrado');
 
 // Crea una contraseña autogenerada
@@ -28,7 +36,7 @@ let transporter = nodemailer.createTransport({
   }
 });
 
-let url = 'http://localhost:3000/usuario/login';
+let url = 'http://localhost:3000/admin-libreria/login';
 
 let mailOptions = transporter.sendMail({
   from: '"Parrafo Digital" <parrafodigitaltest@gmail.com>',
@@ -44,6 +52,12 @@ console.log(`Mensaje enviado a ${req.body.email}`);
 const salt = await bcrypt.genSalt(10);
 const hashedPassword = await bcrypt.hash(randomPass, salt);
 
+// Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
+const result = await cloudinary.v2.uploader.upload(req.file.path);
+
+//Calcula la edad de los usuarios en base a su fecha de nacimiento
+let age = ageCalculator(req.body.birthDate);
+
 //Se crea un nuevo usuario
 const newAdminLibreria = new adminLibreria({
   firstName: req.body.firstName,
@@ -51,6 +65,7 @@ const newAdminLibreria = new adminLibreria({
   email: req.body.email,
   phone: req.body.phone,
   birthDate: req.body.birthDate,
+  age: age,
   gender: req.body.gender,
   idType: req.body.idType,
   id: req.body.id,
@@ -58,22 +73,33 @@ const newAdminLibreria = new adminLibreria({
   canton: req.body.canton,
   distrito: req.body.distrito,
   direction: req.body.direction,
+  imgUrl: result.url,
+  cloudinary_id: result.public_id,
   password: hashedPassword
 });
 
-try {
-  //Guarda el nuevo usuario en la base de datos
-  const savedAdminLibreria = await newAdminLibreria.save();
-  // Nos muestra los contenidos del post request que se hace al servidor
-  console.log(savedAdminLibreria);
-  console.log('El administrador de librería ha sido registrado exitosamente');
-  res.redirect()
-  // res.sendFile('public/registro-exitoso.html', {root: './'});
 
-} catch (err) {
-  res.status(400).send(err);
+//Guarda el nuevo usuario en la base de datos
+const savedAdminLibreria = await newAdminLibreria.save();
+console.log(savedAdminLibreria);
+
+res.send("Registro exitoso!");
 
 }
 
+exports.loginAdminLibreria = async (req, res) => {
+
+//Verifica que el email ingresado sea el mismo que el guardado en la base de datos
+const usuario = await adminLibreria.findOne({
+    email: req.body.email
+   });
+if (!usuario) return res.status(400).send('El email es incorrecto');
+
+const validPass =  await bcrypt.compare(req.body.password, usuario.password);
+if (!validPass) return res.status(400).send('La contraseña es incorrecta');
+  
+res.redirect('/inicio.html');
+
 
 }
+ 

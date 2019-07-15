@@ -25,22 +25,10 @@ mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process
 
 mongoose.set('useCreateIndex', true);
 
-
-// var fileupload =  require('express-fileupload');
-// app.use(fileupload());
-// var cloudinary = require('cloudinary').v2;
-
-
-// app.post('/upload', (req, res) => {
-//   const file = req.file.photo;
-//   console.log(file);
-// });
-
-
 //Se encarga de los errores CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Acess-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+res.header('Access-Control-Allow-Origin', '*');
+res.header('Acess-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
   if (req.method === 'OPTIONS') {
     res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
     return res.status(200).json({
@@ -53,6 +41,10 @@ app.use((req, res, next) => {
 // Muestra en consola los HTTP requests que se hacen al servidor
 app.use(morgan('dev'));
 
+
+
+
+
 //Middleware and Body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -62,7 +54,6 @@ app.use(express.static('./public'));
 app.use(express.static('./public/uploads'));
 
 
-
 // Importación de las rutas
 // const adminGlobal = require('./api/components/admin-global/routes');
 // const adminLibreria = require('./api/components/admin-libreria/routes');
@@ -70,17 +61,23 @@ const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
 const autor = require('./api/components/autor/routes');
-const libro = require('./api/components/libro/routes');
+const libros = require('./api/components/libro/routes');
 
 
 //Rutas
+
+app.get('/hola', (req, res) => {
+  res.sendFile(__dirname + '/public/catalogo.html')
+});
+
+ 
 // app.use('/admin-global', adminGlobal); 
 // app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);
 app.use('/autor', autor);
-app.use('/libro', libro);
+app.use('/libros', libros);
 
 module.exports = app;
 

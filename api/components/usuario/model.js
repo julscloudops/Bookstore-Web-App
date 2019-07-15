@@ -6,6 +6,7 @@ const modeloUsuario = new mongoose.Schema({
             email: { type: String, required: true, unique: true},   
             phone: {type: String},
             birthDate : {type: Date},
+            age: {type: String},
             gender: {type: String},
             idType: {type: String},          
             id: {type: String},

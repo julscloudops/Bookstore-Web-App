@@ -2,14 +2,27 @@
 
 /* Esta linea es para tener los settings básicos estándarizados */
 
-*, ::after, ::before {
+*,
+::after,
+::before {
   box-sizing: border-box;
 }
 
-*{
+* {
   outline-color: #DF8931;
 }
 
+body {
+  background: #f3eded
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
 
 
 /*Navbar*/
@@ -24,8 +37,8 @@
   display: flex;
   box-shadow: 2px 2px 1px #f3eded;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding-right: 0.4%;
 }
 
@@ -36,10 +49,13 @@
   cursor: pointer;
   overflow: hidden;
   margin: 0 1%;
+  justify-content: center;
+
 }
 
 .down-arrow img {
   width: 30px;
+  
 }
 
 .search-contain {
@@ -47,8 +63,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-right: 1%;
 }
 
@@ -103,32 +119,24 @@
 
 .categorias {
   background: #DF8931;
-  width: 128px;
+  width: 120px;
   height: 12px;
   padding: 25px;
-  margin: 0 25% 0 0;
+  margin: 0 30% 0 0;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .categorias a {
-  text-decoration: none;
   color: #821E00;
   font-weight: bold;
 }
 
 .categorias a:hover {
-  text-decoration: none;
   color: #821E00;
 }
 
@@ -145,11 +153,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .reading-club img {
@@ -169,11 +177,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .shopping-cart img {
@@ -198,11 +206,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .notificaciones img {
@@ -220,19 +228,41 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar .dropdown {
+  visibility: hidden;
+}
+
+
+.dropdown {
+  position: absolute;
+  top: 10%;
+  right: 1%;
+  display: block;
+  background: #DF8931;
+  padding: 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
+  visibility: hidden;
+	transition: ease 1s;
+}
+
+.dropdown:hover {
+  visibility: visible;
+
+}
+
+.dropdown a {
+  color: #f3eded;
+
 }
 
 .avatar img {
   width: 40px;
 }
-
-
 
 .container {
   text-align: center;
@@ -245,12 +275,12 @@
   padding: 3em 0;
   border-top-right-radius: 40px;
   -webkit-transform: skewY(2deg);
-          transform: skewY(2deg);
+  transform: skewY(2deg);
 }
 
 .footer-container .container {
   -webkit-transform: skewY(-2deg);
-          transform: skewY(-2deg);
+  transform: skewY(-2deg);
 }
 
 .footer-container:before {
@@ -300,6 +330,7 @@ nav ul li a {
   padding: 1em 2em;
   border-radius: 25px;
   font-weight: bold;
-  text-decoration: none;
 }
-/*# sourceMappingURL=inicio.css.map */
+
+/* Animate.css */
+

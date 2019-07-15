@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
 * {
-  box-sizing: border-box;  
-  outline-color: #DF8931;
-
+  box-sizing: border-box;
 }
+
+*{
+  outline-color: #DF8931;
+}
+
 
 body {
   margin: 0;
@@ -264,7 +267,7 @@ input:focus::-webkit-input-placeholder {
 
 .input-file-trigger {
   display: block;
-  padding: 14px 8px;
+  padding: 14px 15px;
   background: #821e00;
   color: #fff;
   font-size: 0.9em;
@@ -306,7 +309,6 @@ input:focus::-webkit-input-placeholder {
   background-color: #f6f6f6;
   border-top: 1px solid #dce8f1;
   padding: 25px;
-  margin-top: 1%;
   text-align: center;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;

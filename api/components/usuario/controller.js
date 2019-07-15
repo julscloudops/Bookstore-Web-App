@@ -1,10 +1,12 @@
-const cloudinary = require('cloudinary');
-      bcrypt = require('bcrypt'),
+const bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
+      cloudinary = require('cloudinary'),
       User = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
-const {passwordGenerator} = require('../../middleware/password-generator');
+const { passwordGenerator } = require('../../middleware/password-generator');
+const { ageCalculator } = require('../../middleware/age-calculator');
+
 
 // Permite subir las imagenes a la nube
 cloudinary.config({
@@ -23,7 +25,6 @@ exports.registrarUsuario = async (req, res) => {
 const emailExist = await User.findOne({
   email: req.body.email
 });
-
 if (emailExist) return res.status(400).send('El correo electrónico ya se encuentra registrado');
 
 // Crea una contraseña autogenerada
@@ -57,6 +58,9 @@ const hashedPassword = await bcrypt.hash(randomPass, salt);
 // Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
 const result = await cloudinary.v2.uploader.upload(req.file.path);
 
+//Calcula la edad de los usuarios en base a su fecha de nacimiento
+let age = ageCalculator(req.body.birthDate);
+
 //Se crea un nuevo usuario
 const newUser = new User({
   firstName: req.body.firstName,
@@ -64,6 +68,7 @@ const newUser = new User({
   email: req.body.email,
   phone: req.body.phone,
   birthDate: req.body.birthDate,
+  age: age,
   gender: req.body.gender,
   idType: req.body.idType,
   id: req.body.id,
@@ -85,16 +90,16 @@ res.send("Registro exitoso!");
 
 }
 
-exports.loginUsuario = (req, res) => {
-   //Busca que no exista otro usuario con el mismo email
-   const usuario = User.findOne({
+exports.loginUsuario = async (req, res) => {
+
+//Verifica que el email ingresado sea el mismo que el guardado en la base de datos
+const usuario = await User.findOne({
     email: req.body.email
    });
+if (!usuario) return res.status(400).send('El email es incorrecto');
 
-  if (!usuario) return res.status(400).send('El email es incorrecto');
-
-  const validPass = bcrypt.compare(req.body.password, usuario.password);
-  if (!validPass) return res.status(400).send('La contraseña es incorrecta');
+const validPass =  await bcrypt.compare(req.body.password, usuario.password);
+if (!validPass) return res.status(400).send('La contraseña es incorrecta');
   
 res.redirect('/inicio.html');
 

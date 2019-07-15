@@ -1,7 +1,7 @@
 const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', registrarUsuario);
+submitBtn.addEventListener('click', registrarAdminLibreria);
 
-function registrarUsuario(event) {
+function registrarAdminLibreria(event) {
 
   event.preventDefault();
 
@@ -21,7 +21,7 @@ formData.append('distrito', document.getElementById('distrito').value);
 formData.append('direction', document.getElementById('direction').value);
 formData.append('img', document.getElementById('img').files[0]);
 
-const url = 'http://localhost:3000/usuario/registro';
+const url = 'http://localhost:3000/admin-libreria/registro';
 
   const fetchOptions = {
       method: 'POST',
