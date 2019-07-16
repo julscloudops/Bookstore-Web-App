@@ -1,7 +1,16 @@
 const express = require('express'),
       mongoose = require('mongoose'),
+      passport = require('passport'),
+      session = require('express-session'),
+      flash = require('express-flash'),
+      methodOverride = require('method-override'),
       morgan = require('morgan'),
+      favicon = require('serve-favicon'),
+      path = require('path'),
       app = express();
+
+//Inicialización de passport
+require ('./api/utility/passport-config');
 
 //Configuración
 app.set('port', process.env.PORT || 3000);
@@ -38,41 +47,54 @@ res.header('Acess-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Typ
   next();
 });
 
+//Envia el favicon en todo request
+app.use(favicon(path.join(__dirname, 'public/images/', 'favicon.ico')));
+
 // Muestra en consola los HTTP requests que se hacen al servidor
 app.use(morgan('dev'));
-
-
-
-
 
 //Middleware and Body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
+//Passport
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+app.use(methodOverride('_method'));
+
+// Global variables
+app.use((req, res, next) => {
+  res.locals.registroMessage = req.flash('registroMessage');
+  res.locals.loginMessage = req.flash('loginMessage');
+  res.locals.error = req.flash('error');
+  next();
+});
+
+
 // Establecer la ruta para archivos estáticos
 app.use(express.static('./public'));
 app.use(express.static('./public/uploads'));
 
-
 // Importación de las rutas
-// const adminGlobal = require('./api/components/admin-global/routes');
-// const adminLibreria = require('./api/components/admin-libreria/routes');
+const adminGlobal = require('./api/components/admin-global/routes');
+const adminLibreria = require('./api/components/admin-libreria/routes');
 const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
 const autor = require('./api/components/autor/routes');
 const libros = require('./api/components/libro/routes');
 
-
 //Rutas
-
-app.get('/hola', (req, res) => {
-  res.sendFile(__dirname + '/public/catalogo.html')
-});
-
  
-// app.use('/admin-global', adminGlobal); 
-// app.use('/admin-libreria', adminLibreria);
+app.use('/admin-global', adminGlobal); 
+app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);

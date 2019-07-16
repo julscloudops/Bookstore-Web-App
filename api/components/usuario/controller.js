@@ -1,12 +1,11 @@
-const bcrypt = require('bcrypt'),
+const bcrypt = require('bcryptjs'),
       nodemailer = require('nodemailer'),
       cloudinary = require('cloudinary'),
       User = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
-const { passwordGenerator } = require('../../middleware/password-generator');
-const { ageCalculator } = require('../../middleware/age-calculator');
-
+const { passwordGenerator } = require('../../utility/password-generator');
+const { ageCalculator } = require('../../utility/age-calculator');
 
 // Permite subir las imagenes a la nube
 cloudinary.config({
@@ -15,7 +14,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_SECRET
 });
 
-  
 exports.registrarUsuario = async (req, res) => {
 
   console.log(req.file);
@@ -86,23 +84,28 @@ const newUser = new User({
 const savedUser = await newUser.save();
 console.log(savedUser);
 
-res.send("Registro exitoso!");
+res.json({message: 'Registro exitoso!'})
 
 }
 
-exports.loginUsuario = async (req, res) => {
+// exports.loginUsuario = async (req, res) => {
 
-//Verifica que el email ingresado sea el mismo que el guardado en la base de datos
-const usuario = await User.findOne({
-    email: req.body.email
-   });
-if (!usuario) return res.status(400).send('El email es incorrecto');
+// // //Verifica que el email ingresado sea el mismo que el guardado en la base de datos
+// // const usuario = await User.findOne({
+// //     email: req.body.email
+// //    });
+// // if (!usuario) return res.status(400).send('El email es incorrecto');
 
-const validPass =  await bcrypt.compare(req.body.password, usuario.password);
-if (!validPass) return res.status(400).send('La contraseña es incorrecta');
+// // const validPass =  await bcrypt.compare(req.body.password, usuario.password);
+// // if (!validPass) return res.status(400).send('La contraseña es incorrecta');
   
-res.redirect('/inicio.html');
+// res.redirect('/inicio.html');
 
+// }
 
+exports.visualizarPerfil = async (req, res) => {
+  User.findOne({_id: req.params }, (err, data) => {
+    res.json(data);
+  });
 }
  

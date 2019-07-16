@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/registro.css">
+  <link rel="stylesheet" href="styles/registro-usuario.css">
   <title>Registro </title>
 </head>
 <body>
@@ -14,6 +14,7 @@
       <h2 class="fadeIn second">Registro administrador global</h2>
       <form>
         <input 
+        id = "firstName"
         type="text" 
         class="text fadeIn second" 
         name="firstName" 
@@ -21,6 +22,7 @@
         autocomplete="off">
 
         <input 
+        id = "lastName"
         type="text" 
         class="text fadeIn second" 
         name="lastName" 
@@ -28,6 +30,7 @@
         autocomplete="off">
 
         <input 
+        id="email"
         type="email"  
         class="fadeIn second" 
         name="email" 
@@ -36,6 +39,7 @@
         required>
 
         <input 
+        id="phone"
         type="tel" 
         class="fadeIn second" 
         name="phone" 
@@ -43,13 +47,13 @@
         pattern="[0-9]{4}-[0-9]{4}"
         autocomplete="off" 
         required>
-        <input 
-        type="submit"
-        class="enviar fadeIn fourth"
-        value="submit">
+        <button id="submit" class="submit-btn fadeIn second">Enviar</button> 
+
       </form>
     </div>
   </div>
+
+  <script src="scripts/servicios/admin-global/registrarAdminGlobal.js"></script>
 </body>
 
 </html>

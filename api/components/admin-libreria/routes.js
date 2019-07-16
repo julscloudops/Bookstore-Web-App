@@ -3,8 +3,8 @@ const express = require('express'),
       multer = require('multer'),
       adminLibreriaController = require('./controller');
 
-// //  Importación de funciones de passport.js para proteger ciertas rutas     
-// const { ensureAuthenticated, forwardAuthenticated } = require('../../middleware/checkAuth');
+//  Importación de funciones de passport.js para proteger ciertas rutas     
+const { checkAuthenticated, checkNotAuthenticated } = require('../../utility/checkAuth');
      
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({

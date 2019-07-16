@@ -29,9 +29,11 @@ const url = 'http://localhost:3000/usuario/registro';
   }
      
 fetch(url, fetchOptions)
-.then(res => res.json())
-.catch(error => console.errors('Error:', error) )
-.then(res => console.log('Sucess:', JSON.stringify(res)));
+.catch(error => console.log('Error:', error))
+.then((res) => {
+  let redirect = 'http://localhost:3000/registro-exitoso.html';
+  window.location = redirect;
+});
 
 }
 

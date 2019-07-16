@@ -1,4 +1,3 @@
-//Generador de contraseñas
 function passwordGenerator() {
   var length = 12,
       charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",

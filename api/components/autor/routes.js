@@ -1,8 +1,7 @@
 const express = require('express'),
       router = express.Router(),
       multer = require('multer'),
-      controller = require('./controller'),
-      Autor = require('./model');
+      autorController = require('./controller');
 
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
@@ -29,18 +28,10 @@ const upload = multer({
   }
 });
 
-// //Listar autor
-// router.get('/', async (req, res) => {
-//   const autores = await Autor.find();
-//   res.redirect('/public/autores.html')
-// })
-
 // // Registrar autor
- router.post('/registro', upload.single('img'), (req,res) => {
-    
-  controller.registrar_autor;
+ router.post('/registro', upload.single('img'), autorController.registrarAutor);
 
- });
- 
+ //Listar autores
+ router.get('/', autorController.listarAutores);
 
 module.exports = router;

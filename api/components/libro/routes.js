@@ -3,11 +3,6 @@ const express = require('express'),
       multer = require('multer'),
       libroController = require('./controller');
 
-
-     app = require('../../../app');
-
-
-
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -30,11 +25,14 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/', libroController.listarLibros);
 
 //Registrar libro
 router.post('/registro', upload.single('img'), libroController.registrarLibro);
 
+//Listar libros
+router.get('/', libroController.listarLibros);
+
+// router.get('/:id', libroController.listarLibro);
 
 module.exports = router;
 

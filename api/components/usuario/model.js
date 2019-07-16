@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const modeloUsuario = new mongoose.Schema({ 
             firstName: {type: String},
@@ -9,7 +10,7 @@ const modeloUsuario = new mongoose.Schema({
             age: {type: String},
             gender: {type: String},
             idType: {type: String},          
-            id: {type: String},
+            cedula: {type: String},
             provincia: {type: String},
             canton: {type: String},
             distrito: {type: String},
@@ -18,7 +19,6 @@ const modeloUsuario = new mongoose.Schema({
             cloudinary_id: {type: String},
             password: {type: String}
         });
-
 
 module.exports = mongoose.model('User', modeloUsuario);
 

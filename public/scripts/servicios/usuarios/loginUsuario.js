@@ -21,8 +21,11 @@ function loginUsuario(event) {
   }
 
   fetch(url, fetchOptions)
-    .then(res => res.json())
-    .then(res => console.log('Sucess:', res))
-    .catch(error => console.error('Error:', error));
-
+  .then((res) => {
+    let redirect = 'http://localhost:3000/inicio.html';
+    window.location = redirect;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 }

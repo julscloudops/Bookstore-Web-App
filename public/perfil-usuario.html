@@ -32,18 +32,23 @@
       <div class="notificaciones">
         <img src="images/notifications.svg" id="notifications-button" alt="notifications button">
       </div>
-      <div class="avatar">
+      <div id="avatar" class="avatar">
+          <ul id="dropdown" class="dropdown">
+              <li><a href="#">Perfil</a></li>
+              <li><a href="#">Configuración</a></li> 
+              <li><a href="#">Salir sesión</a></li>
+            </ul>
         <img src="images/avatar.svg" id="avatar-btn" alt="avatar button">
       </div>
     </div>
 
-<div class="perfil-usuario">
+<div id="user-profile" class="user-profile">
   
 </div>
+
 <div class="info-usuario"></div>
 <div class="libros-usuario"></div>
 <div class="clubes-usuario"></div>
-
 
     <footer>
       <div class="footer-container">
@@ -63,6 +68,9 @@
 
   <!-- //Carga el javascript para que funcione la barra de búsquedas -->
   <script src="scripts/search-bar.js"></script>
+  <script src="scripts/dropdown.js"></script>
+
+  <script src="scripts/servicios/usuarios/listarUsuario.js"></script>
 
 </body>
 

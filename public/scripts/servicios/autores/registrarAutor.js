@@ -21,6 +21,6 @@ function postAutor(event) {
   fetch(url, fetchOptions)
 .then(res => res.json())
 .catch(error => console.errors('Error:', error) )
-.then(res => console.log('Sucess:', JSON.stringify(res)));
+.then(res => console.log('Sucess:', res));
 
   };

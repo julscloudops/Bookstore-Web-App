@@ -1,5 +1,5 @@
-const cloudinary = require('cloudinary');
-const Autor = require('./model');
+const cloudinary = require('cloudinary'),
+      Autor = require('./model');
 
 // Permite subir las imagenes a la nube
   cloudinary.config({
@@ -9,7 +9,7 @@ const Autor = require('./model');
 });
   
 //Registrar autor
-exports.registrar_autor = async(req, res) => {
+exports.registrarAutor = async(req, res) => {
 
 console.log(req.body);
 
@@ -29,17 +29,17 @@ console.log(result);
   });
 
 const savedAuthor = await newAuthor.save();
-console.log('El autor ha sido registrado exitosamente')
-.then(
-    function(result){
-      console.log(result);
-      console.log('El autor ha sido registrado exitosamente');
-      res.set('Content-Type', 'text/html');
-      res.send('inicio.html');
-    }).catch(
-    function(err){
-      console.log(err);
-    });
+console.log(savedAuthor);
+res.send('El autor fue registrado exitosamente');
+
 }
+
+
+exports.listarAutores = async (req, res) => {
+  await Autor.find({}, (err, data) => {
+    res.json(data);
+  });
+}
+
 
 

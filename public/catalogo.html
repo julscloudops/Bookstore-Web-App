@@ -5,8 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/styles/catalogo.css">
-  <link rel="stylesheet" href="/styles/fontawesome.min.css">
+
+  <link rel="stylesheet" href="styles/fontawesome-free-5.9-1.0-web/css/regular.min.css">
+  <link rel="stylesheet" href="styles/fontawesome-free-5.9-1.0-web/css/solid.min.css">
+  <link rel="stylesheet" href="styles/fontawesome-free-5.9-1.0-web/fontawesome.min.css">
+  <link rel="stylesheet" href="styles/fontawesome-free-5.9-1.0-web/css/all.min.css">
+
+  <link rel="stylesheet" href="styles/catalogo.css">
   <title>Libros</title>
 </head>
 
@@ -36,19 +41,20 @@
       <img src="images/notifications.svg" id="notifications-button" alt="notifications button">
     </div>
     <div id="avatar" class="avatar">
-        <ul id="dropdown" class="dropdown fadeIn first">
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Configuración</a></li> 
-            <li><a href="#">Salir sesión</a></li>
-          </ul>
+      <ul id="dropdown" class="dropdown fadeIn first">
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Configuración</a></li>
+        <li><a href="#">Salir sesión</a></li>
+      </ul>
       <img src="images/avatar.svg" id="avatar-btn" alt="avatar button">
     </div>
   </div>
   <div class="side-bar"></div>
 
   <div id="grid-container" class="grid-container">
+
   </div>
-  
+
   <footer>
     <div class="footer-container">
       <div class="container">
@@ -66,7 +72,7 @@
   <!-- //Carga el javascript para que funcione la barra de búsquedas -->
   <script src="scripts/search-bar.js"></script>
 
-  <script src="scripts/listarLibros.js"></script>
+  <script src="scripts/servicios/libros/listarLibros.js"></script>
 </body>
 
 </html>

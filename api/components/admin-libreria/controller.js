@@ -1,11 +1,11 @@
-const bcrypt = require('bcrypt'),
+const bcrypt = require('bcryptjs'),
       nodemailer = require('nodemailer'),
       cloudinary = require('cloudinary'),
       adminLibreria = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
-const { passwordGenerator } = require('../../middleware/password-generator');
-const { ageCalculator } = require('../../middleware/age-calculator');
+const { passwordGenerator } = require('../../utility/password-generator');
+const { ageCalculator } = require('../../utility/age-calculator');
 
 
 // Permite subir las imagenes a la nube

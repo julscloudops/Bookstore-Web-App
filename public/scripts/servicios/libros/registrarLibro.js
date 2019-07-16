@@ -15,7 +15,7 @@ formData.append('editorial', document.getElementById('editorial').value);
 formData.append('description', document.getElementById('description').value);
 formData.append('img', document.getElementById('img').files[0]);
 
-const url = 'http://localhost:3000/libro/registro';
+const url = 'http://localhost:3000/libros/registro';
 
   const fetchOptions = {
       method: 'POST',
@@ -24,8 +24,7 @@ const url = 'http://localhost:3000/libro/registro';
      
 fetch(url, fetchOptions)
 .then(res => res.json())
-.then(res => console.log('Sucess:', JSON.stringify(res)))
-.catch(error => console.error('Error:', error));
+.catch(error => console.error('Error: ' + error));
 
 }
 

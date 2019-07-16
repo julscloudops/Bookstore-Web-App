@@ -1,10 +1,11 @@
 const express = require('express'),
       router = express.Router(),
+      passport = require('passport'),
       multer = require('multer'),
       usuarioController = require('./controller');
 
-// //  Importación de funciones de passport.js para proteger ciertas rutas     
-// const { ensureAuthenticated, forwardAuthenticated } = require('../../middleware/checkAuth');
+//  Importación de funciones de passport.js para proteger ciertas rutas     
+const { checkAuthenticated, checkNotAuthenticated } = require('../../utility/checkAuth');
      
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
@@ -28,14 +29,38 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
+// Registrar usuario
+router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
+
+router.get('/registro', (req, res) => {
+  res.redirect('http://localhost:3000/registro-usuario.html');
+})
+
 //Inicio de sesión usuario
-router.post('/login', usuarioController.loginUsuario);
+router.post('/login', passport.authenticate('local-login'), (req, res) => {
+  res.redirect('http://localhost:3000/inicio.html');
+}
+);
 
 router.get('/login', (req, res) => {
-  res.redirect('/login.html');
+  res.redirect('http://localhost:3000/login.html');
 });
 
-//Registrar usuario
-router.post('/registro', upload.single("img"), usuarioController.registrarUsuario);
+// router.get('/perfil', usuarioController.visualizarPerfil);
+
+
+router.get('/inicio', (req, res) => {
+res.redirect('http://localhost:3000/inicio.html');
+
+});
+
+
+
+//Cerrar sesión
+// router.delete('/logout', (req, res) => {
+//   req.logOut();
+//   res.redirect('/usuario/login');
+// });
+
 
 module.exports = router;
