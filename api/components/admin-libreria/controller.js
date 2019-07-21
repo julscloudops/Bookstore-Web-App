@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs'),
+const bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
       cloudinary = require('cloudinary'),
       adminLibreria = require('./model');
@@ -7,15 +7,6 @@ const bcrypt = require('bcryptjs'),
 const { passwordGenerator } = require('../../utility/password-generator');
 const { ageCalculator } = require('../../utility/age-calculator');
 
-
-// Permite subir las imagenes a la nube
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
-});
-
-  
 exports.registrarAdminLibreria = async (req, res) => {
 
 //Busca que no exista otro administrador con el mismo email
@@ -83,22 +74,24 @@ const newAdminLibreria = new adminLibreria({
 const savedAdminLibreria = await newAdminLibreria.save();
 console.log(savedAdminLibreria);
 
-res.send("Registro exitoso!");
+res.sendFile('registro-exitoso.html', {root: 'public'}); 
 
 }
 
 exports.loginAdminLibreria = async (req, res) => {
 
 //Verifica que el email ingresado sea el mismo que el guardado en la base de datos
-const usuario = await adminLibreria.findOne({
+const admin = await adminLibreria.findOne({
     email: req.body.email
    });
-if (!usuario) return res.status(400).send('El email es incorrecto');
+if (!admin) return res.status(400).send('El email es incorrecto');
 
-const validPass =  await bcrypt.compare(req.body.password, usuario.password);
+const validPass =  await bcrypt.compare(req.body.password, admin.password);
 if (!validPass) return res.status(400).send('La contraseña es incorrecta');
   
-res.redirect('/inicio.html');
+req.session.adminLibreriaId = admin._id;
+
+res.sendFile('inicio-adminLibreria.html', {root: 'public'}); 
 
 
 }

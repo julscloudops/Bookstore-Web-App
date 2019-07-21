@@ -7,10 +7,10 @@ const modeloLibreria = new mongoose.Schema({
           provincia: {type: String},
           canton: {type: String},
           distrito: {type: String},
-          direction: {type: String}
+          direction: {type: String},
+          imgUrl: {type: String},
+          cloudinary_id: {type: String}
 });
-
-
 
 module.exports = mongoose.model('Libreria', modeloLibreria);
 

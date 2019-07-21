@@ -9,7 +9,9 @@ const modeloSucursal = new mongoose.Schema({
           distrito: {type: String},
           direction: {type: String},
           latitude: {type: String},
-          longitude: {type: String}
+          longitude: {type: String},
+          imgUrl: {type: String},
+          cloudinary_id: {type: String}
 });
 
 

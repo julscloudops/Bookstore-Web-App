@@ -28,10 +28,25 @@ const upload = multer({
   }
 });
 
-// // Registrar autor
- router.post('/registro', upload.single('img'), autorController.registrarAutor);
+router.get('/registro', (req, res) => {
+  res.sendFile('registro-autor.html', {
+    root: 'public'
+  });
+});
+
+
+const redirectIndex = (req, res, next) => {
+  if(!req.session.adminLibreriaId) {
+    res.redirect('http://localhost:3000/');
+  } else {
+    next()
+  }
+}
+
+// Registrar autor
+ router.post('/registro', redirectIndex, upload.single('img'), autorController.registrarAutor);
 
  //Listar autores
- router.get('/', autorController.listarAutores);
+//  router.get('/', autorController.listarAutores);
 
 module.exports = router;

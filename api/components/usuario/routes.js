@@ -1,12 +1,8 @@
 const express = require('express'),
       router = express.Router(),
-      passport = require('passport'),
       multer = require('multer'),
       usuarioController = require('./controller');
-
-//  Importación de funciones de passport.js para proteger ciertas rutas     
-const { checkAuthenticated, checkNotAuthenticated } = require('../../utility/checkAuth');
-     
+    
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
   destination: function(req, file, cb){
@@ -29,38 +25,68 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-// Registrar usuario
-router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
 
-router.get('/registro', (req, res) => {
-  res.redirect('http://localhost:3000/registro-usuario.html');
-})
+// const cambiarContraseña = (req, res, next) => {
+
+// }
+
+const redirectLogin = (req, res, next) => {
+  if(!req.session.userId) {
+    res.redirect('http://localhost:3000/usuario/login');
+  } else {
+    next()
+  }
+}
+
+const redirectHome = (req, res, next) => {
+  if(req.session.userId) {
+    res.redirect('http://localhost:3000/usuario/inicio');
+  } else {
+    next()
+  }
+}
+
+
+// Registrar usuario
+router.post('/registro', redirectHome, upload.single('img'), usuarioController.registrarUsuario);
 
 //Inicio de sesión usuario
-router.post('/login', passport.authenticate('local-login'), (req, res) => {
-  res.redirect('http://localhost:3000/inicio.html');
-}
-);
+router.post('/login', usuarioController.loginUsuario);
 
-router.get('/login', (req, res) => {
-  res.redirect('http://localhost:3000/login.html');
+router.get('/registro', redirectHome, (req, res) => {
+  res.sendFile('registro-usuario.html', {root: 'public'}); 
+
+})
+
+router.get('/login', redirectHome, (req, res) => {
+  res.sendFile('login.html', {root: 'public'}); 
 });
 
-// router.get('/perfil', usuarioController.visualizarPerfil);
+router.get('/perfil', redirectLogin, (req, res) => {
+  res.sendFile('perfil-usuario.html', {root: 'public'}); 
+});
 
+router.get('/perfil/id', usuarioController.visualizarPerfil);
 
-router.get('/inicio', (req, res) => {
-res.redirect('http://localhost:3000/inicio.html');
+//La ruta hacia la página de inicio
+router.get('/inicio', redirectLogin, (req, res) => {
+  res.sendFile('inicio.html', {root: 'public'}); 
 
 });
 
+//La ruta hacia la página de catalogo
+router.get('/catalogo', redirectLogin, (req, res) => {
+  res.sendFile('catalogo.html', {root: 'public'}); 
+})
 
 
-//Cerrar sesión
-// router.delete('/logout', (req, res) => {
-//   req.logOut();
-//   res.redirect('/usuario/login');
-// });
+// Cerrar sesión
+router.get('/logout', (req, res) => {
+  req.session.destroy(err => {
+  res.redirect(200, 'http://localhost:3000/')
+  });
 
-
+});
+  
+  
 module.exports = router;

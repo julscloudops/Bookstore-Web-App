@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
 
 const modeloUsuario = new mongoose.Schema({ 
             firstName: {type: String},
@@ -15,6 +14,7 @@ const modeloUsuario = new mongoose.Schema({
             canton: {type: String},
             distrito: {type: String},
             direction: {type: String},
+            description: {type: String},
             imgUrl: {type: String},
             cloudinary_id: {type: String},
             password: {type: String}

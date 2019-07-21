@@ -1,6 +1,4 @@
-@import './navbar.css';
-@import './footer.css';
-
+@import './navbar-footer-adminLibreria.css';
 
 body {  
   height: 100vh;
@@ -13,21 +11,6 @@ background-attachment: fixed;
 background-size: cover;
 }
 
-.footer-container::before {
-  background: none;
-}
-
-.footer-container::after {
-  background: none;
-}
-.wrapper {
-  display: flex;
-  justify-content: center;
-  margin: 4% 0;
-  background: none;
-
-}
-
 .formulario {
   text-align: center;
   -webkit-border-radius: 10px 10px 10px 10px;
@@ -36,7 +19,7 @@ background-size: cover;
   max-width: 450px;
   -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
-  /* margin: 2% 0; */
+  margin-bottom: 1%;
 }
 
 h2 {
@@ -173,9 +156,8 @@ select {
   background-color: #F3EDED;
   border-radius: 5px 5px 5px 5px;
   text-align: center;
+  margin-bottom: 2%;
 }
-
-
 .submit-btn {
   background-color: #821e00;
   border: none;
@@ -186,16 +168,9 @@ select {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
   box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
-  -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
-  margin: 4% 0;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  margin-bottom: 2%;
 }
 
 .formulario input:focus {
@@ -230,6 +205,48 @@ textarea:focus {
 
 input:focus::-webkit-input-placeholder {
   color: transparent;
+}
+
+
+/* Botón para ingresar imagen */
+.input-file-trigger {
+  display: block;
+  padding: 14px 8px;
+  background: #821e00;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 400;
+  transition: all .4s;
+  cursor: pointer;
+  border-radius: 5px 5px 5px 5px;
+  width: 80%;
+  margin: 0 auto;}
+
+.input-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+
+.file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.file-return:not(:empty):before {
+  content: "Archivo escogido: ";
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 1%;
 }
 
 
@@ -340,3 +357,14 @@ input:focus::-webkit-input-placeholder {
   -moz-animation-delay: 1s;
   animation-delay: 1s;
 }
+
+.footer-container::before {
+  background: none;
+}
+
+.footer-container::after {
+  background: none;
+}
+
+
+

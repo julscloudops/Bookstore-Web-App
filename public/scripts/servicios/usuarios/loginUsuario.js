@@ -1,3 +1,10 @@
+// document.addEventListener('DOMContentLoaded', avatarUsuario);
+
+// function avatarUsuario () {
+
+// }
+
+
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', loginUsuario);
 
@@ -22,10 +29,8 @@ function loginUsuario(event) {
 
   fetch(url, fetchOptions)
   .then((res) => {
-    let redirect = 'http://localhost:3000/inicio.html';
-    window.location = redirect;
-  })
-  .catch((err) => {
+      console.log(res);
+  }).catch((err) => {
     console.log(err);
   });
 }

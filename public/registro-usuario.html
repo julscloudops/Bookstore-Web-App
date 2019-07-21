@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/registro-usuario.css">
+  <link rel="stylesheet" href="/styles/registro-usuario.css">
   <title>Registro usuario</title>
 </head>
 <body>
   <div class="wrapper fadeInDown">
     <div class="formulario">
       <h2 class="fadeIn second">Registro usuario</h2>
-      <form>
+      <form method="POST" action="http://localhost:3000/usuario/registro" enctype="multipart/form-data">
         <input 
         id="firstName"
         type="text" 
@@ -136,6 +136,12 @@
         autocomplete="off" 
         required>
 
+        <div>
+            <label for="decription">Ingrese una breve descripción</label>
+            <textarea id="description" name="description" class="description" cols="30" rows="10"
+              wrap="physical"></textarea>
+          </div>
+
         <div class="input-file-container fadeIn second">
           <input
           id="img"  
@@ -157,12 +163,12 @@
   </div> 
 
   <!-- Permite utilizar el select de provincias-cantones-distritos -->
-  <script src="scripts/provincias-cantones-distritos.js"></script>
+  <script src="/scripts/provincias-cantones-distritos.js"></script>
 
    <!-- Activa el funcionamiento del botón para subir imágenes -->
-   <script src="scripts/upload-button.js"></script>
+   <script src="/scripts/upload-button.js"></script>
 
    <!-- Permite guardar el formulario en la base de datos -->
-   <script src="scripts/servicios/usuarios/registrarUsuario.js"></script>
+   <!-- <script src="scripts/servicios/usuarios/registrarUsuario.js"></script> -->
 </body>
 </html>

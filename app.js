@@ -1,38 +1,34 @@
 const express = require('express'),
       mongoose = require('mongoose'),
-      passport = require('passport'),
+      cloudinary = require('cloudinary'),
       session = require('express-session'),
-      flash = require('express-flash'),
-      methodOverride = require('method-override'),
+      MongoDBStore = require('connect-mongodb-session')(session),
       morgan = require('morgan'),
       favicon = require('serve-favicon'),
       path = require('path'),
       app = express();
 
-//Inicialización de passport
-require ('./api/utility/passport-config');
-
 //Configuración
 app.set('port', process.env.PORT || 3000);
+
+// Permite utilizar environment variables
+const dotenv = require('dotenv');
+dotenv.config();
 
 //Inicialización del servidor
 app.listen(app.get('port'), () => {
   console.log('El servidor esta corriendo en el puerto', app.get('port'));
 });
 
-// Permite utilizar environment variables para guardar la contraseña de la base de datos
-const dotenv = require('dotenv');
-dotenv.config();
-
 //Conecta la aplicación con la base de datos
-mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process.env.MONGO_ATLAS_PW + '@palo-mango-solutions-abqxf.gcp.mongodb.net/Parrafo-Digital?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true
   },
   () => {
     console.log('La base de datos fue conectada exitosamente!')
   });
-
 mongoose.set('useCreateIndex', true);
+
 
 //Se encarga de los errores CORS
 app.use((req, res, next) => {
@@ -50,39 +46,43 @@ res.header('Acess-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Typ
 //Envia el favicon en todo request
 app.use(favicon(path.join(__dirname, 'public/images/', 'favicon.ico')));
 
+// Permite subir las imagenes a la nube
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
 // Muestra en consola los HTTP requests que se hacen al servidor
 app.use(morgan('dev'));
 
-//Middleware and Body-parser
+// Middleware and Body-parser
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-//Passport
+// Sessions
 app.use(session({
+  store: new MongoDBStore({
+    uri: process.env.MONGO_URI,
+    collection: 'sessions'
+  }),
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 2,
+    sameSite: true,
+    httpOnly: false
+  },
+  name: process.env.SESSION_NAME,
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  
 }));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
 
-app.use(methodOverride('_method'));
-
-// Global variables
-app.use((req, res, next) => {
-  res.locals.registroMessage = req.flash('registroMessage');
-  res.locals.loginMessage = req.flash('loginMessage');
-  res.locals.error = req.flash('error');
-  next();
-});
-
-
-// Establecer la ruta para archivos estáticos
-app.use(express.static('./public'));
+//Establecer la ruta para archivos estáticos
+app.use(express.static('public'));
 app.use(express.static('./public/uploads'));
 
-// Importación de las rutas
+//Importación de las rutas
 const adminGlobal = require('./api/components/admin-global/routes');
 const adminLibreria = require('./api/components/admin-libreria/routes');
 const usuario = require('./api/components/usuario/routes');
@@ -92,7 +92,6 @@ const autor = require('./api/components/autor/routes');
 const libros = require('./api/components/libro/routes');
 
 //Rutas
- 
 app.use('/admin-global', adminGlobal); 
 app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);

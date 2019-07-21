@@ -9,8 +9,7 @@ const modeloLibro = mongoose.Schema({
   editorial: {type : String},        
   description: {type: String},
   imgUrl: { type: String},
-  cloudinary_id: {type: String},
+  cloudinary_id: {type: String}
 });
     
-     
-module.exports = mongoose.model('Libro', modeloLibro);
+module.exports = mongoose.model('Libro', modeloLibro, 'libros');

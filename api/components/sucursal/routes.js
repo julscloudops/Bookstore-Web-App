@@ -1,33 +1,48 @@
 const express = require('express'),
       router = express.Router(),
-      Sucursal  = require('./model');
+      multer =  require('multer'),
+      sucursalController = require('./controller');
 
 
- router.post('/registro', async (req, res) => {
+//Settings de Multer, permite subir imagenes a la página
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+  cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + '-' + new Date().toISOString());
+  }
+});
 
-  //Se crea una nueva sucursal
- const newSucursal = new Sucursal({
-   nombreComercial: req.body.nombreComercial,
-   nombreFantasia: req.body.nombreFantasia, 
-   phone: req.body.phone,
-   provincia: req.body.provincia, 
-   canton: req.body.canton, 
-   distrito: req.body.distrito, 
-   direction: req.body.location,
-   googleMaps: req.body.location
+const fileFilter = (req, file, cb) => {
+if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+  cb(null, true);
+} else {
+  cb(null, false);
+}};
 
- });
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter
+});
 
- try { 
-   console.log(req.body);
-   const savedSucursal = await newSucursal.save();
-   res.json(savedSucursal);
- } catch(err){
-   res.json({message: err});
- }
-
-});  
+router.get('/registro', (req, res) => {
+  res.sendFile('registro-sucursal.html', {
+    root: 'public'
+  });
+});
 
 
+const redirectIndex = (req, res, next) => {
+  if(!req.session.adminLibreriaId) {
+    res.redirect('http://localhost:3000/');
+  } else {
+    next()
+  }
+}
 
+//Registro sucursal
+ router.post('/registro', redirectIndex, upload.single('img'), sucursalController.registrarSucursal);
+ 
+      
 module.exports = router;

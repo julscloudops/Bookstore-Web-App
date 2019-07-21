@@ -1,52 +1,51 @@
 const express = require('express'),
       router = express.Router(),
-      Libreria = require('./model');
+      multer = require('multer'),
+      libreriaController = require('./controller');
 
 
- router.post('/registro', async (req, res) => {
-
-   //Se crea una nueva libreria
-  const newLibreria = new Libreria({
-    nombreComercial: req.body.nombreComercial,
-    nombreFantasia: req.body.nombreFantasia, 
-    description: req.body.description,
-    provincia: req.body.provincia, 
-    canton: req.body.canton, 
-    distrito: req.body.distrito, 
-    direction: req.body.location
-
-  });
-
-  try { 
-    console.log(req.body);
-    const savedLibreria = await newLibreria.save();
-    res.json(savedLibreria);
-  } catch(err){
-    res.json({message: err});
-  }
-
- });  
-
-
-router.get('/', async (req,res) => {
-  try {
-    const librerias = await Libreria.find();
-    res.json(librerias);
-  } catch(err){
-    res.json({message: err});
+//Settings de Multer, permite subir imagenes a la página
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+  cb(null, './public/uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null,file.fieldname + '-' + new Date().toISOString());
   }
 });
 
-router.get('/:idLibreria', async (req,res) => {
-  try {
-    const libreria = Libreria.findById(req.params.idLibreria);
-      res.json(libreria);
-  } catch(err){
+const fileFilter = (req, file, cb) => {
+if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
+  cb(null, true);
+} else {
+  cb(null, false);
+}};
 
+const upload = multer({
+  storage: storage,
+  fileFilter: fileFilter
+});
+
+router.get('/registro', (req, res) => {
+  res.sendFile('registro-libreria.html', {
+    root: 'public'
+  });
+});
+
+const redirectIndex = (req, res, next) => {
+  if(!req.session.adminLibreriaId) {
+    res.redirect('http://localhost:3000/');
+  } else {
+    next()
   }
+}
 
-  console.log(req.params.idLibreria);
+//Registro libreria
+router.post('/registro', redirectIndex, upload.single('img'), libreriaController.registrarLibreria);
+ 
+//Listar libreria
+router.get('/', libreriaController.listarLibrerias);
 
-})
+router.get('/:idLibreria', libreriaController.listarLibreria);
 
 module.exports = router;

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="/styles/login.css">
   <title>Login</title>
 </head>
 
@@ -16,11 +16,11 @@
       
           <!-- Avatar del usuario -->
           <div class="fadeIn first">
-            <img src="images/default-avatar.svg" id="avatar" class="userAvatar" alt="User Icon" />
+            <img src="/images/default-avatar.svg" id="avatar" class="userAvatar" alt="User Icon" />
           </div>
       
           <!-- Forma de iniciar sesión -->
-          <form> 
+          <form method="POST" action="http://localhost:3000/usuario/login"> 
             <input 
             id="email"
             type="text" 
@@ -46,13 +46,11 @@
           <div class="formFooter fadeIn fourth">
             <a 
             class="underlineHover" 
-            href="registro-usuario.html">¿Nuevo en la plataforma?</a>
+            href="/usuario/registro">¿Nuevo en la plataforma?</a>
           </div>
       
         </div>
       </div>
     </div>
-
-    <script src="scripts/servicios/usuarios/loginUsuario.js"></script>
 </body>
 </html>

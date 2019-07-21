@@ -1,6 +1,5 @@
-
-@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600&display=swap');@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
-@import './footer.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat:200,300,400,600&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
 
 body {
     margin: 0;
@@ -8,6 +7,12 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     background-color: #f3eded;
+}
+
+:root {
+    --red: #821e00;
+    --orange: #DF8931;
+    --darkorange: #AA530E;
 }
 
 p,
@@ -52,6 +57,10 @@ ul {
     font-size: 1rem;
 }
 
+a:hover {
+    font-weight: bold;
+}
+
 
 /* Dynamic search bar */
 
@@ -68,8 +77,8 @@ ul {
     width: 80%;
     height: 8px;
     padding: 25px;
-    padding-left: 65px;
-    margin-top: 8%;
+    padding-left: 60px;
+    margin-top: 10%;
     border-radius: 20px;
     border: none;
     color: #821E00;
@@ -101,7 +110,7 @@ ul {
 
 .search-contain img {
     width: 40px;
-    margin: 32px 0 0 10px;
+    margin: 38px 0 0 10px;
     position: absolute;
     cursor: pointer;
 }
@@ -116,10 +125,7 @@ ul {
     opacity: 0;
     -webkit-transition: opacity 2s;
     transition: opacity 2s;
-    margin-top: 2px;
 }
-
-
 
 h1,
 .subhead {
@@ -211,7 +217,6 @@ h1 {
     background: #F5C16C;
     padding: 4em 0 2em;
     margin-top: -3%;
-    box-shadow: 2px 2px 4px #F5C16C;
 }
 
 .review-container ul li:first-child {
@@ -248,10 +253,9 @@ figcaption {
 .registroLibreria {
     display: flex;
     border-radius: 30px;
-    background-color: #DF8931;
+    background: linear-gradient(to right, #DF8931, #F5C16C);
     width: 80%;
     margin: 0 auto;
-    box-shadow: 2px 2px 5px 5px #DF8931;
 }
 
 .infoRegistro {
@@ -259,38 +263,127 @@ figcaption {
     text-align: left;
     padding: 1% 2%;
 }
+.infoRegistro > h3 {
+    margin-top: 6%;
+}
 .registroTexto {
-    font-weight: 200;
-    color: #f3eded;
-    padding: 6% 0;
-    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    padding: 4% 0;
+    font-size: 18px;
+    line-height: 1.6em;
 
+}
+
+
+
+.infoRegistro img {
+    width: 8%;
+    margin-right: 1%;
 }
 
 .booksImg {
-width: 8%;
-padding-right: 0.4%;
-margin: -12px 0;
+    width: 8%;
+    padding-right: 0.4%;
+    margin: -12px 0;
+    margin-right: 1%;
+
 }
 
 .mensajesImg {
-width: 8%;
-padding-right: 0.4%;
-margin: -12px 0;
+    width: 8%;
+    padding-right: 0.4%;
+    margin: -12px 0;
 }
 
 .historialImg {
-width: 8%;
-padding-right: 0.4%;
-margin: -12px 0;
+    width: 8%;
+    padding-right: 0.4%;
+    margin: -12px 0;
 }
 
 .libreriaImg {
     border-radius: 40px;
     width: 40%;
     padding: 1%;
-  
+
 }
+
+
+/* Footer */
+.footerLogo {
+    width: 15%;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .footer-container {
+    width: 100%;
+    background: #821E00;
+    color: #f3eded;
+    padding: 3em 0;
+    border-top-right-radius: 40px;
+    -webkit-transform: skewY(2deg);
+            transform: skewY(2deg);
+  }
+  
+  .footer-container .container {
+    -webkit-transform: skewY(-2deg);
+            transform: skewY(-2deg);
+  }
+  
+  .footer-container:before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: #821E00;
+    position: absolute;
+    top: -39px;
+    left: 0;
+    z-index: -4;
+  }
+  
+  .footer-container:after {
+    content: "";
+    width: 80px;
+    height: 80px;
+    background: #f3eded;
+    position: absolute;
+    z-index: -3;
+    top: -80px;
+    left: 0;
+    border-radius: 50%;
+  }
+  
+  ul.footer-links {
+    margin: 0 auto;
+  }
+  
+  ul.footer-links li {
+    display: inline-block;
+    padding: 0 1%;
+  }
+  
+  ul.footer-links li a {
+    color: #f3eded;
+    font-size: .8em;
+  }
+  
+  nav ul li {
+    padding: 0 0.8em;
+    float: left;
+  }
+  
+  nav ul li a {
+    color: black;
+    padding: 1em 2em;
+    border-radius: 25px;
+    font-weight: bold;
+  }
+  
+  
 
 @media only screen and (min-width: 650px) {
 

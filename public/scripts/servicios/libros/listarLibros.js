@@ -14,6 +14,7 @@ async function listarLibros() {
 
     const container = document.getElementById('grid-container'); 
     const book = document.createElement('div');
+    const link = document.createElement('a');
     const cover = document.createElement('img');    
     const ratingContainer = document.createElement('div');
     const seeThroughRating = document.createElement('div');
@@ -25,6 +26,7 @@ async function listarLibros() {
     const price = document.createElement('span');  
     const addToCart = document.createElement('button');
 
+    link.href = `/libros/views/${data[i]._id}`;
     const imgSrc = await fetch(data[i].imgUrl);
     cover.src = imgSrc.url;
 
@@ -36,9 +38,10 @@ async function listarLibros() {
     price.innerHTML = '₡ ' + data[i].price; 
     addToCart.innerHTML = 'Agregar al carrito';
 
+    link.append(cover);
     seeThroughRating.append(rating1, rating2, rating3, rating4, rating5);
     ratingContainer.append(seeThroughRating);
-    book.append(cover, ratingContainer, price, addToCart);
+    book.append(link, ratingContainer, price, addToCart);
     container.append(book);
   }
 

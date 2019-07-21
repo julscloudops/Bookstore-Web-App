@@ -23,7 +23,7 @@ const url = 'http://localhost:3000/libros/registro';
   }
      
 fetch(url, fetchOptions)
-.then(res => res.json())
+.then(res => res)
 .catch(error => console.error('Error: ' + error));
 
 }

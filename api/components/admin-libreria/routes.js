@@ -4,7 +4,7 @@ const express = require('express'),
       adminLibreriaController = require('./controller');
 
 //  Importación de funciones de passport.js para proteger ciertas rutas     
-const { checkAuthenticated, checkNotAuthenticated } = require('../../utility/checkAuth');
+// const { checkAuthenticated, checkNotAuthenticated } = require('../../utility/checkAuth');
      
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
@@ -28,14 +28,39 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-//Inicio de sesión para administrador de libreria
-router.post('/login', adminLibreriaController.loginAdminLibreria);
+const redirectLogin = (req, res, next) => {
+  if(!req.session.adminLibreriaId) {
+    res.redirect('http://localhost:3000/admin-libreria/login');
+  } else {
+    next()
+  }
+}
 
-router.get('/login', (req, res) => {
-  res.redirect('/login.html');
+const redirectHome = (req, res, next) => {
+  if(req.session.adminLibreriaId) {
+    res.redirect('http://localhost:3000/admin-libreria/inicio');
+  } else {
+    next()
+  }
+}
+
+//Registrar admin libreria
+router.get('/registro', redirectHome, (req, res) => {
+  res.sendFile('registro-admin-libreria.html', {root: 'public'}); 
 });
 
-//Registrar usuario
-router.post('/registro', upload.single("img"), adminLibreriaController.loginAdminLibreria);
+router.post('/registro', upload.single('img'), adminLibreriaController.registrarAdminLibreria);
+
+//Inicio de sesión para administrador de libreria
+router.get('/login', redirectHome, (req, res) => {
+  res.sendFile('login.html', {root: 'public'}); 
+});
+
+router.post('/login', adminLibreriaController.loginAdminLibreria);
+
+router.get('/inicio', redirectLogin, (req, res) => {
+  res.sendFile('inicio-adminLibreria.html', {root: 'public'}); 
+});
+
 
 module.exports = router;

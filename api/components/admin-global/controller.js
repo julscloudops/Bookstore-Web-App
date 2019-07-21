@@ -1,10 +1,13 @@
-const bcrypt = require('bcryptjs'),
+const bcrypt = require('bcrypt'),
       nodemailer = require('nodemailer'),
       adminGlobal = require('./model');
 
+// Importa la función para generar una contraseña aleatoria
+const { passwordGenerator } = require('../../utility/password-generator');
+
 exports.registrarAdminGlobal = async (req, res) => {
 
-//Busca que no exista otro usuario con el mismo email
+//Busca que no exista otro administrador con el mismo email
 const emailExist = await adminGlobal.findOne({
   email: req.body.email
 });
@@ -48,6 +51,8 @@ const hashedPassword = await bcrypt.hash(randomPass, salt);
 });
 
 const savedAdminGlobal = await nuevoAdminGlobal.save();
-res.json(savedAdminGlobal);
+
+console.log(savedAdminGlobal);
+res.json('El registro de administrador global fue exitoso!');
 
 }

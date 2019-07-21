@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
 
 /* Esta linea es para tener los settings básicos estándarizados */
-
 *,
 ::after,
 ::before {
@@ -24,10 +23,22 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+
+}
+
+input:focus {
+  border: 3px solid #821e00;
+  outline: none;
+}
 
 /*Navbar*/
 .logo {
   width: 12%;
+  cursor: pointer;
+  z-index: 1;
+  
 }
 
 .navbar-container {
@@ -36,15 +47,13 @@ a {
   display: -ms-flexbox;
   display: flex;
   box-shadow: 2px 2px 1px #f3eded;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   padding-right: 0.4%;
 }
 
 .down-arrow {
   background: #DF8931;
-  padding: 10px;
+  padding: 8px;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
@@ -65,7 +74,7 @@ a {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-right: 1%;
+  margin-right: 4%;
 }
 
 .search-contain input {
@@ -117,12 +126,26 @@ a {
   cursor: pointer;
 }
 
+.search-contain p {
+  color: #821E00;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: .6em;
+  text-align: center;
+  visibility: hidden; 
+  opacity: 0; 
+  -webkit-transition: opacity 2s;
+  transition: opacity 2s;
+  margin-top: 2px;
+  margin: 74px 0 0 -200px;
+}
+
 .categorias {
   background: #DF8931;
-  width: 120px;
+  width: 148px;
   height: 12px;
   padding: 25px;
-  margin: 0 30% 0 0;
+  margin: 0 20% 0 0;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
@@ -133,11 +156,12 @@ a {
 
 .categorias a {
   color: #821E00;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .categorias a:hover {
-  color: #821E00;
+  color: #f3eded;
 }
 
 .reading-club {
@@ -224,40 +248,54 @@ a {
   padding: 25px;
   border-radius: 20px;
   cursor: pointer;
-  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.avatar .dropdown {
-  visibility: hidden;
+  position:relative;
 }
 
 
 .dropdown {
   position: absolute;
-  top: 10%;
-  right: 1%;
+  top: 100%;
+  padding: 10px;
+  margin-top: 2%;
   display: block;
   background: #DF8931;
-  padding: 10px;
   border-radius: 20px;
   letter-spacing: 1px;
+  overflow: auto;
+  text-align: left;
+  z-index: 1;  
   visibility: hidden;
-	transition: ease 1s;
-}
-
-.dropdown:hover {
-  visibility: visible;
+  opacity: 0;
+  transition: opacity 1s;
 
 }
 
+.dropdown li {
+  margin: 5% 0;
+}
 .dropdown a {
-  color: #f3eded;
+  color:#821E00;
+  font-size: 17px;
 
+}
+
+.dropdown a:hover {
+  color: #f3eded;
+  font-weight: bold;
+  cursor: pointer;
+
+
+}
+
+.avatar:hover .dropdown{
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
 }
 
 .avatar img {
@@ -332,5 +370,77 @@ nav ul li a {
   font-weight: bold;
 }
 
-/* Animate.css */
+/* Footer */
+
+.footerLogo {
+  width: 15%;
+}
+
+.container {
+  text-align: center;
+}
+
+.footer-container {
+  width: 100%;
+  background: #821E00;
+  color: #f3eded;
+  padding: 3em 0;
+  border-top-right-radius: 40px;
+  -webkit-transform: skewY(2deg);
+          transform: skewY(2deg);
+}
+
+.footer-container .container {
+  -webkit-transform: skewY(-2deg);
+          transform: skewY(-2deg);
+}
+
+.footer-container:before {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: #821E00;
+  position: absolute;
+  top: -39px;
+  left: 0;
+  z-index: -4;
+}
+
+.footer-container:after {
+  content: "";
+  width: 80px;
+  height: 80px;
+  background: #f3eded;
+  position: absolute;
+  z-index: -3;
+  top: -80px;
+  left: 0;
+  border-radius: 50%;
+}
+
+ul.footer-links {
+  margin: 0 auto;
+}
+
+ul.footer-links li {
+  display: inline-block;
+  padding: 0 1%;
+}
+
+ul.footer-links li a {
+  color: #f3eded;
+  font-size: .8em;
+}
+
+nav ul li {
+  padding: 0 0.8em;
+  float: left;
+}
+
+nav ul li a {
+  color: black;
+  padding: 1em 2em;
+  border-radius: 25px;
+  font-weight: bold;
+}
 

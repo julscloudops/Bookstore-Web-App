@@ -1,25 +1,18 @@
 const cloudinary = require('cloudinary'),
-      Autor = require('./model');
+  Autor = require('./model');
 
-// Permite subir las imagenes a la nube
-  cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
-});
-  
 //Registrar autor
-exports.registrarAutor = async(req, res) => {
+exports.registrarAutor = async (req, res) => {
 
-console.log(req.body);
+  console.log(req.body);
 
-// Este es el objeto que regresa multer, ocupamos el file.path local para subir la imagen a la nube
-console.log(req.file.path);
+  // Este es el objeto que regresa multer, ocupamos el file.path local para subir la imagen a la nube
+  console.log(req.file.path);
 
-// Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
-const result = await cloudinary.v2.uploader.upload(req.file.path);
+  // Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
+  const result = await cloudinary.v2.uploader.upload(req.file.path);
 
-console.log(result);
+  console.log(result);
 
   const newAuthor = new Autor({
     name: req.body.name,
@@ -28,18 +21,24 @@ console.log(result);
     cloudinary_id: result.public_id
   });
 
-const savedAuthor = await newAuthor.save();
-console.log(savedAuthor);
-res.send('El autor fue registrado exitosamente');
+  try {
+    const savedAuthor = await newAuthor.save();
+    res.json(savedAuthor);
+  } catch (err) {
+    res.json({
+      message: err
+    });
+  }
 
 }
 
-
-exports.listarAutores = async (req, res) => {
-  await Autor.find({}, (err, data) => {
-    res.json(data);
-  });
-}
-
-
-
+// exports.listarAutor = async (req, res) => {
+//   try {
+//     const autores = await Autor.find({});
+//     res.json(autores);
+//   } catch (err) {
+//     res.json({
+//       message: err
+//     })
+//   }
+// }
