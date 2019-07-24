@@ -1,17 +1,8 @@
-// document.addEventListener('DOMContentLoaded', avatarUsuario);
-
-// function avatarUsuario () {
-
-// }
-
-
 const submitBtn = document.getElementById('submit');
 submitBtn.addEventListener('click', loginUsuario);
 
 function loginUsuario(event) {
-
   event.preventDefault();
-
   let data = {
     email: document.getElementById('email').value,
     password: document.getElementById('password').value

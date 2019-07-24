@@ -6,7 +6,7 @@ async function listarLibro() {
   const idLibro = window.location.pathname.slice(14);
   console.log(idLibro);
 
-  const url = `/libros/json/${idLibro}`;
+  const url = `/libros/JSON/${idLibro}`;
   console.log(url);
   
   const res = await fetch(url);

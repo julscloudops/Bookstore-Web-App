@@ -38,7 +38,7 @@ ul {
 }
 
 .mainLogo {
-    width: 22%;
+    width: 20%;
 }
 
 .nav-container ul li {
@@ -79,6 +79,7 @@ a:hover {
     padding: 25px;
     padding-left: 60px;
     margin-top: 10%;
+    margin-bottom: -8px;
     border-radius: 20px;
     border: none;
     color: #821E00;
@@ -268,7 +269,7 @@ figcaption {
 }
 .registroTexto {
     font-weight: 400;
-    color: black;
+    color: #821E00;
     padding: 4% 0;
     font-size: 18px;
     line-height: 1.6em;

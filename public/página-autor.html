@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Autor</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles/página-autor.css">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar-container">
+    <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
+    <div class="down-arrow">
+      <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+    </div>
+    <div class="search-contain">
+      <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+      <input 
+      type="text" 
+      id="search" 
+      maxlength="40"
+      placeholder="" 
+      autofocus
+      autocomplete="off">
+
+      <p id="tip">Presione enter para buscar</p>
+    </div>
+    <div class="categorias">
+      <a href="">Categorías</a>
+    </div>
+    <div class="reading-club">
+      <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
+    </div>
+    <div class="shopping-cart">
+      <a href="/usuario/carrito"> <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
+    </div>
+    <div class="notificaciones">
+      <img src="/images/notifications.svg" id="notifications-button" alt="notifications button">
+    </div>
+    <div id="avatar" class="avatar">
+      <img src="/images/avatar.svg" id="avatar-btn" alt="avatar button">
+      <div id="dropdown" class="dropdown">
+        <a href="/usuario/perfil">Perfil</a>
+        <a href="#">Configuración</a>
+        <a id="logout" href="/">Salir sesión</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="autor" class="autor"></div>
+  <div id="description" class="description"></div>
+  <div id="libros-autor" class="libros-autor"></div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="container">
+        <a href="#">
+          <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="footerLogo">
+        </a>
+        <p class="address">San Jose, 11801<br>Costa Rica</p>
+        <ul class="footer-links">
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  </div>
+  </div>
+  <script src="/scripts/search-bar.js"></script>
+  <script src="/scripts/servicios/autores/listarAutor.js"></script>
+  <script src="/scripts/servicios/autores/librosAutor.js"></script>
+</body>
+
+</html>

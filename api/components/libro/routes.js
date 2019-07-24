@@ -47,7 +47,7 @@ router.get('/', libroController.listarLibros);
 
 router.get('/views/:idLibro', libroController.HTMLView);
 
-router.get('/json/:idLibro', libroController.listarLibro);
+router.get('/JSON/:idLibro', libroController.listarLibro);
 
 router.get('/librosNovedosos', libroController.listarLibrosNovedosos);
 

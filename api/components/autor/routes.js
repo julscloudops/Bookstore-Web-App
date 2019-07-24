@@ -46,7 +46,14 @@ const redirectIndex = (req, res, next) => {
 // Registrar autor
  router.post('/registro', redirectIndex, upload.single('img'), autorController.registrarAutor);
 
- //Listar autores
-//  router.get('/', autorController.listarAutores);
+ // Listar autores
+ router.get('/', autorController.listarAutores);
+
+// Listar autor
+ router.get('/views/:idAutor', autorController.HTMLView);
+
+ router.get('/JSON/:idAutor', autorController.listarAutor);
+
+
 
 module.exports = router;

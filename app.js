@@ -83,8 +83,8 @@ app.use(express.static('public'));
 app.use(express.static('./public/uploads'));
 
 //Importación de las rutas
-const adminGlobal = require('./api/components/admin-global/routes');
-const adminLibreria = require('./api/components/admin-libreria/routes');
+// const adminGlobal = require('./api/components/admin-global/routes');
+// const adminLibreria = require('./api/components/admin-libreria/routes');
 const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
@@ -92,8 +92,8 @@ const autor = require('./api/components/autor/routes');
 const libros = require('./api/components/libro/routes');
 
 //Rutas
-app.use('/admin-global', adminGlobal); 
-app.use('/admin-libreria', adminLibreria);
+// app.use('/admin-global', adminGlobal); 
+// app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);

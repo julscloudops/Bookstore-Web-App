@@ -4,15 +4,8 @@ const cloudinary = require('cloudinary'),
 //Registrar autor
 exports.registrarAutor = async (req, res) => {
 
-  console.log(req.body);
-
-  // Este es el objeto que regresa multer, ocupamos el file.path local para subir la imagen a la nube
-  console.log(req.file.path);
-
   // Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
   const result = await cloudinary.v2.uploader.upload(req.file.path);
-
-  console.log(result);
 
   const newAuthor = new Autor({
     name: req.body.name,
@@ -22,9 +15,8 @@ exports.registrarAutor = async (req, res) => {
   });
 
   try {
-    const savedAuthor = await newAuthor.save();
-    res.json(savedAuthor);
-  } catch (err) {
+    const savedAuthor = await newAuthor.save(); 
+    res.redirect(`/autor/views/${savedAuthor._id}`) } catch (err) {
     res.json({
       message: err
     });
@@ -32,13 +24,40 @@ exports.registrarAutor = async (req, res) => {
 
 }
 
-// exports.listarAutor = async (req, res) => {
-//   try {
-//     const autores = await Autor.find({});
-//     res.json(autores);
-//   } catch (err) {
-//     res.json({
-//       message: err
-//     })
-//   }
-// }
+exports.HTMLView = async (req, res) => {
+  try {
+    res.sendFile('página-autor.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
+}
+
+exports.listarAutores = async (req, res) => {
+  try {
+    const autores = await Autor.find();
+    res.json(autores);
+    
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}
+
+exports.listarAutor = async (req, res) => {
+  try {
+    const autor = await Autor.findById({
+      _id: req.params.idAutor
+    });
+    res.json(autor);
+  } catch(err){
+    res.json({
+      message: err
+    })
+  }
+}

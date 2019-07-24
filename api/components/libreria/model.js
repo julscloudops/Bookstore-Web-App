@@ -9,8 +9,9 @@ const modeloLibreria = new mongoose.Schema({
           distrito: {type: String},
           direction: {type: String},
           imgUrl: {type: String},
-          cloudinary_id: {type: String}
+          cloudinary_id: {type: String},
+          adminLibreriaId: {type: String, unique: true}
 });
 
-module.exports = mongoose.model('Libreria', modeloLibreria);
+module.exports = mongoose.model('Libreria', modeloLibreria, 'librerias');
 

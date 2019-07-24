@@ -19,7 +19,13 @@
       </div>
       <div class="search-contain">
         <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-        <input type="text" id="search" placeholder="" autofocus>
+        <input 
+        type="text" 
+        id="search" 
+        maxlength="40"
+        placeholder="" 
+        autofocus
+        autocomplete="off">
         <p id="tip">Presione enter para buscar</p>
       </div>
       <div class="categorias">
@@ -44,17 +50,29 @@
    <div class="wrapper ">
       <div class="formulario">
          <h2>Registrar autor</h2>
-         <form id="form">
+         <form id="form" method="POST" action="http://localhost:3000/autor/registro" enctype="multipart/form-data">
 
             <input id="name" type="text" class="name" name="name" placeholder="nombre" autocomplete="off">
 
 
             <label for="decription">Descripción</label>
-            <textarea id="description" class="description fadeIn second" name="description" cols="40"
-               rows="10"></textarea>
+            <textarea 
+            id="description" 
+            class="description fadeIn second" 
+            name="description" 
+            cols="40"
+            rows="10"
+            maxlength="600"></textarea>
 
             <div class="input-file-container">
-               <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" hidden>
+               <input 
+               id="img" 
+               type="file" 
+               class="input-file" 
+               name="img" 
+               accept=" .png, .jpg, .jpeg" 
+               hidden
+               required>
                <label for="img" class="input-file-trigger">Ingresar foto del autor</label>
                <p class="file-return"></p>
             </div>

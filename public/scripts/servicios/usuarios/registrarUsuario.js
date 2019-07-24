@@ -19,6 +19,8 @@ formData.append('provincia', document.getElementById('provincia').value);
 formData.append('canton', document.getElementById('canton').value);
 formData.append('distrito', document.getElementById('distrito').value);
 formData.append('direction', document.getElementById('direction').value);
+formData.append('description', document.getElementById('description').value);
+
 formData.append('img', document.getElementById('img').files[0]);
 
 const url = 'http://localhost:3000/usuario/registro';

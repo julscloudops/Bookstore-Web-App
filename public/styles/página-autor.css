@@ -9,11 +9,11 @@ body {
   background: #F3EDED;
   display: grid;
   grid-template-columns: 30% auto;
-  grid-template-rows: 10% 80% 40% 12%;
+  grid-template-rows: 10% auto 60% 12%;
   grid-template-areas:
     "header header"
-    "perfil libros"
-    "clubes clubes"
+    "autor description"
+    "libros libros"
     "footer footer";
 }
 
@@ -28,25 +28,24 @@ body {
   grid-area: header;
 }
 
-.user-profile {
-  grid-area: perfil;
+.autor {
+  grid-area: autor;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  /* background: #821e00; */
   border-radius: 20px;
-  margin: 5% 0 0 15%; 
+  margin: 5% 0 0 20%; 
   align-items: center;
-  background: linear-gradient(to right, var(--darkorange), var(--orange));
+  /* background: linear-gradient(to right, var(--darkorange), var(--orange)); */
   
 }
 
-.profile-pic {
-  margin-top: 10%;
-  border-radius: 40px;
+.img {
+  width: 380px;
+  border-radius: 20px;
 }
 
-.username {
+.name {
   display: block;
   background: linear-gradient(to right, var(--orange), var(--darkorange));
   padding: 1% 2%;
@@ -57,43 +56,46 @@ body {
 }
 
 .description {
+  grid-area: description;
   background: linear-gradient(to right, var(--orange), var(--darkorange));
-  border-radius: 5px;
+  border-radius: 20px;
   color: #F3EDED;
   font-weight: 200;
-  font-size: 14px;
-  margin: 4% 10%;
+  font-size: 20px;
+  letter-spacing: 1.4px;
+  text-align: justify;
+  margin: 6% 6% 0 4%;
   padding: 1% 2%;
 
 }
 
-.libros-usuario {
+.libros-autor {
   grid-area: libros;
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px);  justify-content: center;
   background: linear-gradient(to right, var(--orange), var(--darkorange));
   border-radius: 20px;
-  margin: 2.5% 6.5% 0 3%;  
+  margin: 1% 4% 0 4%;  
   overflow: auto;
+  z-index: 1;
 }
 
-.libros-usuario::-webkit-scrollbar {
+.libros-autor::-webkit-scrollbar {
   width: 6px;
   background-color: #F3EDED;
 } 
 
-.libros-usuario::-webkit-scrollbar-thumb {
+.libros-autor::-webkit-scrollbar-thumb {
   background-color: #DF8931;
   border-radius: 40px;
 }
 
-/* Estilos para que funcione el carousel */
-
+/* Estilos para que funcione el contenedor de libros */
 .book {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 4%;
+  margin: 5%;
 }
 
 .book a img {
@@ -102,7 +104,7 @@ body {
   cursor: pointer;
 }
 
-.exchange-btn {
+.buy-btn {
   background: #821E00;
   padding: 8px;
   border-radius: 30px;
@@ -113,24 +115,17 @@ body {
 
 }
 
-.clubes-usuario {
-  grid-area: clubes;
-  background: #F5C16C;
-  border-radius: 20px;
-  margin: 2% 4.5%;
-  z-index: 1;
-}
-
 footer {
   margin-top: 7%;
   grid-area: footer;
 }
 
+
 /* Rating system */
 .rating-holder {
   display: inline-block;
   border-radius: 1.5625em;
-  margin-top: -7%;
+  margin-top: 56%;
 }
 
 .c-rating button {

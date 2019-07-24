@@ -18,7 +18,13 @@
       </div>
       <div class="search-contain">
         <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-        <input type="text" id="search" placeholder="" autofocus>
+        <input 
+        type="text" 
+        id="search" 
+        maxlength="40"
+        placeholder="" 
+        autofocus
+        autocomplete="off">
         <p id="tip">Presione enter para buscar</p>
       </div>
       <div class="categorias">
@@ -50,8 +56,13 @@
 
         <div>
           <label for="decription">Descripción</label>
-          <textarea id="description" name="description" class="description" cols="30" rows="10"
-            wrap="physical"></textarea>
+          <textarea 
+          id="description" 
+          name="description" 
+          class="description" 
+          cols="30" rows="10"
+          wrap="physical"
+          maxlength="600"></textarea>
         </div>
 
 
@@ -82,7 +93,13 @@
           placeholder="dirección exacta" autocomplete="off">
 
         <div class="input-file-container">
-          <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg">
+          <input 
+          id="img" 
+          type="file" 
+          class="input-file" 
+          name="img" 
+          accept=" .png, .jpg, .jpeg"
+          required>
           <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
           <p class="file-return"></p>
         </div>

@@ -16,7 +16,8 @@ exports.registrarLibreria = async (req, res) => {
     distrito: req.body.distrito,
     direction: req.body.location,
     imgUrl: result.url,
-    cloudinary_id: result.public_id
+    cloudinary_id: result.public_id,
+    adminLibreriaId: req.session.adminLibreriaId
   });
 
   const savedLibreria = await newLibreria.save();
@@ -25,10 +26,10 @@ exports.registrarLibreria = async (req, res) => {
   res.send('Libreria registrada exitosamente!');
 
   req.session.libreriaId = savedLibreria._id;
+
   console.log(req.session);
 
 }
-
 
 exports.listarLibrerias = async (req, res) => {
   try {

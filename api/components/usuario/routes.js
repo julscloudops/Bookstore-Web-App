@@ -25,18 +25,13 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-
-// const cambiarContraseña = (req, res, next) => {
-
+// const redirectLogin = (req, res, next) => {
+//   if(!req.session.userId) {
+//     res.redirect('http://localhost:3000/usuario/login');
+//   } else {
+//     next()
+//   }
 // }
-
-const redirectLogin = (req, res, next) => {
-  if(!req.session.userId) {
-    res.redirect('http://localhost:3000/usuario/login');
-  } else {
-    next()
-  }
-}
 
 const redirectHome = (req, res, next) => {
   if(req.session.userId) {
@@ -46,37 +41,58 @@ const redirectHome = (req, res, next) => {
   }
 }
 
+// const redirectHomeAdmin = (req, res, next) => {
+//   if(req.session.adminLibreriaId) {
+//     res.sendFile('inicio-adminLibreria.html');
+//   } else {
+//     next()
+//   }
+// }
+
+
+
+// Registrar administrador de libreria
+router.get('/registro/admin-libreria', (req, res) => {
+  res.sendFile('registro-admin-libreria.html', {root: 'public'}); 
+});
+
+router.post('/registro/admin-libreria', upload.single('img'), usuarioController.registrarAdminLibreria);
 
 // Registrar usuario
-router.post('/registro', redirectHome, upload.single('img'), usuarioController.registrarUsuario);
-
-//Inicio de sesión usuario
-router.post('/login', usuarioController.loginUsuario);
-
-router.get('/registro', redirectHome, (req, res) => {
+router.get('/registro', (req, res) => {
   res.sendFile('registro-usuario.html', {root: 'public'}); 
-
 })
 
-router.get('/login', redirectHome, (req, res) => {
+router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
+
+
+//Inicio de sesión usuario
+router.get('/login', (req, res) => {
   res.sendFile('login.html', {root: 'public'}); 
 });
 
-router.get('/perfil', redirectLogin, (req, res) => {
+router.post('/login', usuarioController.loginUsuario);
+
+
+router.get('/perfil', (req, res) => {
   res.sendFile('perfil-usuario.html', {root: 'public'}); 
 });
 
 router.get('/perfil/id', usuarioController.visualizarPerfil);
 
-//La ruta hacia la página de inicio
-router.get('/inicio', redirectLogin, (req, res) => {
+router.get('/inicio', (req, res) => {
   res.sendFile('inicio.html', {root: 'public'}); 
 
 });
 
-//La ruta hacia la página de catalogo
-router.get('/catalogo', redirectLogin, (req, res) => {
+router.get('/catalogo', (req, res) => {
   res.sendFile('catalogo.html', {root: 'public'}); 
+})
+
+router.get('/add-to-cart/:id', (req, res) => {
+  let libroId = req.params.id;
+  
+  res.sendFile('shopping-cart.html', {root: 'public'}); 
 })
 
 
@@ -85,8 +101,6 @@ router.get('/logout', (req, res) => {
   req.session.destroy(err => {
   res.redirect(200, 'http://localhost:3000/')
   });
-
 });
-  
   
 module.exports = router;

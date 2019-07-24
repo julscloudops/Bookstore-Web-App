@@ -6,6 +6,7 @@ const optionProvincias = document.getElementById('optionProvincias');
 const optionCantones = document.getElementById('optionCantones');
 
 const provincias = ['San José', 'Alajuela', 'Cartago', 'Heredia', 'Guanacaste', 'Puntarenas', 'Limón'];
+
 const cantones = [
     'San José',
     'Escazú',
@@ -573,6 +574,13 @@ for (let i = 0; i < provincias.length; i++) {
 
 
 function popularCanton() {
+
+    let cantonSelect = document.querySelectorAll('#canton option');
+    
+    for(let opcion of cantonSelect){
+        opcion.parentNode.removeChild(opcion);
+    }
+  
     let valorProvincia = selectProvincias.options[selectProvincias.selectedIndex].text;
     if (valorProvincia == 'San José') {
 
@@ -651,6 +659,13 @@ function popularCanton() {
 // Crea los distritos del cantón elegido
 
 function popularDistrito() {
+
+    let distritoSelect = document.querySelectorAll('#distrito option');
+    
+  for(let opcion of distritoSelect){
+      opcion.parentNode.removeChild(opcion);
+  }
+
     let valorProvincia = selectProvincias.options[selectProvincias.selectedIndex].text;
     let valorCanton = selectCantones.options[selectCantones.selectedIndex].text;
 

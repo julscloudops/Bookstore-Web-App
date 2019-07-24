@@ -8,13 +8,12 @@ body {
   font-family: 'Montserrat', sans-serif;
   background: #f3eded;
   display: grid;
-  grid-template-columns: 17% auto auto auto auto;
-  grid-template-rows: 15% auto auto auto;
+  grid-template-columns: 17% auto;
+  grid-template-rows: 15% auto 12%;
   grid-template-areas:
-    "header header header header header"
-    "side-bar main main main main"
-    "side-bar main main main main"
-    "footer footer footer footer footer";
+    "header header"
+    "side-bar main"
+    "footer footer";
 }
 
 ul {
@@ -31,15 +30,14 @@ ul {
   background: #DF8931;
   border-radius: 30px;
   margin-left: 8%;
+  z-index: 1;
 }
-
 
 
 .grid-container {
   grid-area: main;
   display: grid;
   grid-template-columns: repeat(auto-fit, 245px);
-  margin-left: 4%;
 }
 
 .book {
@@ -49,7 +47,7 @@ ul {
 }
 
 .book a img {
-  max-width: 150px;
+  max-width: 145px;
   border-radius: 30px;
   cursor: pointer;
 }

@@ -24,7 +24,13 @@
 
     <div class="search-contain">
       <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-      <input type="text" id="search" placeholder="">
+      <input 
+      type="text" 
+      id="search" 
+      placeholder=""
+      maxlength="40"
+      autocomplete="off"
+      >
       <p id="tip">Presione enter para buscar</p>
     </div>
 
@@ -35,7 +41,7 @@
       <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
     </div>
     <div class="shopping-cart">
-      <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button">
+        <a href="/usuario/carrito">  <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
     </div>
     <div class="notificaciones">
       <img src="/images/notifications.svg" id="notifications-button" alt="notifications button">
@@ -52,6 +58,8 @@
   <div class="side-bar"></div>
 
   <div id="grid-container" class="grid-container">
+
+    <div id="root"></div>
 
   </div>
 

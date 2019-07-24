@@ -15,7 +15,7 @@
       <h2 class="fadeIn second">Registro administrador de librería</h2>
       <form 
       method="POST" 
-      action="http://localhost:3000/admin-libreria/registro" 
+      action="http://localhost:3000/usuario/registro/admin-libreria" 
       enctype="multipart/form-data">
         <input
         id="firstName"
@@ -23,7 +23,10 @@
          class="text fadeIn second"
          name="firstName" 
          placeholder="nombre"
-         autocomplete="off">
+         autocomplete="off"
+         maxlength="25"
+         required
+         >
 
         <input 
         id="lastName"
@@ -31,7 +34,9 @@
         class="text fadeIn second" 
         name="lastName" 
         placeholder="apellido"
-        autocomplete="off">
+        autocomplete="off"
+        maxlength="25"
+        required>
 
         <input 
         id="email"
@@ -39,8 +44,10 @@
         class="fadeIn second" 
         name="email" 
         placeholder="correo electrónico" 
+        maxlength="50"
         required
-        autocomplete="off">
+        autocomplete="off"
+        >
 
         <input 
         id="phone"
@@ -48,7 +55,8 @@
         class="fadeIn second" 
         name="phone" 
         placeholder="teléfono"
-        autocomplete="off">
+        autocomplete="off"
+        maxlength="25">
 
         <div class="flexbox">
             <div>
@@ -88,9 +96,10 @@
           name="id" 
           type="text" 
           class="cedula fadeIn second" 
-         
           placeholder="identificación"
-            pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}" required>
+          pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}" 
+          maxlength="25"
+          required>
         </div>
 
         <div class="location" >
@@ -131,6 +140,7 @@
         name="direction" 
         placeholder="dirección exacta"
         autocomplete="off" 
+        maxlength="50"
         required>
 
         <div class="input-file-container fadeIn second">
@@ -140,6 +150,7 @@
           class="input-file" 
           name="img"
           accept=" .png, .jpg, .jpeg"
+          required
           > 
           <label tabindex="0" for="img" class="input-file-trigger">Ingrese su avatar</label>
           <p class="file-return"></p>

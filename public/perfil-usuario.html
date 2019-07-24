@@ -8,6 +8,7 @@
   <title>Perfil usuario</title>
 </head>
 <body>
+      <!-- Navbar -->
     <div class="navbar-container">
       <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
       <div class="down-arrow">
@@ -16,7 +17,13 @@
 
       <div class="search-contain">
         <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-        <input type="text" id="search" placeholder="">
+        <input 
+        type="text" 
+        id="search" 
+        placeholder=""
+        maxlength="40"
+        autocomplete="off"
+        >
         <p id="tip">Presione enter para buscar</p>
       </div>
 
@@ -42,13 +49,10 @@
       </div>
     </div>
 
-<div id="user-profile" class="user-profile">
-  
-  
-</div>
+<div id="user-profile" class="user-profile"></div>
 
 <div class="info-usuario"></div>
-<div class="libros-usuario"></div>
+<div id="libros-usuario" class="libros-usuario"></div>
 <div class="clubes-usuario"></div>
 
     <footer>
@@ -70,6 +74,8 @@
   <!-- //Carga el javascript para que funcione la barra de búsquedas -->
   <script src="/scripts/search-bar.js"></script>
   <script src="/scripts/servicios/usuarios/visualizarPerfil.js"></script>
+  <script src="/scripts/servicios/libros/intercambioLibros.js"></script>
+
 
 </body>
 

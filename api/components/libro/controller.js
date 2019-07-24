@@ -26,10 +26,11 @@ exports.registrarLibro = async (req, res) => {
     price: req.body.price,
     isbn: req.body.isbn,
     genre: req.body.genre,
-    editorial: req.body.editorial,
+    // editorial: req.body.editorial,
     description: req.body.description,
     imgUrl: result.url,
-    cloudinary_id: result.public_id
+    cloudinary_id: result.public_id,
+    libreriaId: req.session.libreriaId
   });
 
 
@@ -37,13 +38,36 @@ exports.registrarLibro = async (req, res) => {
   const savedBook = await nuevoLibro.save();
   console.log(savedBook);
 
-  req.session.libreriaId.libroId = savedBook._id;
-
   console.log(req.session);
 
 res.sendFile('libro-individual.html', {
       root: 'public'
     });
+}
+
+exports.listarLibrosNovedosos = async (req, res) => {
+  try {
+    const libros = await Libro.find().limit(12);
+    res.json(libros);
+    
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}
+
+exports.HTMLView = async (req, res) => {
+  try {
+    res.sendFile('página-libro.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
 }
 
 exports.listarLibros = async (req, res) => {
@@ -56,31 +80,6 @@ exports.listarLibros = async (req, res) => {
       message: err
     })
   }
-}
-
-exports.listarLibrosNovedosos = async (req, res) => {
-  try {
-    const libros = await Libro.find().limit(10);
-    res.json(libros);
-    
-  } catch (err) {
-    res.json({
-      message: err
-    })
-  }
-}
-
-exports.HTMLView = async (req, res) => {
-  try {
-    res.sendFile('libro-individual.html', {
-      root: 'public'
-    });
-  } catch (err) {
-    res.json({
-      message: err
-    })
-  }
-
 }
 
 exports.listarLibro = async (req, res) => {

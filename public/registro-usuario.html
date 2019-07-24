@@ -19,7 +19,9 @@
         name="firstName" 
         placeholder="nombre"
         autocomplete="off"
-        required>
+        maxlength="25"
+        required
+        >
 
         <input 
         id="lastName"
@@ -28,6 +30,7 @@
         name="lastName" 
         placeholder="apellido"
         autocomplete="off"
+        maxlength="25"
         required>
 
         <input 
@@ -37,6 +40,7 @@
         name="email" 
         placeholder="correo electrónico" 
         autocomplete="off"
+        maxlength="50"
         required>
 
         <input 
@@ -46,6 +50,7 @@
         name="phone" 
         placeholder="teléfono"
         autocomplete="off"
+        maxlength="25"
         required>
 
         <div class="flexbox">
@@ -89,6 +94,7 @@
           name="cedula" 
           placeholder="identificación"
           autocomplete="off"
+          maxlength="25"
           required>
         </div>
 
@@ -134,12 +140,18 @@
         name="direction" 
         placeholder="dirección exacta"
         autocomplete="off" 
+        maxlength="50"
         required>
 
         <div>
             <label for="decription">Ingrese una breve descripción</label>
-            <textarea id="description" name="description" class="description" cols="30" rows="10"
-              wrap="physical"></textarea>
+            <textarea 
+            id="description" 
+            name="description" 
+            class="description" 
+            cols="30" rows="10"
+            wrap="physical"
+            maxlength="250"></textarea>
           </div>
 
         <div class="input-file-container fadeIn second">
@@ -149,6 +161,7 @@
           class="input-file" 
           name="img"
           accept=" .png, .jpg, .jpeg"
+          required
           > 
           <label tabindex="0" for="img" class="input-file-trigger">Ingrese su avatar</label>
           <p class="file-return"></p>

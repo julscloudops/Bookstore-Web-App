@@ -17,7 +17,8 @@ exports.registrarSucursal = async (req, res) => {
   direction: req.body.location,
   googleMaps: req.body.location,
   imgUrl: result.url,
-  cloudinary_id: result.public_id
+  cloudinary_id: result.public_id,
+  libreriaId: req.session.libreriaId
 
 });
 

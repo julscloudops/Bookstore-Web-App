@@ -7,5 +7,5 @@ const authorModel = new mongoose.Schema({
           cloudinary_id: {type: String}
 });
 
-module.exports = mongoose.model('Autor', authorModel);
+module.exports = mongoose.model('Autor', authorModel, 'autores');
 

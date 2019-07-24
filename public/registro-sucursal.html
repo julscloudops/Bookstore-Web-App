@@ -19,7 +19,13 @@
        </div>
        <div class="search-contain">
           <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-          <input type="text" id="search" placeholder="">
+          <input 
+          type="text" 
+          id="search" 
+          placeholder=""
+          maxlength="40"
+          autocomplete="off"
+          >
           <!-- <p id="tip">Presione enter para buscar</p> -->
        </div>
        <div class="categorias">
@@ -77,7 +83,13 @@
 
              <input type="text" class="text" name="longitude" placeholder="longitud" autocomplete="off">
              <div class="input-file-container">
-                <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg">
+                <input 
+                id="img" 
+                type="file" 
+                class="input-file" 
+                name="img" 
+                accept=" .png, .jpg, .jpeg"
+                required>
                 <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
                 <p class="file-return"></p>
              </div>
