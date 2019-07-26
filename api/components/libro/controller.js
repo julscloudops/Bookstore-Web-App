@@ -4,7 +4,7 @@ const ISBN = require('isbn-validate'),
 
 exports.registrarLibro = async (req, res) => {
 
-  //Validación de ISBN 
+  // Validación de ISBN 
   const isbnValidation = ISBN.Validate(req.body.isbn);
   console.log(isbnValidation);
 
@@ -26,7 +26,7 @@ exports.registrarLibro = async (req, res) => {
     price: req.body.price,
     isbn: req.body.isbn,
     genre: req.body.genre,
-    // editorial: req.body.editorial,
+    editorial: req.body.editorial,
     description: req.body.description,
     imgUrl: result.url,
     cloudinary_id: result.public_id,
@@ -36,13 +36,14 @@ exports.registrarLibro = async (req, res) => {
 
   //Guarda el nuevo usuario en la base de datos
   const savedBook = await nuevoLibro.save();
+  
   console.log(savedBook);
 
   console.log(req.session);
 
-res.sendFile('libro-individual.html', {
-      root: 'public'
-    });
+res.redirect(`/libros/admin/views/${savedBook._id}`);
+
+
 }
 
 exports.listarLibrosNovedosos = async (req, res) => {
@@ -55,6 +56,19 @@ exports.listarLibrosNovedosos = async (req, res) => {
       message: err
     })
   }
+}
+
+exports.HTMLViewAdmin = async (req, res) => {
+  try {
+    res.sendFile('página-libro-adminLibreria.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
 }
 
 exports.HTMLView = async (req, res) => {

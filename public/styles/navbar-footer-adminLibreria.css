@@ -36,13 +36,6 @@ input:focus {
   outline: none;
 }
 
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  padding: 15px;
-}
 
 /*Navbar*/
 .logo {
@@ -54,8 +47,6 @@ input:focus {
 
 .navbar-container {
   background: #f3eded;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   box-shadow: 2px 2px 1px #f3eded;
   -webkit-box-align: center;
@@ -64,27 +55,65 @@ input:focus {
   padding-right: 0.4%;
 }
 
+
 .down-arrow {
+  display: flex;
+  position:relative;
   background: #DF8931;
-  padding: 10px;
-  border-radius: 20px;
+  padding: 8px;
+  border-radius: 80px;
   cursor: pointer;
-  overflow: hidden;
   margin: 0 1%;
   justify-content: center;
-
 }
 
 .down-arrow img {
   width: 30px;
-  
 }
+
+.menu {  
+  position: absolute;
+  top: 100%;
+  padding: 10px;
+  background: #DF8931;
+  border-radius: 20px;
+  border: 2px solid #821e00;
+  z-index: 2;   
+  visibility: hidden;
+  opacity: 0; 
+  transition: opacity 1s;  
+  text-align: center;
+
+}
+
+.menu a {
+  display: block;
+  color:#821E00;
+  font-size: 14px;
+  padding: 1%;
+  margin: 1%;
+  letter-spacing: 1px;
+
+}
+
+.menu a:hover {
+  color: #f3eded;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.down-arrow:hover .menu{
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+}
+
 
 .search-contain {
   display: flex;
   position: relative;
   align-items: center;
-  margin-right: 5%;
+  margin-right: 1%;
 }
 
 .search-contain input {
@@ -176,6 +205,7 @@ input:focus {
 }
 
 .settings {
+  display: flex;
   position: relative;
   background: #DF8931;
   width: 14px;
@@ -183,10 +213,8 @@ input:focus {
   padding: 25px;
   border-radius: 20px;
   cursor: pointer;
-  display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1%;
 }
 
 .settings img {
@@ -202,6 +230,7 @@ input:focus {
   margin: 2% 5% 0 0;
   background: #DF8931;
   border-radius: 20px;
+  border: 2px solid #821e00;
   z-index: 1;  
   visibility: hidden;
   opacity: 0; 
@@ -235,7 +264,7 @@ input:focus {
 }
 
 .footer-container {
-  width: 100%;
+  margin-top: 4%;
   background: #821E00;
   color: #f3eded;
   padding: 3em 0;

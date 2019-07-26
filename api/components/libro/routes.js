@@ -33,6 +33,8 @@ const redirectIndex = (req, res, next) => {
     }
   }
 
+
+
 router.get('/registro', (req, res) => {
   res.sendFile('registro-libro.html', {
     root: 'public'
@@ -44,6 +46,8 @@ router.post('/registro', redirectIndex, upload.single('img'), libroController.re
 
 //Listar libros
 router.get('/', libroController.listarLibros);
+
+router.get('admin/views/:idLibro', libroController.HTMLViewAdmin);
 
 router.get('/views/:idLibro', libroController.HTMLView);
 

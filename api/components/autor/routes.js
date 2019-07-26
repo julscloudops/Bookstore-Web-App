@@ -49,6 +49,9 @@ const redirectIndex = (req, res, next) => {
  // Listar autores
  router.get('/', autorController.listarAutores);
 
+ router.get('/listar', autorController.listarAutoresHTML);
+
+
 // Listar autor
  router.get('/views/:idAutor', autorController.HTMLView);
 

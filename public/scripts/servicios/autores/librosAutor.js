@@ -7,7 +7,7 @@ async function librosAutor() {
   console.log(data);
 
   //Client-side rendering de los libros mas novedosos
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < 5; i++) {
     const container = document.getElementById('libros-autor');
     const book = document.createElement('div');
     const link = document.createElement('a');

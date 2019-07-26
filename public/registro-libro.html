@@ -17,6 +17,10 @@
       <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
       <div class="down-arrow">
         <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+        <div class="menu">        
+            <a href="/autor/listar">Autores</a>
+            <a href="/usuario/catalogo">Catálogo</a>
+          </div>
       </div>
       <div class="search-contain">
         <img src="/images/searchicon.svg" id="search-btn" alt="search button">
@@ -57,17 +61,58 @@
             <input id="title" type="text" class="textLong" name="title" placeholder="titulo del libro"
                autocomplete="off">
             <input id="isbn" type="text" class="textLong" name="isbn" placeholder="código ISBN" autocomplete="off">
+
+            <div class="modals-test">
+               <button id="registrar-categoria" class="registrar-categoria">Registrar categoria
+               </button>
+               <button id="registrar-editorial" class="registrar-editorial">Registrar editorial</button>
+            </div>
+            <div class="backdrop"></div>
+               <div id="modal-categoria" class="modal-categoria">
+                     <p>Ingrese una categoria</p>
+                     <input id="categoria-input" type="text" class="modal-input" name="categoria-input" autocomplete="off">
+                     <div class="modal-actions">
+                         <button 
+                         type="button" 
+                         id="btn-cancel-categoria" 
+                         class="btn-cancel">Cancelar</button>
+                         <button 
+                         type="button" 
+                         id="btn-confirm-categoria" 
+                         class="btn-confirm">Confimar</button>
+                     </div>
+               </div>
+               <div id="modal-editorial" class="modal-editorial">
+                     <p>Ingrese una editorial</p>
+                     <input id="editorial-input" type="text" class="modal-input" name="editorial-input" autocomplete="off">
+                     <div class="modal-actions">
+                         <button 
+                         type="button" 
+                         id="btn-cancel-editorial" 
+                         class="btn-cancel">Cancelar</button>
+                         <button 
+                         type="button" 
+                         id="btn-confirm-editorial" 
+                         class="btn-confirm">Confirmar</button>
+                     </div>
+               </div>
             <div>
                <select name="genre" id="genre">
                   <option value="">Seleccione una categoria</option>
                </select>
-               <!-- <select name="editorial" id="editorial">
+               <select name="editorial" id="editorial">
                   <option value="">Seleccione una editorial</option>
-               </select> -->
+               </select>
             </div>
             <label for="decription">Descripción</label>
-            <textarea name="description" id="description" class="description" cols="30" rows="10"
-               wrap="physical"></textarea>
+            <textarea 
+            name="description" 
+            id="description" 
+            class="description" 
+            cols="30" r
+            ows="10"
+            wrap="physical"
+            maxlength="1000"></textarea>
 
             <div class="input-file-container">
                <input 
@@ -105,7 +150,7 @@
    <!-- Carga el javascript para que funcione la barra de búsquedas -->
    <script src="/scripts/search-bar.js"></script>
 
-   <!-- <script src="/scripts/registrarLibro.js"></script> -->
+   <script src="/scripts/servicios/libros/registrarLibro.js"></script>
 
    <!-- Activa el funcionamiento del botón para subir imágenes -->
    <script src="/scripts/upload-button.js"></script>

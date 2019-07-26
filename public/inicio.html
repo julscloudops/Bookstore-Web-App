@@ -27,17 +27,14 @@
     <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
     <div class="down-arrow">
       <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+      <div class="menu">        
+        <a href="/autor/listar">Autores</a>
+        <a href="/usuario/catalogo">Catálogo</a>
+      </div>
     </div>
     <div class="search-contain">
       <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-      <input 
-      type="text" 
-      id="search" 
-      placeholder="" 
-      autofocus
-      maxlength="40"
-      autocomplete="off"
-      >
+      <input type="text" id="search" placeholder="" autofocus maxlength="40" autocomplete="off">
       <p id="tip">Presione enter para buscar</p>
     </div>
     <div class="categorias">
@@ -47,7 +44,7 @@
       <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
     </div>
     <div class="shopping-cart">
-      <a href="/usuario/carrito">  <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
+      <a href="/usuario/carrito"> <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
     </div>
     <div class="notificaciones">
       <img src="/images/notifications.svg" id="notifications-button" alt="notifications button">
@@ -57,7 +54,7 @@
       <div id="dropdown" class="dropdown">
         <a href="/usuario/perfil">Perfil</a>
         <a href="#">Configuración</a>
-        <a id="logout" href="/">Salir sesión</a>
+        <a id="logout" href="/usuario/logout">Salir sesión</a>
 
       </div>
     </div>
@@ -65,7 +62,7 @@
 
   <div class="wrapper">
     <h1 class="mainText">Ultimos lanzamientos</h1>
-    <!-- Carousel ultimos lanzamientos -->
+    Carousel ultimos lanzamientos
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">

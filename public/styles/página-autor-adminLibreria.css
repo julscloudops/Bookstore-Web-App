@@ -1,87 +1,116 @@
-@import './navbar-footer.css';
+@import './navbar-footer-adminLibreria.css';
 
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  background: #f3eded;
+  box-sizing: border-box;     
+  background: #F3EDED;
+}
+
+:root {
+  --red: #821e00;
+  --orange: #DF8931;
+  --darkorange: #AA530E;
+}
+
+.autor-container {
+  display: flex;
+}
+.autor {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin: 0 0 0 10%; 
+  align-items: center;
+  
+}
+
+.img {
+  width: 380px;
+  border-radius: 20px;
+}
+
+.name {
+  display: block;
+  background: linear-gradient(to right, var(--orange), var(--darkorange));
+  padding: 1% 2%;
+  border-radius: 5px;
+  color: #F3EDED;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+.description {
+  background: linear-gradient(to right, var(--orange), var(--darkorange));
+  border-radius: 20px;
+  color: #F3EDED;
+  font-weight: 200;
+  font-size: 18px;
+  letter-spacing: 1.4px;
+  text-align: justify;
+  margin: 4% 10% 0 1%;
+  padding: 1% 2%;
+
+}
+
+.libros-autor {
   display: grid;
-  grid-template-columns: 17% auto;
-  grid-template-rows: 15% auto 12%;
-  grid-template-areas:
-    "header header"
-    "side-bar main"
-    "footer footer";
-}
-
-ul {
-  list-style: none;
-}
-
-.navbar-container {
-  grid-area: header;
-  margin-bottom: 1%;
-}
-
-.side-bar {
-  grid-area: side-bar;
-  background: #DF8931;
-  border-radius: 30px;
-  margin-left: 8%;
+  grid-template-columns: repeat(auto-fit, 200px);  justify-content: center;
+  background: linear-gradient(to right, var(--darkorange), var(--orange));
+  border-radius: 20px;
+  margin: 1% 10%;  
+  overflow: auto;
   z-index: 1;
 }
 
 
-.grid-container {
-  grid-area: main;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 245px);
+.libros-autor::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F3EDED;
+} 
+
+.libros-autor::-webkit-scrollbar-thumb {
+  background-color: #DF8931;
+  border-radius: 40px;
 }
 
+/* Estilos para que funcione el contenedor de libros */
 .book {
-  display: grid;
-  justify-items: center;
-  margin: 2% 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 6%;
 }
 
 .book a img {
-  max-width: 145px;
-  border-radius: 30px;
+  width: 40%;
+  border-radius: 20px;
   cursor: pointer;
-}
-
-/* .rating-container {
-  display: flexbox;
-} */
-
-.price {
-  display: block;
-
 }
 
 .buy-btn {
   background: #821E00;
-  padding: 10px;
+  padding: 8px;
   border-radius: 30px;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: #f3eded;
   cursor: pointer;
 
 }
 
 footer {
-  grid-area: footer;
   margin-top: 5%;
 }
 
-/* Standalone svg star rating system */
 
+/* Rating system */
 .rating-holder {
   display: inline-block;
   border-radius: 1.5625em;
+  margin-top: 56%;
 }
 
 .c-rating button {
@@ -210,5 +239,5 @@ footer {
   background: url("data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22gold%22%20d%3D%22M457.888 210.672l-139.504-20.272-62.384-126.4-62.384 126.4-139.504 20.272 100.944 98.384-23.84 138.928 124.768-65.6 124.768 65.6-23.84-138.928c0 0 100.944-98.384 100.944-98.384z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") center/cover no-repeat;
 }
 .c-rating--big {
-  font-size: 100%;
+  font-size: 150%;
 }

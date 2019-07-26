@@ -5,14 +5,13 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link rel="stylesheet" href="/styles/registro-autor.css">
-   <title>Registro autor </title>
+   <link rel="stylesheet" href="/styles/página-autor-adminLibreria.css">
+   <title>Página libro individual</title>
 </head>
 
 <body>
-
-  <!--Navbar-->
-  <div class="navbar-container">
+   <!--Navbar-->
+   <div class="navbar-container">
       <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
       <div class="down-arrow">
         <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
@@ -26,10 +25,11 @@
         <input 
         type="text" 
         id="search" 
-        maxlength="40"
         placeholder="" 
         autofocus
-        autocomplete="off">
+        maxlength="40"
+        autocomplete="off"
+        >
         <p id="tip">Presione enter para buscar</p>
       </div>
       <div class="categorias">
@@ -49,46 +49,34 @@
       </div>
     </div>
 
-
-   <!--Formulario-->
-   <div class="wrapper ">
-      <div class="formulario">
-         <h2>Registrar autor</h2>
-         <form id="form" method="POST" action="http://localhost:3000/autor/registro" enctype="multipart/form-data">
-
-            <input id="name" type="text" class="name" name="name" placeholder="nombre" autocomplete="off">
-
-            <label for="decription">Descripción</label>
-            <textarea 
-            id="description" 
-            class="description fadeIn second" 
-            name="description" 
-            cols="40"
-            rows="10"
-            maxlength="1000"></textarea>
-
-            <div class="input-file-container">
-               <input 
-               id="img" 
-               type="file" 
-               class="input-file" 
-               name="img" 
-               accept=" .png, .jpg, .jpeg" 
-               hidden
-               required>
-               <label for="img" class="input-file-trigger">Ingresar foto del autor</label>
-               <p class="file-return"></p>
-            </div>
-            <input id="submit" class="submit-btn" type="submit" value="Enviar">
-
-
-         </form>
-      </div>
+   <div id="book-container" class="book-container">
+      <div id="book" class="book"></div>
+      <div id="book-info" class="book-info"></div>
    </div>
+
+   <div class="reviews">
+      <h3>Reseñas de usuarios</h3>
+      <div class="user-review">
+         <img src="/images/user2.png" alt="User testimonial picture">
+         <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas tenetur totam,
+            dolore</blockquote>
+      </div>
+      <div class="user-review">
+         <img src="/images/user1.png" alt="User testimonial picture">
+         <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas tenetur totam,
+            dolore</blockquote>
+      </div>
+
+      <!-- <div class="description">
+         <label for="description">Deja un comentario!</label>
+         <textarea name="description" id="description" cols="30" rows="10"></textarea>
+      </div> -->
+   </div>
+
    <footer>
       <div class="footer-container">
          <div class="container">
-            <a href="/">
+            <a href="#">
                <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="footerLogo">
             </a>
             <p class="address">San Jose, 11801<br>Costa Rica</p>
@@ -103,10 +91,6 @@
    <!-- //Carga el javascript para que funcione la barra de búsquedas -->
    <script src="/scripts/search-bar.js"></script>
 
-   <!-- Permite subir imágenes -->
-   <script src="/scripts/upload-button.js"></script>
-
-   <!-- <script src="./scripts/servicios/autores/registrarAutor.js"></script> -->
-</body>
+   <script src="/scripts/servicios/libros/listarLibro.js"></script>
 
 </html>

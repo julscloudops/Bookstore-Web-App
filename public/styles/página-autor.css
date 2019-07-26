@@ -7,14 +7,6 @@ body {
   font-family: 'Montserrat', sans-serif;
   box-sizing: border-box;     
   background: #F3EDED;
-  display: grid;
-  grid-template-columns: 30% auto;
-  grid-template-rows: 10% auto 60% 12%;
-  grid-template-areas:
-    "header header"
-    "autor description"
-    "libros libros"
-    "footer footer";
 }
 
 :root {
@@ -23,20 +15,16 @@ body {
   --darkorange: #AA530E;
 }
 
-
-.navbar-container {
-  grid-area: header;
+.autor-container {
+  display: flex;
+  margin: 0 auto;
 }
-
 .autor {
-  grid-area: autor;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   border-radius: 20px;
-  margin: 5% 0 0 20%; 
+  margin: 0 0 0 10%; 
   align-items: center;
-  /* background: linear-gradient(to right, var(--darkorange), var(--orange)); */
   
 }
 
@@ -56,29 +44,32 @@ body {
 }
 
 .description {
-  grid-area: description;
   background: linear-gradient(to right, var(--orange), var(--darkorange));
   border-radius: 20px;
   color: #F3EDED;
   font-weight: 200;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 1.4px;
   text-align: justify;
-  margin: 6% 6% 0 4%;
+  margin: 4% 10% 0 1%;
   padding: 1% 2%;
 
 }
 
 .libros-autor {
-  grid-area: libros;
   display: grid;
   grid-template-columns: repeat(auto-fit, 200px);  justify-content: center;
-  background: linear-gradient(to right, var(--orange), var(--darkorange));
+  background: linear-gradient(to right, var(--darkorange), var(--orange));
   border-radius: 20px;
-  margin: 1% 4% 0 4%;  
+  margin: 1% 10%;  
   overflow: auto;
   z-index: 1;
 }
+
+.libros-autor h3{
+
+}
+
 
 .libros-autor::-webkit-scrollbar {
   width: 6px;
@@ -95,7 +86,7 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 5%;
+  margin: 6%;
 }
 
 .book a img {
@@ -116,8 +107,7 @@ body {
 }
 
 footer {
-  margin-top: 7%;
-  grid-area: footer;
+  margin-top: 5%;
 }
 
 

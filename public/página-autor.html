@@ -15,16 +15,14 @@
     <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
     <div class="down-arrow">
       <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+      <div class="menu">        
+          <a href="/autor/listar">Autores</a>
+          <a href="/usuario/catalogo">Catálogo</a>
+        </div>
     </div>
     <div class="search-contain">
       <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-      <input 
-      type="text" 
-      id="search" 
-      maxlength="40"
-      placeholder="" 
-      autofocus
-      autocomplete="off">
+      <input type="text" id="search" maxlength="40" placeholder="" autofocus autocomplete="off">
 
       <p id="tip">Presione enter para buscar</p>
     </div>
@@ -50,9 +48,13 @@
     </div>
   </div>
 
-  <div id="autor" class="autor"></div>
-  <div id="description" class="description"></div>
-  <div id="libros-autor" class="libros-autor"></div>
+  <div class="autor-container">
+    <div id="autor" class="autor"></div>
+    <div id="description" class="description"></div>
+  </div>
+
+  <div id="libros-autor" class="libros-autor">
+  </div>
 
   <!-- Footer -->
   <footer>

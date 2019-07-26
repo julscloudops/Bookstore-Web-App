@@ -61,10 +61,10 @@ label {
   border-radius: 5px 5px 5px 5px;
 }
 
-textarea:focus{
-   border: 3px solid #821e00;
-   outline: none;
-    
+textarea:focus {
+  border: 3px solid #821e00;
+  outline: none;
+
 }
 
 .text {
@@ -90,7 +90,7 @@ textarea:focus{
 }
 
 
-select{
+select {
   margin: 1% 0;
   width: 45%;
   height: 35px;
@@ -108,8 +108,8 @@ select{
   outline: none;
 }
 
-input:focus::-webkit-input-placeholder { 
-    color:transparent; 
+input:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 
 
@@ -157,14 +157,15 @@ select:focus {
   display: block;
   padding: 14px 15px;
   background: #821e00;
-  color: #fff;
+  color: #f3eded;
   font-size: 0.9em;
   font-weight: 400;
   transition: all .4s;
   cursor: pointer;
   border-radius: 5px 5px 5px 5px;
   width: 80%;
-  margin: 0 auto;}
+  margin: 0 auto;
+}
 
 .input-file {
   position: absolute;
@@ -199,4 +200,100 @@ select:focus {
 
 .footer-container::after {
   background: none;
+}
+
+
+/* Estilos para los modals de registrar categoria/editorial */
+
+.modals-test {
+  margin: 1% 0;
+}
+
+.modals-test button {
+  background-color: #821e00;
+  color: #f3eded;
+  font-size: 14px;
+  border: 2px solid #821e00;
+  border-radius: 5px 5px 5px 5px;
+  margin: 0 6%;
+  cursor: pointer;
+
+}
+
+.modal-control {
+  padding: 1rem;
+  border: 1px solid #521751;
+  text-align: center;
+}
+
+.modal-categoria {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  background: #f3eded;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+}
+
+.modal-editorial {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  background: #f3eded;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+}
+
+.modal-categoria,
+.modal-editorial p {
+  color: #821e00;
+  margin: 0.5rem 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.modal-input {
+  width: 100%;
+  padding: 8px;
+  border: 3px solid #821e00;
+  color: #821e00;
+  font-size: 14px;
+  margin-bottom: 1%;
+}
+
+.modal-actions {
+  text-align: right;
+}
+
+.btn-cancel {
+  background: #821e00;
+  color: #f3eded;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.btn-confirm {
+  background: #F5C16C;
+  color: #821e00;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }

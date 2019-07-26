@@ -5,7 +5,7 @@
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <link rel="stylesheet" href="/styles/libro-individual.css">
+   <link rel="stylesheet" href="/styles/página-libro.css">
    <title>Página libro individual</title>
 </head>
 
@@ -15,6 +15,10 @@
       <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
       <div class="down-arrow">
          <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+         <div class="menu">        
+               <a href="/autor/listar">Autores</a>
+               <a href="/usuario/catalogo">Catálogo</a>
+             </div>
       </div>
       <div class="search-contain">
          <img src="/images/searchicon.svg" id="search-btn" alt="search button">
@@ -42,9 +46,30 @@
          </div>
       </div>
    </div>
-<div class="wrapper">
-   <div id="libro-container" class="libro-container"></div>
-</div>
+
+   <div id="book-container" class="book-container">
+      <div id="book" class="book"></div>
+      <div id="book-info" class="book-info"></div>
+   </div>
+
+   <div class="reviews">
+      <h3>Reseñas de usuarios</h3>
+      <div class="user-review">
+         <img src="/images/user2.png" alt="User testimonial picture">
+         <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas tenetur totam,
+            dolore</blockquote>
+      </div>
+      <div class="user-review">
+         <img src="/images/user1.png" alt="User testimonial picture">
+         <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas tenetur totam,
+            dolore</blockquote>
+      </div>
+
+      <!-- <div class="description">
+         <label for="description">Deja un comentario!</label>
+         <textarea name="description" id="description" cols="30" rows="10"></textarea>
+      </div> -->
+   </div>
 
    <footer>
       <div class="footer-container">

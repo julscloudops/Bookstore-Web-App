@@ -50,7 +50,6 @@ const redirectHome = (req, res, next) => {
 // }
 
 
-
 // Registrar administrador de libreria
 router.get('/registro/admin-libreria', (req, res) => {
   res.sendFile('registro-admin-libreria.html', {root: 'public'}); 
@@ -65,14 +64,12 @@ router.get('/registro', (req, res) => {
 
 router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
 
-
 //Inicio de sesión usuario
 router.get('/login', (req, res) => {
   res.sendFile('login.html', {root: 'public'}); 
 });
 
 router.post('/login', usuarioController.loginUsuario);
-
 
 router.get('/perfil', (req, res) => {
   res.sendFile('perfil-usuario.html', {root: 'public'}); 
@@ -87,14 +84,14 @@ router.get('/inicio', (req, res) => {
 
 router.get('/catalogo', (req, res) => {
   res.sendFile('catalogo.html', {root: 'public'}); 
-})
+});
 
-router.get('/add-to-cart/:id', (req, res) => {
-  let libroId = req.params.id;
-  
-  res.sendFile('shopping-cart.html', {root: 'public'}); 
-})
+router.get('/carrito', (req, res) => {
+  // let libroId = req.params.id;
+    res.sendFile('shopping-cart.html', {root: 'public'}); 
+});
 
+router.get('/:search', usuarioController.searchEngine);
 
 // Cerrar sesión
 router.get('/logout', (req, res) => {

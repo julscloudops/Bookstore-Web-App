@@ -16,7 +16,8 @@ exports.registrarAutor = async (req, res) => {
 
   try {
     const savedAuthor = await newAuthor.save(); 
-    res.redirect(`/autor/views/${savedAuthor._id}`) } catch (err) {
+    res.redirect(`/autor/views/${savedAuthor._id}`) } 
+    catch (err) {
     res.json({
       message: err
     });
@@ -26,7 +27,7 @@ exports.registrarAutor = async (req, res) => {
 
 exports.HTMLView = async (req, res) => {
   try {
-    res.sendFile('página-autor.html', {
+    res.sendFile('página-autor-adminLibreria.html', {
       root: 'public'
     });
   } catch (err) {
@@ -48,6 +49,19 @@ exports.listarAutores = async (req, res) => {
     })
   }
 }
+
+exports.listarAutoresHTML = async (req, res) => {
+  try {
+    res.sendFile('página-autores.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}
+
 
 exports.listarAutor = async (req, res) => {
   try {
