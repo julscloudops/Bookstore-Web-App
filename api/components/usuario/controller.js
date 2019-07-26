@@ -207,7 +207,7 @@ exports.visualizarPerfil = async (req, res) => {
 exports.searchEngine = async (req, res) => {
   console.log(req.params.search);
 
-  let usuarios = Usuario.find({
-    
+  let usuarios = User.find({
+
   })
 }
