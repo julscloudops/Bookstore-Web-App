@@ -91,8 +91,6 @@ router.get('/carrito', (req, res) => {
     res.sendFile('shopping-cart.html', {root: 'public'}); 
 });
 
-router.get('/:search', usuarioController.searchEngine);
-
 // Cerrar sesión
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {

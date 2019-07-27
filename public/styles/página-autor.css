@@ -66,10 +66,6 @@ body {
   z-index: 1;
 }
 
-.libros-autor h3{
-
-}
-
 
 .libros-autor::-webkit-scrollbar {
   width: 6px;

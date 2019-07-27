@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', listarLibrosParaIntercambiar);
 
 async function listarLibrosParaIntercambiar() {
-  const url = 'http://localhost:3000/libros/librosNovedosos';
+  const url = 'http://localhost:3000/libro/librosNovedosos';
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);

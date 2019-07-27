@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const modeloSucursal = new mongoose.Schema({
-          nombreComercial: {type: String},
-          nombreFantasia: {type: String},
+          
+          // nombreComercial: {type: String},
+          // nombreFantasia: {type: String},
           phone: {type: String},
           provincia: {type: String},
           canton: {type: String},

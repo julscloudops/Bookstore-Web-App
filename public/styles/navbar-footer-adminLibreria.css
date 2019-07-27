@@ -14,6 +14,10 @@
   outline-color: #DF8931;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   background: #f3eded
 }
@@ -53,6 +57,7 @@ input:focus {
   -ms-flex-align: center;
   align-items: center;
   padding-right: 0.4%;
+  margin-bottom: 1%;
 }
 
 
@@ -231,7 +236,7 @@ input:focus {
   background: #DF8931;
   border-radius: 20px;
   border: 2px solid #821e00;
-  z-index: 1;  
+  z-index: 3;  
   visibility: hidden;
   opacity: 0; 
   transition: opacity 1s;
@@ -400,6 +405,32 @@ nav ul li a {
   border-radius: 25px;
   font-weight: bold;
 }
+
+/* Estilos para el pop-up window del search */
+
+.modal-search {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  background: #f3eded;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+}
+
+.backdrop {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
 
 
 

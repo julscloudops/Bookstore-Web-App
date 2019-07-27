@@ -19,7 +19,8 @@ const modeloUsuario = new mongoose.Schema({
             cloudinary_id: {type: String},
             password: {type: String},
             isVerified: {type: String, default: false},
-            isAdminLibreria: {type: Boolean, default: false}
+            isAdminLibreria: {type: Boolean, default: false},
+            
         });
 
 module.exports = mongoose.model('User', modeloUsuario, 'usuarios');

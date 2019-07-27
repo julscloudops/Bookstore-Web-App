@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', listarLibros);
 
 async function listarLibros() {
 
-  const url = 'http://localhost:3000/libros/';
+  const url = 'http://localhost:3000/libro/';
 
   const res = await fetch(url);
   const data = await res.json();
@@ -28,6 +28,7 @@ async function listarLibros() {
     const addToCart = document.createElement('button');
 
     link.href = `/libros/views/${data[i]._id}`;
+    
     const imgSrc = await fetch(data[i].imgUrl);
     cover.src = imgSrc.url;
 

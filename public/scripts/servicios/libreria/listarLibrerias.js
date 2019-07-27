@@ -25,7 +25,7 @@ async function listarLibrerias() {
   //Este fetch es para traer la imagen de cloudinary
   const imgSrc = await fetch(librerias[i].imgUrl);
   logo.src = imgSrc.url;
-  link.href = `/libreria/${librerias[i]._id}`;
+  link.href = `/libreria/views/${librerias[i]._id}`;
 
   libreria.className = 'libreria';
   ratingContainer.className = 'rating-holder';

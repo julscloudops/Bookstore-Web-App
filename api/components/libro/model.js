@@ -6,11 +6,12 @@ const modeloLibro = mongoose.Schema({
   title: { type: String},
   isbn: { type: String},
   genre: { type: String},
-  // editorial: {type : String},        
+  editorial: {type : String},        
   description: {type: String},
   imgUrl: { type: String},
   cloudinary_id: {type: String},
   idLibreria: {type: String, unique: true}
 });
-    
+
+
 module.exports = mongoose.model('Libro', modeloLibro, 'libros');

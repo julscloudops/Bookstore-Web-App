@@ -66,7 +66,6 @@ function registrarEditorial() {
   option.value = input.value;
   select.append(option);
 
-
 }
 
 

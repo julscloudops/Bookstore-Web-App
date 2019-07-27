@@ -8,8 +8,8 @@ exports.registrarSucursal = async (req, res) => {
 
   //Se crea una nueva sucursal
  const newSucursal = new Sucursal({
-  nombreComercial: req.body.nombreComercial,
-  nombreFantasia: req.body.nombreFantasia, 
+  // nombreComercial: req.body.nombreComercial,
+  // nombreFantasia: req.body.nombreFantasia, 
   phone: req.body.phone,
   provincia: req.body.provincia, 
   canton: req.body.canton, 

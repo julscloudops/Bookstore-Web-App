@@ -1,20 +1,20 @@
-document.addEventListener('DOMContentLoaded', listarLibro);
+document.addEventListener('DOMContentLoaded', listarLibreria);
 
-async function listarLibro() {
+async function listarLibreria() {
 
 //Window.location nos da el URL en el que estamos, utilizo splice para recuperar el ID de un libro específico
-  
-  let idLibro = window.location.pathname.slice(13);
-  console.log(idLibro);
 
-  const url = `/libro/JSON/${idLibro}`;
+  let idLibreria = window.location.pathname.slice(16);
+  console.log(idLibreria);
+
+  const url = `/libreria/JSON/${idLibreria}`;
   console.log(url);
   
   const res = await fetch(url);
 
-  const libro = await res.json();
+  const libreria = await res.json();
 
-  console.log(libro);
+  console.log(libreria);
 
     const book = document.getElementById('book'); 
     const bookInfo = document.getElementById('book-info'); 

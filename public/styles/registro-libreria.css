@@ -10,6 +10,12 @@ body {
   background-size: cover;
 }
 
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1% 0;
+}
+
 .formulario {
   text-align: center;
   -webkit-border-radius: 10px 10px 10px 10px;

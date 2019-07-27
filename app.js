@@ -89,7 +89,8 @@ const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
 const autor = require('./api/components/autor/routes');
-const libros = require('./api/components/libro/routes');
+const libro = require('./api/components/libro/routes');
+const search = require('./api/components/search/routes');
 
 //Rutas
 // app.use('/admin-global', adminGlobal); 
@@ -98,7 +99,8 @@ app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);
 app.use('/autor', autor);
-app.use('/libros', libros);
+app.use('/libro', libro);
+app.use('/search', search);
 
 module.exports = app;
 

@@ -1,0 +1,17 @@
+@import './navbar-footer.css';
+
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+    background: #f3eded;
+    color: #f3eded;
+   
+  }
+  
+  :root {
+    --red: #821e00;
+    --orange: #DF8931;
+    --darkorange: #AA530E;
+  }

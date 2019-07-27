@@ -42,11 +42,44 @@ exports.listarLibrerias = async (req, res) => {
   }
 }
 
+exports.HTMLView = async (req, res) => {
+  try {
+    res.sendFile('página-libreria.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
+}
+
 exports.listarLibreria = async (req, res) => {
   try {
-    const libreria = Libreria.findById({_id: req.params.idLibreria});
+    const libreria = Libreria.findById({
+      _id: req.params.idLibreria});
     res.json(libreria);
   } catch (err) {
 
   }
 }
+
+
+
+
+exports.HTMLViewAdmin = async (req, res) => {
+  try {
+    res.sendFile('página-libreria-adminLibreria.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
+}
+
+
+
