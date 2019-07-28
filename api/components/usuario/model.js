@@ -18,7 +18,7 @@ const modeloUsuario = new mongoose.Schema({
             imgUrl: {type: String},
             cloudinary_id: {type: String},
             password: {type: String},
-            isVerified: {type: String, default: false},
+            isVerified: {type: Boolean, default: false},
             isAdminLibreria: {type: Boolean, default: false},
             
         });

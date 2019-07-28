@@ -16,20 +16,14 @@
        <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
        <div class="down-arrow">
           <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
-          <div class="menu">        
-               <a href="/autor/listar">Autores</a>
-               <a href="/usuario/catalogo">Catálogo</a>
-             </div>
+          <div class="menu">
+             <a href="/autor/listar">Autores</a>
+             <a href="/usuario/catalogo">Catálogo</a>
+          </div>
        </div>
        <div class="search-contain">
           <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-          <input 
-          type="text" 
-          id="search" 
-          placeholder=""
-          maxlength="40"
-          autocomplete="off"
-          >
+          <input type="text" id="search" placeholder="" maxlength="40" autocomplete="off">
           <!-- <p id="tip">Presione enter para buscar</p> -->
        </div>
        <div class="categorias">
@@ -53,12 +47,14 @@
     <div class="wrapper ">
        <div class="formulario">
           <h2>Registro de sucursal</h2>
-          <form>
-             <input type="text" class="text" name="nombreComercial" placeholder="nombre comercial" autocomplete="off">
+          <form method="POST" action="http://localhost:3000/sucursal/registro" enctype="multipart/form-data">
+             <input id="horario" type="text" class="text" name="horario" placeholder="horario de atención"
+                autocomplete="off">
+             <input id="phone" type="tel" class="text" name="phone" placeholder="teléfono" autocomplete="off">
+             <label for="decription">Descripción</label>
+             <textarea name="description" id="description" class="description" cols="30" r ows="10" wrap="physical"
+                maxlength="1000"></textarea>
 
-             <input type="text" class="text" name="nombreFantasia" placeholder="nombre de fantasia" autocomplete="off">
-
-             <input type="tel" name="phone" placeholder="teléfono" autocomplete="off">
 
              <div class="location">
                 <div>
@@ -80,27 +76,21 @@
                    </select>
                 </div>
              </div>
-             <input type="text" class="direction" name="direction" placeholder="dirección exacta"
+             <input type="text" class="direction" name="direction" placeholder="dirección exacta" autocomplete="off">
+
+             <input type="text" class="direction" name="googleMaps" placeholder="dirección Google Maps"
                 autocomplete="off">
 
-             <input type="text" class="text" name="latitude" placeholder="latitud" autocomplete="off">
+             <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" required>
+             <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
+             <p class="file-return"></p>
 
-             <input type="text" class="text" name="longitude" placeholder="longitud" autocomplete="off">
-             <div class="input-file-container">
-                <input 
-                id="img" 
-                type="file" 
-                class="input-file" 
-                name="img" 
-                accept=" .png, .jpg, .jpeg"
-                required>
-                <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
-                <p class="file-return"></p>
-             </div>
              <button id="submit" class="submit-btn">Enviar</button>
-          </form>
-
        </div>
+
+       </form>
+
+    </div>
     </div>
     <footer>
        <div class="footer-container">

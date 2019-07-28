@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt'),
-      nodemailer = require('nodemailer'),
-      cloudinary = require('cloudinary'),
-      User = require('./model');
+  nodemailer = require('nodemailer'),
+  cloudinary = require('cloudinary'),
+  User = require('./model');
 
 // Importa la función para generar una contraseña aleatoria
 const {
@@ -31,13 +31,13 @@ exports.registrarUsuario = async (req, res) => {
     }
   });
 
-  let url = 'http://localhost:3000/usuario/login';
+  let url = 'http://localhost:3000/usuario/login/password-change';
 
   let mailOptions = transporter.sendMail({
     from: '"Parrafo Digital" <parrafodigitaltest@gmail.com>',
     to: req.body.email,
     subject: "Email de confirmación",
-    html: `Su contraseña es ${randomPass}, ingrese a este link para iniciar sesión: <a href="${url}">${url}</a>`
+    html: `Su contraseña autogenerada es ${randomPass}, ingrese a este link para concluir el proceso de autentificación: <a href="${url}">${url}</a>`
 
   });
 
@@ -81,6 +81,22 @@ exports.registrarUsuario = async (req, res) => {
   res.sendFile('registro-exitoso.html', {
     root: 'public'
   });
+
+}
+
+exports.passwordChangeHTML = (req, res) => {
+  res.sendFile('cambiar-contraseña.html', {
+    root: 'public'
+  });
+}
+
+exports.passwordChange = async (req, res) => {
+
+  const user = await User.findById({
+    _id: req.session.idUsuario
+  });
+
+
 
 }
 
@@ -170,29 +186,62 @@ exports.loginUsuario = async (req, res) => {
     return res.redirect('/usuario/login')
   }
 
-  if(usuario.isAdminLibreria === true) {
+  if (usuario.isVerified === false) {
+    return res.sendFile('password-change.html', {
+      root: 'public'
+    })
+  }
+
+  console.log(`User verified is ${usuario.isVerified}`);
+
+  if (usuario.isAdminLibreria === true) {
     req.session.adminLibreriaId = usuario._id;
     console.log(req.session);
     res.sendFile('inicio-adminLibreria.html', {
       root: 'public'
-    }); } else {  
-    req.session.userId = usuario._id;
+    });
+  } else {
+    req.session.idUsuario = usuario._id;
     console.log(req.session);
     res.sendFile('inicio.html', {
-    root: 'public'
-  });
+      root: 'public'
+    });
 
   }
 }
 
+
+exports.changePassword = async (req, res) => {
+  
+  const usuario = await User.findOne({
+    _id: req.session.idUsuario
+  });
+  if (!usuario) {
+    return res.redirect('/usuario/login')
+  }
+  const validPass = await bcrypt.compare(req.body.generatedPass, usuario.password);
+  if (!validPass) {
+    return res.redirect('/usuario/login')
+  }
+
+  res.send('Exito!');
+  // const usuario = await User.findByIdAndUpdate(req.session.idUsuario, {
+  //   $set: {
+  //     password: req.body.password
+  //   }
+  // });
+
+}
+
+
 exports.visualizarPerfil = async (req, res) => {
 
   //Muestra el id del usuario guardado en el cookie
-  console.log(req.session.userId)
+  console.log(req.session.idUsuario)
 
   try {
     const usuario = await User.findById({
-      _id: req.session.userId
+      _id: req.session.idUsuario
     });
     res.json(usuario);
 
@@ -204,4 +253,22 @@ exports.visualizarPerfil = async (req, res) => {
 
 }
 
+exports.HTMLViewPerfilUsuarios = (req, res) => {
+  res.sendFile('página-usuario.html', {
+    root: 'public'
+  })
+};
 
+exports.listarUsuario = async (req, res) => {
+  try {
+    const usuario = await User.findById({
+      _id: req.params.idUsuario
+    });
+    res.json(usuario);
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
+};

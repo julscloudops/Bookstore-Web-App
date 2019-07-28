@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', librosAutor);
 
 async function librosAutor() {
-  const url = 'http://localhost:3000/libros/librosNovedosos';
+  const url = 'http://localhost:3000/libro/librosNovedosos';
   const res = await fetch(url);
   const data = await res.json();
   console.log(data);
@@ -23,7 +23,7 @@ async function librosAutor() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${data[i]._id}`;
+    link.href = `/libro/views/${data[i]._id}`;
     link.style.height=cover.height+"px";
     book.className = 'book';
     innerContainer.className = 'rating-holder';

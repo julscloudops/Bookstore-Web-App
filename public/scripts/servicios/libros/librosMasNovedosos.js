@@ -4,8 +4,8 @@ async function listarLibrosNovedosos() {
 
   const url = 'http://localhost:3000/libro/librosNovedosos';
   const res = await fetch(url);
-  const data = await res.json();
-  console.log(data);
+  const librosNovedosos = await res.json();
+  console.log(librosNovedosos);
 
   //Client-side rendering de los libros mas novedosos
   for (let i = 0; i < 3; i++) {
@@ -13,7 +13,7 @@ async function listarLibrosNovedosos() {
     const book = document.createElement('div');
     const link = document.createElement('a');
     const cover = document.createElement('img');
-    const imgSrc = await fetch(data[i].imgUrl);
+    const imgSrc = await fetch(librosNovedosos[i].imgUrl);
     const container = document.createElement('div');
     const seeThroughRating = document.createElement('div');
     const rating1 = document.createElement('button');
@@ -25,13 +25,13 @@ async function listarLibrosNovedosos() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libro/views/${data[i]._id}`;
+    link.href = `/libro/views/${librosNovedosos[i]._id}`;
     book.className = 'book';
     container.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'
     price.className = 'price';
     addToCart.className = 'buy-btn';
-    price.innerHTML = '₡ ' + data[i].price;
+    price.innerHTML = '₡ ' + librosNovedosos[i].price;
     addToCart.innerHTML = 'Agregar al carrito';
 
     link.append(cover);
@@ -47,7 +47,7 @@ async function listarLibrosNovedosos() {
 
     const link = document.createElement('a');
     const cover = document.createElement('img');
-    const imgSrc = await fetch(data[i].imgUrl);
+    const imgSrc = await fetch(librosNovedosos[i].imgUrl);
 
     const container = document.createElement('div');
     const seeThroughRating = document.createElement('div');
@@ -60,13 +60,13 @@ async function listarLibrosNovedosos() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${data[i]._id}`;
+    link.href = `/libros/views/${librosNovedosos[i]._id}`;
     book.className = 'book';
     container.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'
     price.className = 'price';
     addToCart.className = 'buy-btn';
-    price.innerHTML = '₡ ' + data[i].price;
+    price.innerHTML = '₡ ' + librosNovedosos[i].price;
     addToCart.innerHTML = 'Agregar al carrito';
 
 
@@ -82,7 +82,7 @@ async function listarLibrosNovedosos() {
     const book = document.createElement('div');
     const link = document.createElement('a');
     const cover = document.createElement('img');
-    const imgSrc = await fetch(data[i].imgUrl);
+    const imgSrc = await fetch(librosNovedosos[i].imgUrl);
     const container = document.createElement('div');
     const seeThroughRating = document.createElement('div');
     const rating1 = document.createElement('button');
@@ -94,13 +94,13 @@ async function listarLibrosNovedosos() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${data[i]._id}`;
+    link.href = `/libros/views/${librosNovedosos[i]._id}`;
     book.className = 'book';
     container.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'
     price.className = 'price';
     addToCart.className = 'buy-btn';
-    price.innerHTML = '₡ ' + data[i].price;
+    price.innerHTML = '₡ ' + librosNovedosos[i].price;
     addToCart.innerHTML = 'Agregar al carrito';
 
     link.append(cover);

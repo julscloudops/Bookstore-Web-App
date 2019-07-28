@@ -27,7 +27,7 @@ async function listarLibros() {
     const price = document.createElement('span');  
     const addToCart = document.createElement('button');
 
-    link.href = `/libros/views/${data[i]._id}`;
+    link.href = `/libro/views/${data[i]._id}`;
     
     const imgSrc = await fetch(data[i].imgUrl);
     cover.src = imgSrc.url;

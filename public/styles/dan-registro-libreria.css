@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import './navbar.css';
+@import './footer.css';
+
+.footer-container::before {
+  background: none;
+}
+
+.footer-container::after {
+  background: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23f5c16c' stroke-width='0' stroke-opacity='0' %3E%3Ccircle fill='%23821e00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23892301' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23902802' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23972d04' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%239e3205' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23a53807' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23ac3e09' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%23b2440a' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%23b84a0c' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%23bf510f' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%23c55711' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23cb5e13' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23d06516' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23d66c19' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%23dc731b' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%23e17a1f' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23e08228' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23df8931' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  padding: 15px;
+}
+
+.formulario {
+  text-align: center;
+  -webkit-border-radius: 10px 10px 10px 10px;
+  border-radius: 10px 10px 10px 10px;
+  background: #f6f6f6;
+  max-width: 450px;
+  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  margin: 8% 0;
+  color: black;
+  border-bottom: 2px solid #821e00;
+
+}
+
+label {
+  margin: 1% 0;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;
+
+
+}
+.text {
+  width: 48%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #f6f6f6;
+  background-color: #F3EDED;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+
+select {
+  margin: 1% 0;
+  width: 60%;
+  height: 35px;
+  font-size: 12px;
+  border: 2px solid #f6f6f6;
+  background-color: #F3EDED;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  margin-bottom: 1%;
+  font-family: 'Montserrat';
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  padding: 0 2%;
+}
+
+.location select {
+  width: 100%;
+  font-size: 10px;
+}
+
+.direction {
+  width: 92%;
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #f6f6f6;
+  background-color: #F3EDED;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  margin-bottom: 2%;
+}
+.submit-btn {
+  background-color: #821e00;
+  border: none;
+  color: #f3eded;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  box-shadow: 0 10px 30px 0 rgba(233, 127, 95, 0.4);
+  border-radius: 5px 5px 5px 5px;
+  margin-bottom: 2%;
+}
+input:focus {
+  border: 3px solid #821e00;
+  outline: none;
+}
+
+select:focus {
+  border: 3px solid #821e00;
+  outline: none;
+}
+
+.description {
+  margin-bottom: 2%;
+  background-color: #f3eded;
+  font-size: 14px;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px 5px 5px 5px;
+}
+
+textarea {
+  width: 80%;
+  height: 80px;
+  outline: none;   
+  resize: none;
+ 
+}
+
+textarea:focus {
+  border: 3px solid #821e00;
+}
+
+input:focus::-webkit-input-placeholder { 
+  color:transparent; 
+}
+
+/* Botón para ingresar imagen */
+.input-file-trigger {
+  display: block;
+  padding: 14px 8px;
+  background: #821e00;
+  color: #fff;
+  font-size: 0.9em;
+  font-weight: 400;
+  transition: all .4s;
+  cursor: pointer;
+  border-radius: 5px 5px 5px 5px;
+  width: 80%;
+  margin: 0 auto;}
+
+.input-file {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  opacity: 0;
+  padding: 14px 0;
+  cursor: pointer;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+
+.file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.file-return:not(:empty):before {
+  content: "Archivo escogido: ";
+  font-style: normal;
+  font-weight: normal;
+  margin: 0 1%;
+}
+

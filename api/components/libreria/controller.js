@@ -8,30 +8,39 @@ exports.registrarLibreria = async (req, res) => {
 
   //Se crea una nueva libreria
   const newLibreria = new Libreria({
-    nombreComercial: req.body.nombreComercial,
     nombreFantasia: req.body.nombreFantasia,
+    nombreComercial: req.body.nombreComercial,
+    email: req.body.email,
+    phone: req.body.phone,
     description: req.body.description,
-    provincia: req.body.provincia,
-    canton: req.body.canton,
-    distrito: req.body.distrito,
-    direction: req.body.location,
     imgUrl: result.url,
     cloudinary_id: result.public_id,
     adminLibreriaId: req.session.adminLibreriaId
   });
 
   const savedLibreria = await newLibreria.save();
-
   console.log(savedLibreria);
-  res.send('Libreria registrada exitosamente!');
 
-  req.session.libreriaId = savedLibreria._id;
+  req.session.idLibreria = savedLibreria._id;
 
   console.log(req.session);
+
+  res.redirect(`/libreria/admin/${savedLibreria._id}`);
 
 }
 
 exports.listarLibrerias = async (req, res) => {
+  try {
+    const librerias = await Libreria.find();
+    res.json(librerias);
+  } catch (err) {
+    res.json({
+      message: err
+    });
+  }
+}
+
+exports.listarLibreriasHomePage = async (req, res) => {
   try {
     const librerias = await Libreria.find().limit(5);
     res.json(librerias);
@@ -39,6 +48,18 @@ exports.listarLibrerias = async (req, res) => {
     res.json({
       message: err
     });
+  }
+}
+
+
+
+exports.listarLibreria = async (req, res) => {
+  try {
+    const libreria = await Libreria.findById({
+      _id: req.params.idLibreria});
+    res.json(libreria);
+  } catch (err) {
+
   }
 }
 
@@ -54,19 +75,6 @@ exports.HTMLView = async (req, res) => {
   }
 
 }
-
-exports.listarLibreria = async (req, res) => {
-  try {
-    const libreria = Libreria.findById({
-      _id: req.params.idLibreria});
-    res.json(libreria);
-  } catch (err) {
-
-  }
-}
-
-
-
 
 exports.HTMLViewAdmin = async (req, res) => {
   try {

@@ -516,7 +516,6 @@ nav ul li a {
 }
 
 /* Estilos para el pop-up window del search */
-
 .modal-search {
     display: none;
     position: fixed;
@@ -545,14 +544,12 @@ nav ul li a {
 }
 
 
-
-.modal-container {
+.modal-content {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
     /* padding: 1rem; */
-
 }
 
 .exit-btn {
@@ -583,7 +580,7 @@ nav ul li a {
 }
 
 
-.item {
+.itemSearch {
     display: flex;
     flex-direction: column;
     margin: 2% 1%;
@@ -592,13 +589,13 @@ nav ul li a {
 
 }
 
-.img {
+.imgSearch {
     width: 145px;
     border-radius: 30px;
     cursor: pointer;
 }
 
-.name {
+.nameSearch {
     padding: 1%;
     font-size: 12px;
     font-weight: 600;

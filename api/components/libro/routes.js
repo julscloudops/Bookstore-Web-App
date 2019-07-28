@@ -55,7 +55,5 @@ router.get('/JSON/:idLibro', libroController.listarLibro);
 
 router.get('/librosNovedosos', libroController.listarLibrosNovedosos);
 
-
-
 module.exports = router;
 

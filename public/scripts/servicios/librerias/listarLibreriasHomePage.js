@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', listarLibrerias);
+document.addEventListener('DOMContentLoaded', listarLibreriasHomePage);
 
-async function listarLibrerias() {
+async function listarLibreriasHomePage() {
 
-  const url = 'http://localhost:3000/libreria/';
+  const url = 'http://localhost:3000/libreria/home';
 
   const res = await fetch(url);
-  const librerias = await res.json();
+  const libreriasHome = await res.json();
 
-  console.log(librerias);
+  console.log(libreriasHome);
 
-  for(let i = 0; i < librerias.length; i++) {
+  for(let i = 0; i < libreriasHome.length; i++) {
   const container = document.getElementById('libreria-container');
   const libreria = document.createElement('div');
   const link = document.createElement('a');
@@ -23,9 +23,9 @@ async function listarLibrerias() {
   const rating5 = document.createElement('button');
 
   //Este fetch es para traer la imagen de cloudinary
-  const imgSrc = await fetch(librerias[i].imgUrl);
+  const imgSrc = await fetch(libreriasHome[i].imgUrl);
   logo.src = imgSrc.url;
-  link.href = `/libreria/views/${librerias[i]._id}`;
+  link.href = `/libreria/views/${libreriasHome[i]._id}`;
 
   libreria.className = 'libreria';
   ratingContainer.className = 'rating-holder';

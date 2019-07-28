@@ -1,17 +1,98 @@
 @import './navbar-footer.css';
 
 body {
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat';
-    background: #f3eded;
-    color: #f3eded;
-   
-  }
-  
-  :root {
-    --red: #821e00;
-    --orange: #DF8931;
-    --darkorange: #AA530E;
-  }
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+  background: #f3eded;
+  color: #f3eded;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 15% auto 12%;
+  grid-template-areas:
+    "header "
+    "main"
+    "footer";
+}
+
+.navbar-container {
+  grid-area: header;
+  margin-bottom: 1%;
+}
+
+.footer-container {
+  grid-area: footer;
+  margin-top: 14%;
+}
+
+
+:root {
+  --red: #821e00;
+  --orange: #DF8931;
+  --darkorange: #AA530E;
+}
+
+.libreria-container {
+  margin: 0 6%;
+  grid-area: main;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 18% auto;
+  grid-template-rows: 30% 40% 35% 30%;
+  grid-template-areas:
+    "logo ofertas"
+    "info sucursales"
+    "clubes libros"
+    "reviews reviews"
+}
+
+.logo-libreria {
+  grid-area: logo;
+  /* background: #F5C16C;
+  border-radius: 20px; */
+}
+
+.logo-libreria img {
+  max-width: 180px;
+  border-radius: 20px;
+
+}
+
+.ofertas {
+  grid-area: ofertas;
+  background: #F5C16C;
+  border-radius: 20px;
+  overflow: none;
+}
+
+
+.info-libreria {
+  grid-area: info;
+  background: #F5C16C;
+  border-radius: 20px;
+}
+
+.sucursales {
+  grid-area: sucursales;
+  background: #F5C16C;
+  border-radius: 20px;
+}
+
+.clubes {
+  grid-area: clubes;
+  background: #F5C16C;
+  border-radius: 20px;
+}
+
+.libros {
+  grid-area: libros;
+  background: #F5C16C;
+  border-radius: 20px;
+}
+
+.reviews {
+  grid-area: reviews;
+  background: #F5C16C;
+  border-radius: 20px;
+}

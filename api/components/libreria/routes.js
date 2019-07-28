@@ -40,16 +40,20 @@ const redirectIndex = (req, res, next) => {
   }
 }
 
+
+
 //Registro libreria
 router.post('/registro', redirectIndex, upload.single('img'), libreriaController.registrarLibreria);
  
 //Listar librerias
 router.get('/', libreriaController.listarLibrerias);
+router.get('/home', libreriaController.listarLibreriasHomePage);
 
-router.get('/views/:idLibreria', libreriaController.HTMLView);
-
+//Listar libreria
 router.get('/JSON/:idLibreria', libreriaController.listarLibreria);
+router.get('/views/:idLibreria', libreriaController.HTMLView);
+router.get('/admin/:idLibreria', redirectIndex, libreriaController.HTMLViewAdmin);
 
-router.get('admin/views/:idLibreria', libreriaController.HTMLViewAdmin);
+
 
 module.exports = router;

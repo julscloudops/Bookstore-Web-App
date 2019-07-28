@@ -1,0 +1,233 @@
+@import './navbar.css';
+@import './footer.css';
+@import './registro.css';
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.grid-container {
+    height: 100vh;
+    margin-top: 4%;
+    margin-left: 6%;
+    margin-bottom: 1%;
+    display: grid;
+    grid-template-columns: 20% 19% 19% 22%;
+    grid-template-rows: 23% 17% 17% 32%;
+    grid-gap: 1.5em;
+    grid-template-areas:  "logo libro libro libro " 
+                          "info pic pic pic"
+                          "info pic pic pic"
+                          "maps club club club";    
+}
+
+
+
+
+/*Logo*/
+.logoSucursal{
+    grid-area: logo;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931 ; 
+    
+
+}
+
+.insertLogo{
+    width: 100%;
+    height: 100%;
+}
+
+/*Info*/
+.infoSucursal{
+   grid-area: info;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow:0px 0px 6px 10px #DF8931; 
+    padding-left: 5%;
+    
+}
+
+
+.infoSucursal h3 {
+    color: #821E00;
+    font-size:2.6vh;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-right: 3%;
+    padding-bottom: 1%;
+    margin-bottom: 5%;
+    text-decoration: underline #DF8931;
+
+}
+
+
+
+
+.infoTitle1 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.infoTitle2 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.infoTitle3 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.infoTitle4 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.infoTitle5 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.infoTitle6 {
+    color: #821E00;
+    font-size:2.6vh;
+    position: absolute;
+}
+
+.inSucursal {
+    color: #DF8931;
+    font-size: 2.3vh;
+    position: absolute;
+    left: 110%;
+    top: 0%;
+    margin-right: -221%;
+
+}
+
+
+.ranking{
+    grid-area: ranking;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931 ; 
+    margin-bottom:2%; 
+}
+
+.rating {
+  float: left;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  font-size: 28px;
+  margin-top: 20%;
+  color: #DF8931;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 0.6em;
+  cursor: pointer;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before,
+.rating > span.rated:before,
+.rating > span.rated ~ span:before{
+    color: #821e00;
+}
+
+
+
+.maps {
+  grid-area: maps;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931 ; 
+   
+}
+.libro {
+  grid-area: libro;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931;  
+     margin-left: 8%;
+    margin-bottom: 0.6%;
+
+}
+
+.carousel{
+     border-radius: 20px;
+}
+
+
+
+
+.pic {
+  grid-area: pic;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931;  
+     margin-left: 8%;
+
+}
+
+
+.pic-sucursal1{
+    top: 9%;
+    left: 5%;
+    position: relative; 
+    width: 25%;
+    height: 80%;
+}
+
+.pic-sucursal2{
+    top: 9%;
+    left: 11%;
+    position: relative; 
+    width: 25%;
+    height: 80%;
+}
+
+.pic-sucursal3{
+    top: 9%;
+    left: 18%;
+    position: relative; 
+    width: 25%;
+    height: 80%;
+}
+
+
+
+.club {
+  grid-area: club;
+  background: #F5C16C;
+  border-radius: 20px;
+  box-shadow: 0px 0px 6px 10px #DF8931;  
+     margin-left: 8%;
+    
+
+}
+
+.clubT{
+    color: #821E00;
+    padding-left: 3%;
+    padding-top: 3%;
+    font-weight: 800;
+    
+}
+
+
+
+

@@ -18,12 +18,11 @@ exports.searchEngine = async (req, res) => {
     let sucursales = await Sucursal.find({name: {$regex: query}});
     let autores = await Autor.find({name: {$regex: query}});
     let libros = await Libro.find({title: {$regex: query}});
+    let ofertas = await Oferta.find({name: {$regex: query}});
 
-    // let ofertas = await Oferta.find({name: {$regex: query}});
+    let searchData = [usuarios, librerias, sucursales, autores, libros, ofertas];
 
-    let data = [usuarios, librerias, sucursales, autores, libros];
-
-    res.json(data);
+    res.json(searchData);
   } catch (err) {
     res.json({
       message: err
@@ -31,72 +30,3 @@ exports.searchEngine = async (req, res) => {
   }
 
 }
-
-
-//   let usuarios = User.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-//   let librerias = Libreria.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-//   let sucursales = Sucursal.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-//   let autores = Autor.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-//   let libros = Libro.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-//   let ofertas = Oferta.find({
-//     $or: [{
-//       'name': {
-//         $regex: `.*${req.params.search}.*`,
-//         '$options': 'i'
-//       }
-//     }]
-//   }).exec();
-
-// return Promise.all([usuarios, librerias, sucursales, autores, libros, ofertas]).then(() => {
-
-//   let data = {
-//     usuarios: result[0],
-//     librerias: result[1],
-//     sucursales: result[2],
-//     autores: result[3],
-//     libros: result[4],
-//     ofertas: result[5]
-//   }
-
-
-// });

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles/perfil-usuario.css">
+  <title>Perfil usuario</title>
+</head>
+<body>
+      <!-- Navbar -->
+    <div class="navbar-container">
+      <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
+      <div class="down-arrow">
+        <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+        <div class="menu">        
+            <a href="/autor/listar">Autores</a>
+            <a href="/usuario/catalogo">Catálogo</a>
+          </div>
+      </div>
+
+      <div class="search-contain">
+        <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+        <input 
+        type="text" 
+        id="search" 
+        placeholder=""
+        maxlength="40"
+        autocomplete="off"
+        >
+        <p id="tip">Presione enter para buscar</p>
+      </div>
+
+      <div class="categorias">
+        <a href="">Categorías</a>
+      </div>
+      <div class="reading-club">
+        <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
+      </div>
+      <div class="shopping-cart">
+        <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button">
+      </div>
+      <div class="notificaciones">
+        <img src="/images/notifications.svg" id="notifications-button" alt="notifications button">
+      </div>
+      <div id="avatar" class="avatar">
+          <ul id="dropdown" class="dropdown">
+              <li><a href="/usuario/perfil">Perfil</a></li>
+              <li><a href="/usuario/settings">Configuración</a></li> 
+              <li><a href="/usuario/logout">Salir sesión</a></li>
+            </ul>
+        <img src="/images/avatar.svg" id="avatar-btn" alt="avatar button">
+      </div>
+    </div>
+
+<div id="user-profile" class="user-profile"></div>
+
+<div class="info-usuario"></div>
+<div id="libros-usuario" class="libros-usuario"></div>
+<div class="clubes-usuario"></div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="container">
+          <a href="/">
+            <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="logo">
+          </a>
+          <p class="address">San Jose, 11801<br>Costa Rica</p>
+          <ul class="footer-links">
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- //Carga el javascript para que funcione la barra de búsquedas -->
+  <script src="/scripts/search-bar.js"></script>
+  <script src="/scripts/servicios/usuarios/listarUsuario.js"></script>
+  <script src="/scripts/servicios/libros/intercambioLibros.js"></script>
+
+
+</body>
+
+</html>

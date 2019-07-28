@@ -12,101 +12,59 @@
 <body>
   <!--Navbar-->
   <div class="navbar-container">
-      <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
-      <div class="down-arrow">
-        <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
-        <div class="menu">        
-            <a href="/autor/listar">Autores</a>
-            <a href="/usuario/catalogo">Catálogo</a>
-          </div>
-      </div>
-      <div class="search-contain">
-        <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-        <input 
-        type="text" 
-        id="search" 
-        maxlength="40"
-        placeholder="" 
-        autofocus
-        autocomplete="off">
-        <p id="tip">Presione enter para buscar</p>
-      </div>
-      <div class="categorias">
-        <a href="">Categorías</a>
-      </div>
-      <div class="settings">
-        <img src="/images/settings.svg" id="settings-btn">
-        <div class="dropdown">
-          <a href="/libreria/registro"><span>Registrar libreria</span></a>
-          <a href="/sucursal/registro">Registrar sucursal</a>
-          <a href="/autor/registro">Registrar autor</a>
-         
-          <a href="/oferta/registro">Registrar oferta</a>
-          <a href="#">Configuración</a>
-          <a id="logout" href="/">Salir sesión</a>
-        </div>
+    <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
+    <div class="down-arrow">
+      <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+      <div class="menu">
+        <a href="/autor/listar">Autores</a>
+        <a href="/usuario/catalogo">Catálogo</a>
       </div>
     </div>
+    <div class="search-contain">
+      <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+      <input type="text" id="search" maxlength="40" placeholder="" autofocus autocomplete="off">
+      <p id="tip">Presione enter para buscar</p>
+    </div>
+    <div class="categorias">
+      <a href="">Categorías</a>
+    </div>
+    <div class="settings">
+      <img src="/images/settings.svg" id="settings-btn">
+      <div class="dropdown">
+        <a href="/libreria/registro"><span>Registrar libreria</span></a>
+        <a href="/sucursal/registro">Registrar sucursal</a>
+        <a href="/autor/registro">Registrar autor</a>
+
+        <a href="/oferta/registro">Registrar oferta</a>
+        <a href="#">Configuración</a>
+        <a id="logout" href="/">Salir sesión</a>
+      </div>
+    </div>
+  </div>
 
   <div class="wrapper">
     <div class="formulario">
       <h2>Registro librería</h2>
-      <form> 
-        <input id="nombreFantasia" type="text" class="text" name="nombreFantasia"
-          placeholder="nombre fantasia" autocomplete="off">
-        <input id="nombreComercial" type="text" class="text" name="nombreComercial"
-          placeholder="nombre comercial" autocomplete="off">
+      <form method="POST" action="http://localhost:3000/libreria/registro" enctype="multipart/form-data">
+        <input id="nombreFantasia" type="text" class="text" name="nombreFantasia" placeholder="nombre fantasia"
+          autocomplete="off">
+        <input id="nombreComercial" type="text" class="text" name="nombreComercial" placeholder="nombre comercial"
+          autocomplete="off">
+        <input id="email" type="email" class="email" name="email" placeholder="correo electrónico"
+          autocomplete="off" maxlength="50" required>
 
+        <input class="phone" type="tel" name="phone" placeholder="teléfono" autocomplete="off">
         <div>
           <label for="decription">Descripción</label>
-          <textarea 
-          id="description" 
-          name="description" 
-          class="description" 
-          cols="30" rows="10"
-          wrap="physical"
-          maxlength="600"></textarea>
+          <textarea id="description" name="description" class="description" cols="30" rows="10" wrap="physical"
+            maxlength="600"></textarea>
         </div>
-
-
-        <div class="location">
-          <div>
-            <label for="provincia" >Provincia</label>
-            <select name="provincia" id="provincia" >
-              <option id="optionProvincias" value="">Seleccione una provincia</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="canton">Cantón</label>
-            <select name="canton" id="canton"  >
-              <option id="optionCantones" value="">Seleccione un cantón</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="distrito" >Distrito</label>
-            <select name="distrito" id="distrito" class="fadeIn second" >
-              <option id="optionDistritos" value="">Seleccione un distrito</option>
-            </select>
-          </div>
-        </div>
-
-        <input id="direction" type="text" class="direction" name="direction"
-          placeholder="dirección exacta" autocomplete="off">
-
         <div class="input-file-container">
-          <input 
-          id="img" 
-          type="file" 
-          class="input-file" 
-          name="img" 
-          accept=" .png, .jpg, .jpeg"
-          required>
+          <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" required>
           <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
           <p class="file-return"></p>
         </div>
-        <button id="submit" class="submit-btn">Enviar</button>
+        <button id="submit" class="submit-btn" type="submit" class="enviar  fourth">Enviar</button>
       </form>
     </div>
   </div>
@@ -128,7 +86,7 @@
   <script src="/scripts/search-bar.js"></script>
   <script src="/scripts/provincias-cantones-distritos.js"></script>
   <script src="/scripts/upload-button.js"></script>
-  <script src="/scripts/servicios/libreria/registrarLibreria.js"></script>
+  <!-- <script src="/scripts/servicios/librerias/registrarLibreria.js"></script> -->
 </body>
 
 </html>

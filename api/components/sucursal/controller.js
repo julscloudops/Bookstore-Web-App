@@ -8,9 +8,9 @@ exports.registrarSucursal = async (req, res) => {
 
   //Se crea una nueva sucursal
  const newSucursal = new Sucursal({
-  // nombreComercial: req.body.nombreComercial,
-  // nombreFantasia: req.body.nombreFantasia, 
+  horario: req.body.phone,
   phone: req.body.phone,
+  description: req.body.description,
   provincia: req.body.provincia, 
   canton: req.body.canton, 
   distrito: req.body.distrito, 
@@ -18,19 +18,71 @@ exports.registrarSucursal = async (req, res) => {
   googleMaps: req.body.location,
   imgUrl: result.url,
   cloudinary_id: result.public_id,
-  libreriaId: req.session.libreriaId
+  idLibreria: req.session.idLibreria
 
 });
 
 try { 
   console.log(req.body);
   const savedSucursal = await newSucursal.save();
-  res.json(savedSucursal);
   
-  req.session.libreriaId.SucursalId = savedSucursal._id;
+  req.session.idLibreria.idSucursal = savedSucursal._id;
   console.log(req.session);
+
+  res.redirect(`/sucursal/admin/views/${savedSucursal._id}`);
 
 } catch(err){
   res.json({message: err});
 }
+}
+
+exports.listarSucursal = async (req, res) => {
+  try {
+    const sucursal = await Sucursal.findById({
+      _id: req.params.idSucursal
+    });
+    res.json(sucursal);
+  } catch(err){
+    res.json({
+      message: err
+    })
+  }
+}
+
+exports.listarSucursales = async (req, res) => {
+  try {
+    const sucursales = await Sucursal.find({libreriaId: req.session.libreriaId});
+    res.json(sucursales);
+    
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}
+
+exports.HTMLView = (req, res) => {
+  try {
+    res.sendFile('página-sucursal.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
+}
+
+exports.HTMLViewAdmin = (req, res) => {
+  try {
+    res.sendFile('página-sucursal-adminLibreria.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+
 }
