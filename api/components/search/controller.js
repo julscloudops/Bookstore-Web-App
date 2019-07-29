@@ -1,9 +1,9 @@
 const User = require('../usuario/model'),
-  Libreria = require('../libreria/model'),
-  Sucursal = require('../sucursal/model'),
-  Autor = require('../autor/model'),
-  Libro = require('../libro/model'),
-  Oferta = require('../oferta/model');
+      Libreria = require('../libreria/model'),
+      Sucursal = require('../sucursal/model'),
+      Autor = require('../autor/model'),
+      Libro = require('../libro/model'),
+      Oferta = require('../oferta/model');
 
 
 exports.searchEngine = async (req, res) => {
@@ -12,7 +12,6 @@ exports.searchEngine = async (req, res) => {
   console.log(`Este es el query! ${query}`);
 
   try {
-
     let usuarios = await User.find({firstName: {$regex: query}});
     let librerias = await Libreria.find({nombreFantasia: {$regex: query}});
     let sucursales = await Sucursal.find({name: {$regex: query}});

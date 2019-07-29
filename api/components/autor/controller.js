@@ -75,3 +75,7 @@ exports.listarAutor = async (req, res) => {
     })
   }
 }
+
+exports.deleteAuthor = async (req, res) => {
+  const author = await Autor.findByIdAndDelete({_id: req.params.idAutor});
+}

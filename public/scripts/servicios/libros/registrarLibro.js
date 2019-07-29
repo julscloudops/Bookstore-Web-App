@@ -34,6 +34,15 @@ btnConfirmEditorial.addEventListener('click', (event) => {
   backdrop.style.display = 'none';
 });
 
+document.addEventListener('keydown', (event) => {
+  if (event.keyCode == 27) {
+    modalCategoria.style.display = 'none';
+    modalEditorial.style.display = 'none';
+    backdrop.style.display = 'none';
+
+}
+});
+
 btnCategoria.addEventListener('click', (event) => {
   modalCategoria.style.display = 'block';
   backdrop.style.display = 'block';
@@ -91,31 +100,33 @@ function registrarEditorial() {
 // }
 
 
+const submitBtn = document.getElementById('submit');
+submitBtn.addEventListener('click', registrarLibro);
 
 
-// function registrarLibro(event) {
+function registrarLibro(event) {
 
-//   event.preventDefault();
+  event.preventDefault();
 
-// const formData = new FormData();
-// formData.append('author', document.getElementById('author').value);
-// formData.append('price', document.getElementById('price').value);
-// formData.append('title', document.getElementById('title').value);
-// formData.append('isbn', document.getElementById('isbn').value);
-// formData.append('genre', document.getElementById('genre').value);
-// formData.append('editorial', document.getElementById('editorial').value);
-// formData.append('description', document.getElementById('description').value);
-// formData.append('img', document.getElementById('img').files[0]);
+const formData = new FormData();
+formData.append('author', document.getElementById('author').value);
+formData.append('price', document.getElementById('price').value);
+formData.append('title', document.getElementById('title').value);
+formData.append('isbn', document.getElementById('isbn').value);
+formData.append('genre', document.getElementById('genre').value);
+formData.append('editorial', document.getElementById('editorial').value);
+formData.append('description', document.getElementById('description').value);
+formData.append('img', document.getElementById('img').files[0]);
 
-// const url = 'http://localhost:3000/libros/registro';
+const url = 'http://localhost:3000/libro/registro';
 
-//   const fetchOptions = {
-//       method: 'POST',
-//       body: formData
-//   }
+  const fetchOptions = {
+      method: 'POST',
+      body: formData
+  }
 
-// fetch(url, fetchOptions)
-// .then(res => res)
-// .catch(error => console.error('Error: ' + error));
+fetch(url, fetchOptions)
+.then(res => res)
+.catch(error => console.error('Error: ' + error));
 
-// }
+}

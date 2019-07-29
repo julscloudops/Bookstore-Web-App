@@ -57,6 +57,8 @@ const redirectIndex = (req, res, next) => {
 
  router.get('/JSON/:idAutor', autorController.listarAutor);
 
+ router.delete('/JSON/:idAutor', autorController.deleteAuthor);
+
 
 
 module.exports = router;

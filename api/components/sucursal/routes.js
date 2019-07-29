@@ -43,9 +43,12 @@ const redirectIndex = (req, res, next) => {
 
 //Registro sucursal
  router.post('/registro', redirectIndex, upload.single('img'), sucursalController.registrarSucursal);
-
  
- router.get('/JSON/:idSucursal', sucursalController.listarSucursal);
+//Listar sucursales
+router.get('/', sucursalController.listarSucursales);
+
+//Listar sucursal
+router.get('/JSON/:idSucursal', sucursalController.listarSucursal);
 router.get('/views/:idSucursal', sucursalController.HTMLView);
 router.get('admin/views/:idSucursal', redirectIndex, sucursalController.HTMLViewAdmin);
 

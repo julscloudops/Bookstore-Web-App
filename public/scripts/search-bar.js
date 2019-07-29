@@ -1,8 +1,10 @@
-
 const navbar = document.getElementById('nav');
 const searchIcon = document.getElementById('search-btn');
 const search = document.getElementById('search');
 const tip = document.getElementById('tip');
+const logoNavbar = document.getElementById('logoNavbar');
+const logoFooter = document.getElementById('logoFooter');
+
 
 searchModal();
 
@@ -36,6 +38,17 @@ function typeWriter() {
     setTimeout(typeWriter, speed);
   }
 }
+
+logoNavbar.addEventListener('click', () => {
+  window.location.href = 'http://localhost:3000/usuario/inicio';
+
+});
+
+// logoFooter.addEventListener('click', () => {
+//   window.location.href = 'http://localhost:3000/usuario/inicio';
+
+// });
+
 
 
 exitBtn.addEventListener('click', () => {
@@ -216,11 +229,3 @@ function searchModal() {
   modal.append(div, content);
   navbar.append(backdrop, modal);
 }
-
-
-const logo = document.getElementById('logoNavbar');
-
-logo.addEventListener('click', () => {
-  window.location.href = 'http://localhost:3000/usuario/inicio';
-
-});

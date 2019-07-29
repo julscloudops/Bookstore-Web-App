@@ -71,3 +71,14 @@ exports.listarOferta = async (req, res) => {
     })
   }
 }
+
+exports.listarOfertas = async (req, res) => {
+  try {
+    const ofertas = await Oferta.find();
+    res.json(ofertas);
+  } catch(err){
+    res.json({
+      message: err
+    })
+  }
+}

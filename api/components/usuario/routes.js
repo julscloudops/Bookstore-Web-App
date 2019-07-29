@@ -43,7 +43,7 @@ const redirectHome = (req, res, next) => {
 
 const redirectHomeAdmin = (req, res, next) => {
   if(req.session.adminLibreriaId) {
-    res.sendFile('inicio-adminLibreria.html');
+    res.sendFile('inicio-adminLibreria.html', {root: 'public'});
   } else {
     next()
   }
@@ -70,7 +70,7 @@ router.get('/login', (req, res) => {
 });
 router.post('/login', usuarioController.loginUsuario);
 
-router.patch('/change-password', usuarioController.changePassword);
+router.put('/change-password', usuarioController.changePassword);
 
 
 router.get('/perfil', (req, res) => {
@@ -83,7 +83,7 @@ router.get('/views/:idUsuario', usuarioController.HTMLViewPerfilUsuarios);
 
 router.get('/JSON/:idUsuario', usuarioController.listarUsuario);
 
-router.get('/inicio', (req, res) => {
+router.get('/inicio', redirectHomeAdmin, (req, res) => {
   res.sendFile('inicio.html', {root: 'public'}); 
 
 });

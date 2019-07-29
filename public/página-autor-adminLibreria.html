@@ -11,7 +11,7 @@
 
 <body>
  <!--Navbar-->
- <div class="navbar-container">
+ <div id="nav" class="navbar-container">
     <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
     <div class="down-arrow">
       <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
@@ -31,6 +31,14 @@
       autocomplete="off"
       >
       <p id="tip">Presione enter para buscar</p>
+    </div>
+    <div id="backdrop" class="backdrop"></div>
+    <div id="modal-search" class="modal-search">
+        <div>
+            <img id="exit-btn" class="exit-btn" src="./images/exit.svg" alt="">
+            <p class="search-txt">Resultado de la búsqueda:</p>
+        </div>
+        <div id="modal-container" class="modal-container"></div>
     </div>
     <div class="categorias">
       <a href="">Categorías</a>

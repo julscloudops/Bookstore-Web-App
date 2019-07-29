@@ -60,7 +60,7 @@ async function listarLibrosNovedosos() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${librosNovedosos[i]._id}`;
+    link.href = `/libro/views/${librosNovedosos[i]._id}`;
     book.className = 'book';
     container.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'
@@ -94,7 +94,7 @@ async function listarLibrosNovedosos() {
     const addToCart = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${librosNovedosos[i]._id}`;
+    link.href = `/libro/views/${librosNovedosos[i]._id}`;
     book.className = 'book';
     container.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'
