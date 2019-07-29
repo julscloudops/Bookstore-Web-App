@@ -34,6 +34,7 @@ const redirectIndex = (req, res, next) => {
   }
 }
 
+router.get('/', ofertaController.listarOfertas);
 
 router.get('/registro', redirectIndex, ofertaController.registrarOfertaHTML);
 

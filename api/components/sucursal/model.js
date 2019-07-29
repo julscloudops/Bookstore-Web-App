@@ -13,6 +13,5 @@ const modeloSucursal = new mongoose.Schema({
           idLibreria: {type: String, unique: true}
 });
 
-
 module.exports = mongoose.model('Sucursal', modeloSucursal, 'sucursales');
 

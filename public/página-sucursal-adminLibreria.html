@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <link rel="stylesheet" href="/styles/página-sucursal-adminLibreria.css">
+      
+      <title>Libreria</title>
+   </head>
+   <body>
+        <!-- Navbar admin-libreria -->
+  <div id="nav" class="navbar-container">
+    <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
+    <div class="down-arrow">
+      <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+      <div class="menu">        
+          <a href="/autor/listar">Autores</a>
+          <a href="/usuario/catalogo">Catálogo</a>
+        </div>
+    </div>
+    <div class="search-contain">
+      <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+      <input 
+      type="text" 
+      id="search" 
+      placeholder="" 
+      autofocus
+      maxlength="40"
+      autocomplete="off"
+      >
+      <p id="tip">Presione enter para buscar</p>
+    </div>
+    <div class="categorias">
+      <a href="">Categorías</a>
+    </div>
+    <div class="settings">
+      <img src="/images/settings.svg" id="settings-btn">
+      <div class="dropdown">
+        <a href="/libreria/registro"><span>Registrar libreria</span></a>
+        <a href="/sucursal/registro">Registrar sucursal</a>
+        <a href="/autor/registro">Registrar autor</a>
+        <a href="/libro/registro">Registrar libro</a>
+        <a href="/oferta/registro">Registrar oferta</a>
+        <a href="#">Configuración</a>
+        <a id="logout" href="/">Salir sesión</a>
+      </div>
+    </div>
+  </div>
+
+      <div class="wrapper">
+         <div class="grid-container">
+            <div class="logoLibreria">
+               <img id="logo" class="insertLogo" >
+            </div>
+            
+      <footer>
+            <div class="footer-container">
+              <div class="container">
+                <a href="/">
+                  <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="logo">
+                </a>
+                <p class="address">San Jose, 11801<br>Costa Rica</p>
+                <ul class="footer-links">
+                  <li><a href="#">Términos y condiciones</a></li>
+                  <li><a href="#">Política de privacidad</a></li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+
+      <!-- //Carga el javascript para que funcione la barra de búsquedas -->
+      <script src="/scripts/search-bar.js"></script>
+      <script src="/scripts/servicios/librerias/listarSucursal.js"></script>
+
+   </body>
+</html>

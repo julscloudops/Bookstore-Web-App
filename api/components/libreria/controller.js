@@ -19,6 +19,7 @@ exports.registrarLibreria = async (req, res) => {
   });
 
   const savedLibreria = await newLibreria.save();
+  
   console.log(savedLibreria);
 
   req.session.idLibreria = savedLibreria._id;

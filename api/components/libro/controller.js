@@ -43,7 +43,6 @@ exports.registrarLibro = async (req, res) => {
 
 res.redirect(`/libros/admin/views/${savedBook._id}`);
 
-
 }
 
 exports.listarLibrosNovedosos = async (req, res) => {

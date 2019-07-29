@@ -42,7 +42,7 @@ input:focus {
 }
 
 .navbar-container {
-  background: #f3eded;
+  background: #dad2d2;
   display: flex;
   box-shadow: 2px 2px 1px #f3eded;
   align-items: center;

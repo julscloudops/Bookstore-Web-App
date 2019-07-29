@@ -1,102 +1,113 @@
-@import './navbar-footer-adminLibreria.css';
+@import './navbar-footer.css';
 
 body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  box-sizing: border-box;
+  font-family: 'Montserrat';
   background: #f3eded;
+  color: #821e00;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 15% auto 12%;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer"
 }
 
-
-
-:root {
-  --red: #821e00;
-  --orange: #DF8931;
-  --darkorange: #AA530E;
+.navbar-container {
+  grid-area: header;
+  margin-bottom: 1%;
 }
 
-.autor-container {
-  display: flex;
+.footer-container {
+  grid-area: footer;
+  margin-top: 14%;
 }
 
-.autor {
-  display: flex;
-  flex-direction: column;
+.sucursal-container {
+  margin: 0 6%;
+  grid-area: main;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 24% auto;
+  grid-template-rows: auto 30% auto auto;
+  grid-template-areas:
+    "info ofertas"
+    "maps libros"
+    "reviews reviews"
+}
+
+.sucursal-info {
+  grid-area: info;
+  margin: 0 auto;
+}
+
+.sucursal-info img {
+  max-width: 300px;
+  max-height: 150px;
   border-radius: 20px;
-  margin: 0 0 0 10%;
+  margin: 0 auto;
+
+}
+
+.ofertas {
+  grid-area: ofertas;
+}
+
+.carousel-item img {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.info-sucursal {
+  grid-area: info;
+  background: #DF8931;
+  border-radius: 20px;
+}
+
+.info-sucursal-txt {
+  font-size: 16px;
+  color: #821e00;
+  text-align: justify;
+}
+
+.google-maps {
+  grid-area: maps;
+  background: #DF8931;
+  border-radius: 20px;
+  /* width: 280px;
+  height: 250px; */
+}
+
+.libros {
+  grid-area: libros;
+  background: #DF8931;
+  border-radius: 20px;  
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  justify-content: center;
   align-items: center;
 
 }
 
-.img {
-  width: 380px;
-  border-radius: 20px;
-}
-
-.name {
-  display: block;
-  background: #DF8931;
-  padding: 1% 2%;
-  border-radius: 5px;
-  color: #F3EDED;
-  font-weight: 200;
-  letter-spacing: 2px;
-}
-
-.description {
-  background: #DF8931;
-  border-radius: 20px;
-  color: #F3EDED;
-  font-weight: 200;
-  font-size: 18px;
-  letter-spacing: 1.4px;
-  text-align: justify;
-  margin: 4% 10% 0 1%;
-  padding: 1% 2%;
-
-}
-
-.libros-autor {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
-  justify-content: center;
-  background: #DF8931;
-  border-radius: 20px;
-  margin: 1% 10%;
-  overflow: auto;
-  z-index: 1;
-}
-
-
-.libros-autor::-webkit-scrollbar {
-  width: 6px;
-  background-color: #F3EDED;
-}
-
-.libros-autor::-webkit-scrollbar-thumb {
-  background-color: #DF8931;
-  border-radius: 40px;
-}
-
-/* Estilos para que funcione el contenedor de libros */
 .book {
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin: 6%;
+  margin: 0 10%;
 }
 
 .book a img {
-  width: 40%;
+  width: 60%;
   border-radius: 20px;
   cursor: pointer;
 }
 
 .buy-btn {
   background: #821E00;
-  padding: 8px;
+  padding: 6px;
   border-radius: 30px;
   text-transform: uppercase;
   font-size: 0.6rem;
@@ -105,16 +116,40 @@ body {
 
 }
 
-footer {
-  margin-top: 5%;
+.reviews {
+  grid-area: reviews;
+  background: #F5C16C;
+  color: #821E00;
+  border-radius: 20px;
+  /* margin: -6% 10% 0 37.5%; */
+
 }
 
+.reviews h3 {
+  text-align: center;
+  padding-top: 1%;
+  font-size: 18px;
+}
 
-/* Rating system */
+.user-review {
+  display: flex;
+  align-items: center;
+  padding: 1%;
+  overflow: auto;
+  border-top: 2px solid #821E00;
+  /* border-bottom: 2px solid #821E00; */
+
+}
+
+.user-review img {
+  width: 6%;
+  margin-right: 1%;
+}
+
+/* Standalone svg star rating system */
 .rating-holder {
   display: inline-block;
-  border-radius: 1.5625em;
-  margin-top: 56%;
+  margin-top: 1%;
 }
 
 .c-rating button {
@@ -282,6 +317,12 @@ footer {
   background: url("data:image/svg+xml;utf8,%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22gold%22%20d%3D%22M457.888 210.672l-139.504-20.272-62.384-126.4-62.384 126.4-139.504 20.272 100.944 98.384-23.84 138.928 124.768-65.6 124.768 65.6-23.84-138.928c0 0 100.944-98.384 100.944-98.384z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E") center/cover no-repeat;
 }
 
+.c-rating--sucursal {
+  display: flex;
+  justify-content: center;
+  font-size: 80%;
+}
+
 .c-rating--big {
-  font-size: 150%;
+  font-size: 80%;
 }

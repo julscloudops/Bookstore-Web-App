@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/styles/registro-sucursal.css">
     <title>Registro sucursal</title>
  </head>
-
  <body>
 
     <!--Navbar-->
@@ -43,6 +42,7 @@
        </div>
     </div>
 
+
     <!--Formulario-->
     <div class="wrapper ">
        <div class="formulario">
@@ -51,9 +51,6 @@
              <input id="horario" type="text" class="text" name="horario" placeholder="horario de atención"
                 autocomplete="off">
              <input id="phone" type="tel" class="text" name="phone" placeholder="teléfono" autocomplete="off">
-             <label for="decription">Descripción</label>
-             <textarea name="description" id="description" class="description" cols="30" r ows="10" wrap="physical"
-                maxlength="1000"></textarea>
 
              <div class="location">
                 <div>
@@ -75,13 +72,12 @@
                    </select>
                 </div>
              </div>
-             <input type="text" class="direction" name="direction" placeholder="dirección exacta" autocomplete="off">
+             <input  id="direction" type="text" class="direction" name="direction" placeholder="dirección exacta" autocomplete="off">
 
-             <input type="text" class="direction" name="googleMaps" placeholder="dirección Google Maps"
+             <input  id="google-maps" type="text" class="direction" name="googleMaps" placeholder="dirección Google Maps"
                 autocomplete="off">
-
-             <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" required>
              <label tabindex="0" for="img" class="input-file-trigger">Ingrese una imagen</label>
+             <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" required>
              <p class="file-return"></p>
 
              <button id="submit" class="submit-btn">Enviar</button>
@@ -109,6 +105,7 @@
     <!-- //Carga el javascript para que funcione la barra de búsquedas -->
     <script src="/scripts/search-bar.js"></script>
     <script src="/scripts/provincias-cantones-distritos.js"></script>
+    <!-- <script src="/scripts/servicios/sucursales/registrarSucursal.js"></script> -->
 
     <!-- Activa el funcionamiento del botón para subir imágenes -->
     <script src="/scripts/upload-button.js"></script>
