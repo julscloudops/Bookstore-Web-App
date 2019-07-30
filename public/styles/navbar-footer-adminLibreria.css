@@ -18,6 +18,18 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
+.navbar-container a {
+  text-decoration: none;
+}
+
+.navbar-container a:hover {
+  text-decoration: none;
+}
+
 body {
   background: #f3eded
 }
@@ -195,6 +207,8 @@ input:focus {
   cursor: pointer;
   overflow: hidden;
   display: flex;
+  position: relative;
+
   align-items: center;
   justify-content: center;
 }
@@ -209,7 +223,7 @@ input:focus {
   color: #f3eded;
 }
 
-
+/* 
 .settings {
   display: flex;
   position: relative;
@@ -221,13 +235,7 @@ input:focus {
   cursor: pointer;
   align-items: center;
   justify-content: center;
-}
-
-.settings img {
-  width: 40px;
-  cursor: pointer;
-  
-}
+} */
 
 .categorias-dropdown {  
   position: absolute;

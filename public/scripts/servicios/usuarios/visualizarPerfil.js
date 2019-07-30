@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', visualizarPerfil);
 async function visualizarPerfil() {
  
   const url = 'http://localhost:3000/usuario/perfil/id';
-
   const res = await fetch(url);
   const data = await res.json();
 
@@ -26,7 +25,6 @@ async function visualizarPerfil() {
 
     const description = document.createElement('p');
 
-   
     name.textContent = data.firstName + ' '  + data.lastName;
     description.textContent = data.description;
     const imgSrc = await fetch(data.imgUrl);

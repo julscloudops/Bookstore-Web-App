@@ -25,8 +25,16 @@ a {
 
 a:hover {
   text-decoration: none;
-
 }
+
+.navbar-container a {
+  text-decoration: none;
+}
+
+.navbar-container a:hover {
+  text-decoration: none;
+}
+
 
 input:focus {
   border: 3px solid #821e00;
@@ -167,8 +175,7 @@ input:focus {
   opacity: 0; 
   -webkit-transition: opacity 2s;
   transition: opacity 2s;
-  margin-top: 2px;
-  margin: 74px 0 0 -200px;
+  margin: 78px 0 0 -200px;
 }
 
 .categorias {

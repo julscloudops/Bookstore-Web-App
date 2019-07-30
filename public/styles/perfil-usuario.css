@@ -44,6 +44,7 @@ body {
 .profile-pic {
   margin-top: 10%;
   border-radius: 40px;
+  width: 40%;
 }
 
 .username {

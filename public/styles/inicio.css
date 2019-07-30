@@ -9,11 +9,11 @@ body {
   color: #f3eded;
 }
 
-a {
+.navbar-container a {
   text-decoration: none;
 }
 
-a:hover {
+.navbar-container a:hover {
   text-decoration: none;
 
 }
