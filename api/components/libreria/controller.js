@@ -15,7 +15,7 @@ exports.registrarLibreria = async (req, res) => {
     description: req.body.description,
     imgUrl: result.url,
     cloudinary_id: result.public_id,
-    adminLibreriaId: req.session.adminLibreriaId
+    idAdminLibreria: req.session.idAdminLibreria
   });
 
   const savedLibreria = await newLibreria.save();

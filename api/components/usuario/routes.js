@@ -50,6 +50,7 @@ const redirectHomeAdmin = (req, res, next) => {
 }
 
 
+
 // Registrar administrador de libreria
 router.get('/registro/admin-libreria', (req, res) => {
   res.sendFile('registro-admin-libreria.html', {root: 'public'}); 
@@ -100,7 +101,7 @@ router.get('/carrito', (req, res) => {
 // Cerrar sesión
 router.get('/logout', (req, res) => {
   req.session.destroy(err => {
-  res.redirect(200, 'http://localhost:3000/')
+  res.redirect(200, 'http://localhost:3000/landing-page')
   });
 });
   

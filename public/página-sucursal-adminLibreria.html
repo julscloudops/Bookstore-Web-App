@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <link rel="stylesheet" href="/styles/página-sucursal-adminLibreria.css">
-      
-      <title>Libreria</title>
-   </head>
-   <body>
-        <!-- Navbar admin-libreria -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Bootstrap para el carousel -->
+  <link rel="stylesheet" href="/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/styles/página-sucursal-adminLibreria.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+
+  <title>Libreria</title>
+</head>
+<body>
+  <!-- Navbar admin-libreria -->
   <div id="nav" class="navbar-container">
     <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
     <div class="down-arrow">
       <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
-      <div class="menu">        
-          <a href="/libreria/listar">Librerías</a>        
-          <a href="/usuario/catalogo">Catálogo</a>          
-          <a href="/autor/listar">Autores</a>
-        </div>
+      <div class="menu">
+        <a href="/libreria/listar">Librerías</a>
+        <a href="/usuario/catalogo">Catálogo</a>
+        <a href="/autor/listar">Autores</a>
+      </div>
     </div>
     <div class="search-contain">
       <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-      <input 
-      type="text" 
-      id="search" 
-      placeholder="" 
-      autofocus
-      maxlength="40"
-      autocomplete="off"
-      >
+      <input type="text" id="search" placeholder="" autofocus maxlength="40" autocomplete="off">
       <p id="tip">Presione enter para buscar</p>
     </div>
     <div class="categorias">
@@ -48,31 +54,63 @@
       </div>
     </div>
   </div>
-
-      <div class="wrapper">
-         <div class="grid-container">
-            <div class="logoLibreria">
-               <img id="logo" class="insertLogo" >
+  <div class="sucursal-container">
+      <div id="sucursal-img" class="sucursal-img"></div>
+      <div id="ofertas" class="ofertas">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="/images/ofertas-test.jpeg" alt="First slide">
             </div>
-            
-      <footer>
-            <div class="footer-container">
-              <div class="container">
-                <a href="/">
-                  <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="logo">
-                </a>
-                <p class="address">San Jose, 11801<br>Costa Rica</p>
-                <ul class="footer-links">
-                  <li><a href="#">Términos y condiciones</a></li>
-                  <li><a href="#">Política de privacidad</a></li>
-                </ul>
-              </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/images/ofertas-test.jpeg" alt="Second slide">
             </div>
-          </footer>
-
-      <!-- //Carga el javascript para que funcione la barra de búsquedas -->
-      <script src="/scripts/search-bar.js"></script>
-      <script src="/scripts/servicios/librerias/listarSucursal.js"></script>
-
-   </body>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/images/ofertas-test.jpeg" alt="Third slide">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="sucursal-info" class="sucursal-info"></div>
+      <div id="libros" class="libros"></div>
+      <div id="google-maps" class="google-maps"></div>
+      <div id="clubes" class="clubes"></div>
+      <div id="reviews" class="reviews">
+        <h3>Reseñas de usuarios</h3>
+        <div class="user-review">
+          <img src="/images/user2.png" alt="User testimonial picture">
+          <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit. </blockquote>
+        </div>
+        <div class="user-review">
+          <img src="/images/user1.png" alt="User testimonial picture">
+          <blockquote>Lorem ipsum dolor sit, amet consectetur adipisicing elit.Lorem ipsum dolor sit, amet consectetur
+            adipisicing elit.
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  
+    <footer>
+      <div class="footer-container">
+        <div class="container">
+          <a href="/">
+            <img id="FooterLogo" src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="logo">
+          </a>
+          <p class="address">San Jose, 11801<br>Costa Rica</p>
+          <ul class="footer-links">
+            <li><a href="#">Términos y condiciones</a></li>
+            <li><a href="#">Política de privacidad</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- //Carga el javascript para que funcione la barra de búsquedas -->
+    <script src="/scripts/search-bar.js"></script>
+    <script src="/scripts/servicios/sucursales/listarSucursal.js"></script>
+    <script src="/scripts/servicios/sucursales/listarLibrosSucursal.js"></script>
+  
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBF_fmNCE-syhUVlosVLa8bCqT2ArGvMM&callback=initMap"></script>
+  </body>
+  
 </html>

@@ -24,7 +24,7 @@ exports.registrarSucursal = async (req, res) => {
     const savedSucursal = await newSucursal.save();
     console.log('Esta es la sucursal', savedSucursal);
 
-    res.redirect(`/sucursal/views/${savedSucursal._id}`);
+    res.redirect(`/sucursal/admin/${savedSucursal._id}`);
 
 }
 
@@ -38,7 +38,18 @@ exports.HTMLView = (req, res) => {
       message: err
     })
   }
+}
 
+exports.HTMLViewAdmin = (req, res) => {
+  try {
+    res.sendFile('página-sucursal-adminLibreria.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
 }
 
 exports.listarSucursal = async (req, res) => {

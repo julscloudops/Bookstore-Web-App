@@ -1,0 +1,89 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/*Navbar*/
+.back{
+    background-image: url(/images/PaloF.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.capa1{
+  background-color:#F7F7F7;
+    height: 18%;
+
+}
+
+.capa1Menu-1{
+    width: 20%;
+    height: 17%;
+    position: absolute;
+    left: 1.5%;
+    top: 1.2%;
+    
+    
+}
+
+.capa1Menu-2{
+    width: 80%;
+    height: 17%;
+    position: absolute;
+    right: 2%;
+    top: 0%;
+    
+    
+}
+
+
+.capa1Menu1{
+      padding-right: 2.5%;
+      padding-left: 2.5%;
+      float: right;
+  
+}
+
+
+.capa1Imagen1{
+     width: 100%;    
+     overflow: auto;
+      border:0;
+}
+
+
+.txt1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+}
+
+/*NavBar*/
+
+.capa2{
+    
+    padding-left: 3%;
+    
+    
+}
+
+.txt2-1{
+     color:yellow;
+    font-weight:bold;
+    font-size: 50px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.txt2-2{
+       color:whitesmoke;
+    font-weight:400;
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    
+}

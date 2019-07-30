@@ -48,9 +48,11 @@ const redirectIndex = (req, res, next) => {
 // router.get('/', sucursalController.listarSucursales);
 
 //Listar sucursal
-router.get('/views/:idSucursal', sucursalController.HTMLView);
 
 router.get('/JSON/:idSucursal', sucursalController.listarSucursal);
+router.get('/views/:idSucursal', sucursalController.HTMLView);
+router.get('/admin/:idSucursal', sucursalController.HTMLViewAdmin);
+
 
 // router.get('admin/views/:idSucursal', redirectIndex, sucursalController.HTMLViewAdmin);
 

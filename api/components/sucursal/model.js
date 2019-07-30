@@ -10,7 +10,7 @@ const modeloSucursal = new mongoose.Schema({
           googleMaps: {type: String},
           imgUrl: {type: String},
           cloudinary_id: {type: String},
-          idLibreria: {type: String, unique: true}
+          idLibreria: {type: String}
 });
 
 module.exports = mongoose.model('Sucursal', modeloSucursal, 'sucursales');

@@ -8,7 +8,7 @@ const modeloLibreria = new mongoose.Schema({
           description: {type: String},
           imgUrl: {type: String},
           cloudinary_id: {type: String},
-          adminLibreriaId: {type: String, unique: true}
+          idAdminLibreria: {type: String}
 });
 
 module.exports = mongoose.model('Libreria', modeloLibreria, 'librerias');

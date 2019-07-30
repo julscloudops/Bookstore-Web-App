@@ -34,11 +34,9 @@ a {
 
 .formulario {
   text-align: center;
-  -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #f6f6f6;
   max-width: 450px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -195,11 +193,14 @@ select {
 .location {
   display: flex;
   justify-content: center;
+  min-width: 450px;
 }
 
 .location select {
   width: 100%;
   font-size: 10px;
+  min-width: 130px;
+
 }
 
 .direction {

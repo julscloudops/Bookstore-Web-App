@@ -198,6 +198,8 @@ input:focus {
 }
 
 .categorias {
+  display: flex;
+  position: relative;
   background: #DF8931;
   width: 148px;
   height: 12px;
@@ -205,12 +207,9 @@ input:focus {
   margin: 0 35% 0 0;
   border-radius: 20px;
   cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  position: relative;
-
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
 
 .categorias a {
@@ -222,20 +221,6 @@ input:focus {
 .categorias a:hover {
   color: #f3eded;
 }
-
-/* 
-.settings {
-  display: flex;
-  position: relative;
-  background: #DF8931;
-  width: 14px;
-  height: 12px;
-  padding: 25px;
-  border-radius: 20px;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-} */
 
 .categorias-dropdown {  
   position: absolute;
@@ -255,9 +240,11 @@ input:focus {
   display: block;
   color:#821E00;
   font-size: 15px;
+  font-weight: 200;
   width: 160px;
   margin: 6% 0;
   letter-spacing: 1px;
+  text-align: center;
 
 }
 
