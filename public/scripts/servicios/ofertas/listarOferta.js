@@ -12,20 +12,20 @@ async function listarOferta() {
   const oferta = await res.json();
   console.log(oferta);
 
-  //Client-side rendering de la oferta 
-  // const oferta = document.getElementById('oferta');
-  // const name = document.createElement('p');
-  // const img = document.createElement('img');
-  // const description = document.createElement('p');
-  
-  // name.textContent = oferta.name;
-  // const imgSrc = await fetch(oferta.imgUrl);
-  // img.src = imgSrc.url;
-  // description.textContent = oferta.description;
-  // img.className = 'img';
-  // name.className = 'name';
-  // descriptionContainer.append(description);
-  // autorContainer.append(name, img);
+  // Client-side rendering de la oferta 
+  const container = document.getElementById('oferta');
+  const name = document.createElement('p');
+  const img = document.createElement('img');
+  const description = document.createElement('p');
+
+  name.textContent = oferta.name;
+  const imgSrc = await fetch(oferta.imgUrl);
+  img.src = imgSrc.url;
+  description.textContent = oferta.description;
+  img.className = 'oferta-img';
+  name.className = 'oferta-text';
+  description.className = 'oferta-text';
+  container.append(name, description, img);
 
 
 }

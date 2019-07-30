@@ -21,12 +21,13 @@ app.listen(app.get('port'), () => {
 });
 
 //Conecta la aplicación con la base de datos
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect('process.env.MONGO_URI', {
     useNewUrlParser: true
   },
   () => {
     console.log('La base de datos fue conectada exitosamente!')
   });
+
 mongoose.set('useCreateIndex', true);
 
 
@@ -83,8 +84,6 @@ app.use(express.static('public'));
 app.use(express.static('./public/uploads'));
 
 //Importación de las rutas
-// const adminGlobal = require('./api/components/admin-global/routes');
-// const adminLibreria = require('./api/components/admin-libreria/routes');
 const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
@@ -94,8 +93,6 @@ const libro = require('./api/components/libro/routes');
 const search = require('./api/components/search/routes');
 
 //Rutas
-// app.use('/admin-global', adminGlobal); 
-// app.use('/admin-libreria', adminLibreria);
 app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);
