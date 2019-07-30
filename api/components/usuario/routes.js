@@ -66,7 +66,7 @@ router.get('/registro', (req, res) => {
 router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
 
 //Inicio de sesión usuario
-router.get('/login', (req, res) => {
+router.get('/login', redirectHome, (req, res) => {
   res.sendFile('login.html', {root: 'public'}); 
 });
 router.post('/login', usuarioController.loginUsuario);

@@ -45,7 +45,7 @@ const redirectIndex = (req, res, next) => {
  router.post('/registro', upload.single('img'), sucursalController.registrarSucursal);
  
 //Listar sucursales
-router.get('/', sucursalController.listarSucursales);
+// router.get('/', sucursalController.listarSucursales);
 
 //Listar sucursal
 

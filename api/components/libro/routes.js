@@ -43,16 +43,11 @@ router.get('/registro', (req, res) => {
 
 //Registrar libro
 router.post('/registro', upload.single('img'), libroController.registrarLibro);
-
 //Listar libros
 router.get('/', libroController.listarLibros);
-
-router.get('admin/views/:idLibro', libroController.HTMLViewAdmin);
-
-router.get('/views/:idLibro', libroController.HTMLView);
-
 router.get('/JSON/:idLibro', libroController.listarLibro);
-
+router.get('/views/:idLibro', libroController.HTMLView);
+router.get('admin/views/:idLibro', libroController.HTMLViewAdmin);
 router.get('/librosNovedosos', libroController.listarLibrosNovedosos);
 
 module.exports = router;

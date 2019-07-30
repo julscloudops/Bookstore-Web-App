@@ -37,6 +37,7 @@ async function listarLibro() {
     const authorLink = document.createElement('a');
     const author = document.createElement('p');
     const genre = document.createElement('p');
+    const editorial = document.createElement('p');
     const description = document.createElement('p');
 
 
@@ -52,10 +53,11 @@ async function listarLibro() {
     addToCart.innerHTML = 'Agregar al carrito';
 
     isbn.innerHTML = `ISBN:  ${libro.isbn}`
-    title.innerHTML = `Título:  ${libro.title}`;
-    author.innerHTML = `Autor:  ${libro.author}`;
-    genre.innerHTML = libro.genre;
-    description.innerHTML = `Descripción:  ${libro.description}`;
+    title.innerHTML = `Título: ${libro.title}`;
+    author.innerHTML = `Autor: ${libro.author}`;
+    genre.innerHTML = `Género: ${libro.genre}`;
+    editorial.innerHTML = `Editorial: ${libro.editorial}`;
+    description.innerHTML = `Descripción: ${libro.description}`;
 
     link.append(cover);
     seeThroughRating.append(rating1, rating2, rating3, rating4, rating5);
@@ -63,6 +65,6 @@ async function listarLibro() {
     book.append(link, ratingContainer, price, addToCart);
 
     authorLink.append(author); 
-    bookInfo.append(isbn, title, authorLink, genre, description);
+    bookInfo.append(isbn, title, authorLink, genre, editorial, description);
 
 }

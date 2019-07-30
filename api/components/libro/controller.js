@@ -41,7 +41,7 @@ exports.registrarLibro = async (req, res) => {
 
   console.log(req.session);
 
-res.redirect(`/libros/admin/views/${savedBook._id}`);
+res.redirect(`/libro/admin/views/${savedBook._id}`);
 
 }
 

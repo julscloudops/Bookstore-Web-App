@@ -45,12 +45,12 @@ body {
     "reviews reviews"
 }
 
-.logo-libreria {
+.libreria-logo {
   grid-area: logo;
   margin: 0 auto;
 }
 
-.logo-libreria img {
+.libreria-logo img {
   max-width: 300px;
   max-height: 150px;
   border-radius: 20px;
@@ -70,19 +70,20 @@ body {
 }
 
 
-.info-libreria {
+.libreria-info {
   grid-area: info;
   background: #DF8931;
   border-radius: 20px;
 }
 
-.info-libreria-txt {
+.libreria-info-txt {
   display: flex;
   direction: column;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
   color: #821e00;
   text-align: justify;
+  padding: 0 1%;
 }
 
 .sucursales-container {
@@ -97,7 +98,6 @@ body {
   font-size: 18px;
   font-weight: bold;
 }
-
 
 
 .clubes {

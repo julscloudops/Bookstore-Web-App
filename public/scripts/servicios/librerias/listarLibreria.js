@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', listarLibreria);
-let imgContainer = document.getElementById('logo-libreria');
-let infoContainer = document.getElementById('info-libreria');
 
 
 async function listarLibreria() {
@@ -18,11 +16,14 @@ async function listarLibreria() {
 
   console.log(libreria);
 
+
   //Client-side rendering de la libreria 
-  const container = document.getElementById('logo-libreria');
+  let logoContainer = document.getElementById('libreria-logo');
+  let infoContainer = document.getElementById('libreria-info');
+
   const libreriaImg = document.createElement('div');
   const link = document.createElement('a');
-  const logo = document.createElement('img');    
+  const logo = document.createElement('img');
   const ratingContainer = document.createElement('div');
   const seeThroughRating = document.createElement('div');
   const rating1 = document.createElement('button');
@@ -42,11 +43,11 @@ async function listarLibreria() {
   seeThroughRating.append(rating1, rating2, rating3, rating4, rating5);
   ratingContainer.append(seeThroughRating);
   libreriaImg.append(link, ratingContainer);
-  container.append(libreriaImg);
+  logoContainer.append(libreriaImg);
 
 
 
-  
+
   // let name = document.createElement('h3');
   // name.textContent = libreria.nombreFantasia;
   // let img = document.createElement('img');
@@ -62,11 +63,11 @@ async function listarLibreria() {
   let description = document.createElement('p');
 
   email.innerHTML = `email: ${libreria.email}`;
-  email.className = 'info-libreria-txt'
-  phone.innerHTML = `teléfono: ${libreria.phone}`;  
-  phone.className = 'info-libreria-txt';
-  description.innerHTML = libreria.description;  
-  description.className = 'info-libreria-txt'
+  email.className = 'libreria-info-txt'
+  phone.innerHTML = `teléfono: ${libreria.phone}`;
+  phone.className = 'libreria-info-txt';
+  description.innerHTML = libreria.description;
+  description.className = 'libreria-info-txt'
 
   infoContainer.append(email, phone, description);
 

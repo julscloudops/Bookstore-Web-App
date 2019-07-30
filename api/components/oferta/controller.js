@@ -40,7 +40,8 @@ exports.registrarOferta = async (req, res) => {
 
  console.log(req.session);
 
-res.redirect(`/oferta/views/${ofertaGuardada._id}`);
+// res.redirect(`/oferta/views/${ofertaGuardada._id}`);
+res.redirect(`/usuario/inicio`);
 
 
 }
