@@ -33,13 +33,12 @@ router.get('/registro', (req, res) => {
 });
 
 const redirectIndex = (req, res, next) => {
-  if(!req.session.adminLibreriaId) {
-    res.redirect('http://localhost:3000/');
+  if(!req.session.idAdminLibreria) {
+    res.redirect('http://localhost:3000/landing-page');
   } else {
     next()
   }
 }
-
 
 
 //Registro libreria

@@ -36,15 +36,15 @@ router.get('/registro', (req, res) => {
 
 
 const redirectIndex = (req, res, next) => {
-  if(!req.session.adminLibreriaId) {
-    res.redirect('http://localhost:3000/');
+  if(!req.session.idAdminLibreria) {
+    res.redirect('http://localhost:3000/landing-page');
   } else {
     next()
   }
 }
 
 // Registrar autor
- router.post('/registro', redirectIndex, upload.single('img'), autorController.registrarAutor);
+ router.post('/registro', upload.single('img'), autorController.registrarAutor);
 
  // Listar autores
  router.get('/', autorController.listarAutores);

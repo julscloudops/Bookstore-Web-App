@@ -4,11 +4,11 @@ const ISBN = require('isbn-validate'),
 
 exports.registrarLibro = async (req, res) => {
 
-  // Validación de ISBN 
-  const isbnValidation = ISBN.Validate(req.body.isbn);
-  console.log(isbnValidation);
+  // // Validación de ISBN 
+  // const isbnValidation = ISBN.Validate(req.body.isbn);
+  // console.log(isbnValidation);
 
-  if (isbnValidation != true) return res.status(400).send('Código ISBN invalido');
+  // if (isbnValidation != true) return res.status(400).send('Código ISBN invalido');
 
   //Busca que no exista otro libro con el mismo código ISBN
   const isbnExists = await Libro.findOne({
@@ -30,7 +30,7 @@ exports.registrarLibro = async (req, res) => {
     description: req.body.description,
     imgUrl: result.url,
     cloudinary_id: result.public_id,
-    libreriaId: req.session.libreriaId
+    idLibreria: req.session.idLibreria
   });
 
 

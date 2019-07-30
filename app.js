@@ -21,7 +21,7 @@ app.listen(app.get('port'), () => {
 });
 
 //Conecta la aplicación con la base de datos
-mongoose.connect('process.env.MONGO_URI', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true
   },
   () => {

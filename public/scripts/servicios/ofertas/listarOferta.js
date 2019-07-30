@@ -7,6 +7,7 @@ async function listarOferta() {
   console.log(idOferta);
 
   const url = `/oferta/JSON/${idOferta}`;
+  
   console.log(url);
   const res = await fetch(url);
   const oferta = await res.json();

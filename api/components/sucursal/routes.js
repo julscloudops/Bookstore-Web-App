@@ -34,7 +34,7 @@ router.get('/registro', (req, res) => {
 
 
 const redirectIndex = (req, res, next) => {
-  if(!req.session.adminLibreriaId) {
+  if(!req.session.idAdminLibreria) {
     res.redirect('http://localhost:3000/');
   } else {
     next()
@@ -45,16 +45,13 @@ const redirectIndex = (req, res, next) => {
  router.post('/registro', upload.single('img'), sucursalController.registrarSucursal);
  
 //Listar sucursales
-// router.get('/', sucursalController.listarSucursales);
+router.get('/', sucursalController.listarSucursales);
 
 //Listar sucursal
 
 router.get('/JSON/:idSucursal', sucursalController.listarSucursal);
 router.get('/views/:idSucursal', sucursalController.HTMLView);
 router.get('/admin/:idSucursal', sucursalController.HTMLViewAdmin);
-
-
-// router.get('admin/views/:idSucursal', redirectIndex, sucursalController.HTMLViewAdmin);
 
       
 module.exports = router;

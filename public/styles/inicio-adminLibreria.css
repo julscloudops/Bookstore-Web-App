@@ -47,7 +47,6 @@ body {
   color: black;
   font-size: 12px;
   margin: 0.8% 0;
-
 }
 
 .buy-btn {
@@ -59,6 +58,7 @@ body {
   color: #f3eded;
   cursor: pointer;
 }
+
 /* 
 .libreria-wrapper {
   background: #F5C16C;

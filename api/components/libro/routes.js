@@ -26,8 +26,8 @@ const upload = multer({
 });
 
 const redirectIndex = (req, res, next) => {
-    if(!req.session.adminLibreriaId) {
-      res.redirect('http://localhost:3000/');
+    if(!req.session.idAdminLibreria) {
+      res.redirect('http://localhost:3000/landing-page');
     } else {
       next()
     }
@@ -42,7 +42,7 @@ router.get('/registro', (req, res) => {
 });
 
 //Registrar libro
-router.post('/registro', redirectIndex, upload.single('img'), libroController.registrarLibro);
+router.post('/registro', upload.single('img'), libroController.registrarLibro);
 
 //Listar libros
 router.get('/', libroController.listarLibros);
