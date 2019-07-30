@@ -159,11 +159,9 @@ exports.registrarAdminLibreria = async (req, res) => {
 
 //Inicio de sesión para todos los usuarios
 exports.loginUsuario = async (req, res) => {
-
   console.log(req.body.email);
   console.log(req.body.password);
   
-
   //Verifica que el email ingresado sea el mismo que el guardado en la base de datos
   const usuario = await User.findOne({
     email: req.body.email
@@ -171,10 +169,10 @@ exports.loginUsuario = async (req, res) => {
   if (!usuario) {
     return res.redirect('/usuario/login')
   }
-  // const validPass = await bcrypt.compare(req.body.password, usuario.password);
-  // if (!validPass) {
-  //   return res.redirect('/usuario/login')
-  // }
+  const validPass = await bcrypt.compare(req.body.password, usuario.password);
+  if (!validPass) {
+    return res.redirect('/usuario/login')
+  }
 
   req.session.tempId = usuario._id;
 
@@ -185,12 +183,13 @@ exports.loginUsuario = async (req, res) => {
   }
 
   if (usuario.isAdminLibreria === true) {
-    req.session.adminLibreriaId = usuario._id;
+    req.session.idAdminLibreria = usuario._id;
     console.log(req.session);
     res.sendFile('inicio-adminLibreria.html', {
       root: 'public'
     });
   } else {
+    req.session.idUsuario = usuario._id;
     console.log(req.session);
     res.sendFile('inicio.html', {
       root: 'public'

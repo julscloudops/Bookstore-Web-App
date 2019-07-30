@@ -209,6 +209,63 @@ input:focus {
   color: #f3eded;
 }
 
+
+.settings {
+  display: flex;
+  position: relative;
+  background: #DF8931;
+  width: 14px;
+  height: 12px;
+  padding: 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings img {
+  width: 40px;
+  cursor: pointer;
+  
+}
+
+.categorias-dropdown {  
+  position: absolute;
+  top: 100%;
+  padding: 10px 0px 10px 10px;
+  margin: 2% 5% 0 0;
+  background: #DF8931;
+  border-radius: 20px;
+  border: 2px solid #821e00;
+  z-index: 3;  
+  visibility: hidden;
+  opacity: 0; 
+  transition: opacity 1s;
+}
+
+.categorias-dropdown a {
+  display: block;
+  color:#821E00;
+  font-size: 15px;
+  width: 160px;
+  margin: 6% 0;
+  letter-spacing: 1px;
+
+}
+
+.categorias-dropdown a:hover {
+  color: #f3eded;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.categorias:hover .categorias-dropdown{
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+}
+
+
 .settings {
   display: flex;
   position: relative;

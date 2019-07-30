@@ -11,43 +11,37 @@
 
 <body>
    <!--Navbar-->
-   <div id="nav class="navbar-container">
+   <div id="nav class=" navbar-container">
       <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
       <div class="down-arrow">
-        <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
-        <div class="menu">        
-            <a href="/autor/listar">Autores</a>
+         <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+         <div class="menu">
+            <a href="/libreria/listar">Librerías</a>
             <a href="/usuario/catalogo">Catálogo</a>
-          </div>
+            <a href="/autor/listar">Autores</a>
+         </div>
       </div>
       <div class="search-contain">
-        <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-        <input 
-        type="text" 
-        id="search" 
-        placeholder="" 
-        autofocus
-        maxlength="40"
-        autocomplete="off"
-        >
-        <p id="tip">Presione enter para buscar</p>
+         <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+         <input type="text" id="search" placeholder="" autofocus maxlength="40" autocomplete="off">
+         <p id="tip">Presione enter para buscar</p>
       </div>
       <div class="categorias">
-        <a href="">Categorías</a>
+         <a href="">Categorías</a>
       </div>
       <div class="settings">
-        <img src="/images/settings.svg" id="settings-btn">
-        <div class="dropdown">
-          <a href="/libreria/registro"><span>Registrar libreria</span></a>
-          <a href="/sucursal/registro">Registrar sucursal</a>
-          <a href="/autor/registro">Registrar autor</a>
-          <a href="/libro/registro">Registrar libro</a>
-          <a href="/oferta/registro">Registrar oferta</a>
-          <a href="#">Configuración</a>
-          <a id="logout" href="/">Salir sesión</a>
-        </div>
+         <img src="/images/settings.svg" id="settings-btn">
+         <div class="dropdown">
+            <a href="/libreria/registro"><span>Registrar libreria</span></a>
+            <a href="/sucursal/registro">Registrar sucursal</a>
+            <a href="/autor/registro">Registrar autor</a>
+            <a href="/libro/registro">Registrar libro</a>
+            <a href="/oferta/registro">Registrar oferta</a>
+            <a href="#">Configuración</a>
+            <a id="logout" href="/">Salir sesión</a>
+         </div>
       </div>
-    </div>
+   </div>
 
    <div id="book-container" class="book-container">
       <div id="book" class="book"></div>

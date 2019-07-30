@@ -10,7 +10,8 @@ const modeloLibro = mongoose.Schema({
   description: {type: String},
   imgUrl: { type: String},
   cloudinary_id: {type: String},
-  idLibreria: {type: String, unique: true}
+  idLibreria: {type: String, unique: true},
+  
 });
 
 

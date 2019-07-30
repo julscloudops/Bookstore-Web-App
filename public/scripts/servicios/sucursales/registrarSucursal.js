@@ -1,33 +1,33 @@
-const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', registrarSucursal);
+// const submitBtn = document.getElementById('submit');
+// submitBtn.addEventListener('click', registrarSucursal);
 
-function registrarSucursal(event) {
+// function registrarSucursal(event) {
 
-  event.preventDefault();
+//   event.preventDefault();
 
-  const formData = new FormData();
-  formData.append('horario', document.getElementById('horario').value);
-  formData.append('phone', document.getElementById('phone').value);
-  formData.append('description', document.getElementById('description').value);
-  formData.append('provincia', document.getElementById('provincia').value);
-  formData.append('canton', document.getElementById('canton').value);
-  formData.append('distrito', document.getElementById('distrito').value);
-  formData.append('direction', document.getElementById('direction').value);
-  formData.append('googleMaps', document.getElementById('google-maps').value);
-  formData.append('img', document.getElementById('img').files[0]);
+//   const formData = new FormData();
+//   formData.append('horario', document.getElementById('horario').value);
+//   formData.append('phone', document.getElementById('phone').value);
+//   formData.append('description', document.getElementById('description').value);
+//   formData.append('provincia', document.getElementById('provincia').value);
+//   formData.append('canton', document.getElementById('canton').value);
+//   formData.append('distrito', document.getElementById('distrito').value);
+//   formData.append('direction', document.getElementById('direction').value);
+//   formData.append('googleMaps', document.getElementById('google-maps').value);
+//   formData.append('img', document.getElementById('img').files[0]);
 
-  const url = 'http://localhost:3000/sucursal/registro';
+//   const url = 'http://localhost:3000/sucursal/registro';
 
-  const fetchOptions = {
-    method: 'POST',
-    body: formData
-  }
+//   const fetchOptions = {
+//     method: 'POST',
+//     body: formData
+//   }
 
-  fetch(url, fetchOptions)
-    .then(res => res)
-    .catch(error => console.error('Error: ' + error));
+//   fetch(url, fetchOptions)
+//     .then(res => res.redirect(`/sucursal/views/${savedSucursal._id}`))
+//     .catch(error => console.error('Error: ' + error));
 
-}
+// }
 
 // .then((res) => {
 //   if (res.status != 200) {

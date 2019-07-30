@@ -7,8 +7,8 @@ async function listarLibrosParaIntercambiar() {
   console.log(data);
 
   //Client-side rendering de los libros mas novedosos
-  for (let i = 0; i < data.length; i++) {
-    const container = document.getElementById('libros-usuario');
+  for (let i = 0; i < 8; i++) {
+    const container = document.getElementById('libros');
     const book = document.createElement('div');
     const link = document.createElement('a');
     const cover = document.createElement('img');
@@ -23,7 +23,7 @@ async function listarLibrosParaIntercambiar() {
     const intercambioBtn = document.createElement('button');
 
     cover.src = imgSrc.url;
-    link.href = `/libros/views/${data[i]._id}`;
+    link.href = `/libro/views/${data[i]._id}`;
     book.className = 'book';
     innerContainer.className = 'rating-holder';
     seeThroughRating.className = 'c-rating c-rating--big'

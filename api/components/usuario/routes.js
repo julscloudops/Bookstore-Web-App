@@ -26,7 +26,7 @@ const upload = multer({
 });
 
 const redirectLoginAdmin = (req, res, next) => {
-  if(!req.session.adminLibreriaId) {
+  if(!req.session.idAdminLibreria) {
     res.redirect('http://localhost:3000/usuario/login');
   } else {
     next()
@@ -34,7 +34,7 @@ const redirectLoginAdmin = (req, res, next) => {
 }
 
 const redirectHome = (req, res, next) => {
-  if(req.session.userId) {
+  if(req.session.idUsuario) {
     res.redirect('http://localhost:3000/usuario/inicio');
   } else {
     next()
@@ -42,7 +42,7 @@ const redirectHome = (req, res, next) => {
 }
 
 const redirectHomeAdmin = (req, res, next) => {
-  if(req.session.adminLibreriaId) {
+  if(req.session.idAdminLibreria) {
     res.sendFile('inicio-adminLibreria.html', {root: 'public'});
   } else {
     next()

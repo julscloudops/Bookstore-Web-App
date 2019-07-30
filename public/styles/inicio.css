@@ -9,6 +9,16 @@ body {
   color: #f3eded;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+
+}
+
+
 .wrapper {
   text-align: center;
 }
@@ -74,7 +84,7 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto;
- 
+  margin-bottom: 1%; 
 }
 
 .libreria {

@@ -49,6 +49,9 @@ router.post('/registro', redirectIndex, upload.single('img'), libreriaController
 router.get('/', libreriaController.listarLibrerias);
 router.get('/home', libreriaController.listarLibreriasHomePage);
 
+router.get('/listar', libreriaController.listarLibreriasHTML);
+
+
 //Listar libreria
 router.get('/JSON/:idLibreria', libreriaController.listarLibreria);
 router.get('/views/:idLibreria', libreriaController.HTMLView);

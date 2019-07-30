@@ -90,5 +90,17 @@ exports.HTMLViewAdmin = async (req, res) => {
 
 }
 
+exports.listarLibreriasHTML = async (req, res) => {
+  try {
+    res.sendFile('página-librerias.html', {
+      root: 'public'
+    });
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}
+
 
 
