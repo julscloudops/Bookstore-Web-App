@@ -31,7 +31,9 @@ body {
 }
 
 .img {
-  width: 380px;
+  width: 450px;
+  height: 525px;
+  object-fit: cover;
   border-radius: 20px;
 }
 

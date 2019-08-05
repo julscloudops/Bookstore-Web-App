@@ -5,6 +5,12 @@ const tip = document.getElementById('tip');
 const logoNavbar = document.getElementById('logoNavbar');
 const logoFooter = document.getElementById('logoFooter');
 
+// const settingsBtn = document.getElementById('settings-btn');
+
+// settingsBtn.addEventListener('click', () => {
+//   window.location.pathname = '/usuario/settings';
+// })
+
 
 searchModal();
 
@@ -17,7 +23,7 @@ const exitBtn = document.getElementById('exit-btn');
 
 
 let i = 0;
-let message = "Busca tus libros favoritos!";
+let message = "¡Busca tus libros favoritos!";
 let speed = 100;
 
 searchIcon.addEventListener("mouseover", () => {

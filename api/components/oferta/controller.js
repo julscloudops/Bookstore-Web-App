@@ -83,3 +83,15 @@ exports.listarOfertas = async (req, res) => {
     })
   }
 }
+
+exports.listarOfertasNovedosas = async (req, res) => {
+  try {
+    const ofertas = await Oferta.find().limit(3);
+    res.json(ofertas);
+    
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}

@@ -1,0 +1,15 @@
+@import './navbar-footer-adminLibreria.css';
+
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+  background: #f3eded;
+  color: #821E00;
+}
+
+.settings {
+  background: #DF8931;
+}
+

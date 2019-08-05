@@ -18,12 +18,10 @@ body {
 
 .formulario {
   text-align: center;
-  -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #f6f6f6;
-  max-width: 450px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  max-width: 450px;
   margin-bottom: 1%;
 }
 
@@ -48,6 +46,7 @@ label {
 
 
 }
+
 .text {
   width: 40%;
   padding: 10px;
@@ -59,7 +58,7 @@ label {
   margin-bottom: 1%;
 }
 
-.email{
+.email {
   width: 82%;
   padding: 10px;
   font-size: 14px;
@@ -96,7 +95,9 @@ label {
   margin-bottom: 2%;
 }
 
-.formulario input:focus, select:focus, .description:focus {
+.formulario input:focus,
+select:focus,
+.description:focus {
   border: 3px solid #821e00;
   outline: none;
 }
@@ -112,14 +113,14 @@ label {
 textarea {
   width: 80%;
   height: 80px;
-  outline: none;   
+  outline: none;
   resize: none;
- 
+
 }
 
 
-input:focus::-webkit-input-placeholder { 
-  color:transparent; 
+input:focus::-webkit-input-placeholder {
+  color: transparent;
 }
 
 /* Botón para ingresar imagen */
@@ -134,7 +135,8 @@ input:focus::-webkit-input-placeholder {
   cursor: pointer;
   border-radius: 5px 5px 5px 5px;
   width: 80%;
-  margin: 0 auto;}
+  margin: 0 auto;
+}
 
 .input-file {
   position: absolute;
@@ -170,6 +172,3 @@ input:focus::-webkit-input-placeholder {
 .footer-container::after {
   background: none;
 }
-
-
-

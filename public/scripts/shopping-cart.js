@@ -1,116 +1,161 @@
-// let fadeTime = 300;
+document.addEventListener('DOMContentLoaded', loadShoppingCart);
 
-document.addEventListener('DOMContentLoaded', updateSumItems);
-function updateSumItems() {
-  let sumItems = 0;
-  let quantityInputs = document.querySelectorAll('.quantity input');
-  for (input of quantityInputs) {
-    sumItems += parseInt(input.value);
-    let totalItems = document.querySelector('.total-items');
-    totalItems.textContent= `Libros en el carrito: ${sumItems}`;
+async function loadShoppingCart() {
+
+  let carrito = JSON.parse(localStorage['CART']);
+
+  if (carrito[0]._id != undefined) {
+    for (let i = 0; i < carrito.length; i++) {
+      let container = document.getElementById('carrito');
+      let libro = document.createElement('div');
+      let item = document.createElement('div');
+      let imgContainer = document.createElement('div');
+      let info = document.createElement('div');
+      let link = document.createElement('a');
+      let img = document.createElement('img');
+      let title = document.createElement('h1');
+      let isbn = document.createElement('p');
+      let price = document.createElement('div');
+      let quantity = document.createElement('div');
+      let input = document.createElement('input');
+      let subtotal = document.createElement('div');
+      let removeBtn = document.createElement('div');
+      let btn = document.createElement('button');
+
+      libro.className = 'libro-carrito';
+      item.className = 'item';
+      imgContainer.className = 'product-image';
+      img.className = 'product-frame';
+      info.className = 'product-details';
+      price.className = 'price';
+      quantity.className = 'quantity';
+      input.className = 'quantity-field';
+      subtotal.className = 'subtotal';
+      removeBtn.className = 'remove';
+
+      link.href = `/libro/views/${carrito[i]._id}`;
+      let imgSrc = await fetch(carrito[i].imgUrl);
+      img.src = imgSrc.url;
+      title.textContent = carrito[i].title;
+      isbn.textContent = `ISBN: ${carrito[i].isbn}`;
+      price.textContent = carrito[i].price;
+      input.setAttribute('type', 'number');
+      input.setAttribute('min', '1');
+      input.value = 1;
+      subtotal.textContent = carrito[i].price;
+      btn.textContent = 'Eliminar';
+
+      link.append(img);
+      imgContainer.append(link);
+      info.append(title, isbn);
+      item.append(imgContainer, info, );
+      quantity.append(input);
+      removeBtn.append(btn);
+      libro.append(item, price, quantity, subtotal, removeBtn);
+      container.append(libro);
+
+      updateQuantity();
+      updateSumItems();
+      updateCartTotal();
+
+
+    }
+
+    //Elimina un libro del carrito
+    let removeBtn = document.querySelectorAll('.remove button');
+
+    for (let i = 0; i < removeBtn.length; i++) {
+
+      removeBtn[i].addEventListener('click', (event) => {
+        let buttonClicked = event.target;
+        buttonClicked.parentElement.parentElement.remove();
+        let idLibro = removeBtn[i].parentElement.parentElement.children[0].children[0].children[0].href.slice(34);
+        console.log(idLibro);
+
+        //Elimina el id del libro del arreglo y luego lo guarda en localstorage
+        carrito = carrito.filter(libro => libro._id != idLibro);
+        console.table(carrito);
+
+        window.localStorage.setItem('CART', JSON.stringify(carrito));
+
+        updateQuantity();
+        updateSumItems();
+        updateCartTotal();
+
+
+      });
+    }
+
+    function updateSumItems() {
+      let sumItems = 0;
+      let quantityInputs = document.querySelectorAll('.quantity input');
+      console.log(quantityInputs)
+      if (quantityInputs.length == 0) {
+        let sumItems = 0;
+        let totalItems = document.querySelector('.total-items');
+        totalItems.textContent = `Libros en el carrito: ${sumItems}`;
+      } else {
+        for (input of quantityInputs) {
+          sumItems += parseInt(input.value);
+          let totalItems = document.querySelector('.total-items');
+          totalItems.textContent = `Libros en el carrito: ${sumItems}`;
+        }
+      }
+
+    }
+
+    //Actualiza los precios
+    function updateCartTotal() {
+      let carritoContainer = document.getElementById('carrito');
+      let bookRows = carritoContainer.getElementsByClassName('libro-carrito');
+      let finalValue = document.querySelectorAll('.final-value');
+      let total = 0;
+
+      for (let i = 0; i < bookRows.length; i++) {
+        let bookRow = bookRows[i];
+        let priceElement = bookRow.getElementsByClassName('price')[0];
+        let quantityElement = bookRow.querySelector('.quantity input');
+        let price = parseFloat(priceElement.textContent);
+        let quantity = quantityElement.value;
+        total = total + (price * quantity);
+      }
+
+      for (let i = 0; i < finalValue.length; i++) {
+        finalValue[i].textContent = total;
+      }
+
+    }
+
+
+
+    function updateQuantity() {
+      let quantityInputs = document.querySelectorAll('.quantity input');
+      quantityInputs.forEach((input) => {
+
+        input.addEventListener('change', () => {
+          for (let i = 0; i < quantityInputs.length; i++) {
+
+            //Calcula el precio de una fila
+            let bookRow = input.parentElement.parentElement;
+            let price = parseFloat(bookRow.getElementsByClassName('price')[0].textContent);
+            let quantity = input.value;
+            let rowPrice = price * quantity;
+            /* Update line price display and recalc cart totals */
+            bookRow.getElementsByClassName('subtotal')[0].textContent = rowPrice;
+            updateSumItems();
+            updateCartTotal();
+
+          }
+
+        })
+
+
+      })
+
+
+    }
+
+
   }
-}
-
-//Elimina un libro del carrito
-let removeBtn = document.querySelectorAll('.remove button');
-for(let i = 0; i < removeBtn.length; i++){
-  let button = removeBtn[i];
-  button.addEventListener('click', (event) => {
-    let buttonClicked = event.target;
-    buttonClicked.parentElement.parentElement.remove();
-    updateCartTotal();
-  })
-}
-
-function updateCartTotal() {
-let carritoItemContainer = document.getElementsByClassName('carrito')[0];
-let cartRows = carritoItemContainer.getElementsByClassName('libro-carrito');
-let total = 0;
-for(let i = 0; i < cartRows.length; i++){
-  let cartRow = cartRows[i];
-  let priceElement = cartRow.getElementsByClassName('price')[0];
-  let quantityElement = cartRow.querySelector('.quantity input');
-  let price = parseFloat(priceElement.innerText);
-  let quantity = quantityElement.value; 
-  total = total + (price * quantity);
 
 }
-
-document.querySelectorAll('.final-value').innerText = total;
-
-
-}
-
-
-// let quantityInputs = document.querySelectorAll('.quantity input');
-// quantityInputs.addEventListener('change', updateQuantity);
-
-// function updateQuantity(quantityInput) {
-//   /* Calculate line price */
-//   let productRow = $(quantityInput).parent().parent();
-//   let price = parseFloat(productRow.children('.price').text());
-//   let quantity = $(quantityInput).value;
-//   let linePrice = price * quantity;
-
-//   /* Update line price display and recalc cart totals */
-//   productRow.children('.subtotal').each(function() {
-//     $(this).fadeOut(fadeTime, function() {
-//       $(this).text(linePrice.toFixed(2));
-//       recalculateCart();
-//       $(this).fadeIn(fadeTime);
-//     });
-//   });
-
-
-
-// function removeItem(removeButton) {
-//   /* Remove row from DOM and recalc cart total */
-//   let productRow = $(removeButton).parent().parent();
-//   productRow.slideUp(fadeTime, function() {
-//     productRow.remove();
-//     recalculateCart();
-//     updateSumItems();
-//   });
-// }
-
-
-// //Recalcular carrito
-// function recalculateCart(onlyTotal) {
-//   let subtotal = 0;
-
-//   /* Sum up row totals */
-//   document.querySelectorAll('.libros-carrito').each(function() {
-//     subtotal += parseFloat($(this).children('.subtotal').text());
-//   });
-
-//   /* Calculate totals */
-//   let total = subtotal;
-
-//   /*If switch for update only total, update only total display*/
-//   if (onlyTotal) {
-//     /* Update total display */
-//     document.querySelector('.total-value').fadeOut(fadeTime, function() {
-//       document.querySelector('#basket-total').html(total.toFixed(2));
-//       document.querySelector('.total-value').fadeIn(fadeTime);
-//     });
-//   } else {
-//     /* Update summary display. */
-//     document.querySelector('.final-value').fadeOut(fadeTime, function() {
-//       document.querySelector('#basket-subtotal').html(subtotal.toFixed(2));
-//       document.querySelector('#basket-total').html(total.toFixed(2));
-//       if (total == 0) {
-//         document.querySelector('.checkout-cta').fadeOut(fadeTime);
-//       } else {
-//         document.querySelector('.checkout-cta').fadeIn(fadeTime);
-//       }
-//       document.querySelector('.final-value').fadeIn(fadeTime);
-//     });
-//   }
-// }
-
-
-//   productRow.find('.item-quantity').text(quantity);
-//   updateSumItems();
-// }
-
-

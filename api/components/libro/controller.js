@@ -19,13 +19,15 @@ exports.registrarLibro = async (req, res) => {
   // Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
   const result = await cloudinary.v2.uploader.upload(req.file.path);
 
+
   //Se crea un nuevo libro
   const nuevoLibro = new Libro({
     author: req.body.author,
     title: req.body.title,
     price: req.body.price,
     isbn: req.body.isbn,
-    genre: req.body.genre,
+    genero: req.body.genero,
+    categoria: req.body.categoria,
     editorial: req.body.editorial,
     description: req.body.description,
     imgUrl: result.url,
@@ -36,25 +38,14 @@ exports.registrarLibro = async (req, res) => {
 
   //Guarda el nuevo usuario en la base de datos
   const savedBook = await nuevoLibro.save();
-  
+
+
   console.log(savedBook);
 
   console.log(req.session);
 
-res.redirect(`/libro/admin/views/${savedBook._id}`);
+  res.redirect(`/libro/admin/views/${savedBook._id}`);
 
-}
-
-exports.listarLibrosNovedosos = async (req, res) => {
-  try {
-    const libros = await Libro.find().limit(12);
-    res.json(libros);
-    
-  } catch (err) {
-    res.json({
-      message: err
-    })
-  }
 }
 
 exports.HTMLViewAdmin = async (req, res) => {
@@ -87,7 +78,7 @@ exports.listarLibros = async (req, res) => {
   try {
     const libros = await Libro.find();
     res.json(libros);
-    
+
   } catch (err) {
     res.json({
       message: err
@@ -101,10 +92,21 @@ exports.listarLibro = async (req, res) => {
       _id: req.params.idLibro
     });
     res.json(libro);
-  } catch(err){
+  } catch (err) {
     res.json({
       message: err
     })
   }
 }
 
+exports.listarLibrosNovedosos = async (req, res) => {
+  try {
+    const libros = await Libro.find().limit(12);
+    res.json(libros);
+
+  } catch (err) {
+    res.json({
+      message: err
+    })
+  }
+}

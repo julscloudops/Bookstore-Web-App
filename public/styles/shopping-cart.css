@@ -48,10 +48,6 @@ button {
     color: #fff;
 }
 
-button:hover,
-button:focus {
-    background-color: #555;
-}
 
 img,
 .basket-module,
@@ -162,17 +158,18 @@ li.subtotal:before {
 .remove {
     bottom: 1.125rem;
     float: right;
-    position: absolute;
-    right: 0;
-    text-align: right;
+    position: absolute;    
+    right: -12%;  
+    bottom: 8%; 
     width: 45%;
 }
 
 .remove button {
-    background-color: transparent;
-    color: #821E00;
-    float: none;
-    text-decoration: underline;
+    position: absolute; 
+    bottom: 10%;    
+    background-color: #821E00;
+    color: #f3eded;
+    padding: 6px;
     text-transform: uppercase;
 }
 

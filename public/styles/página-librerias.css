@@ -35,8 +35,10 @@ body {
 }
 
 .img {
-  width: 145px;
-  border-radius: 30px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
   cursor: pointer;
 }
 

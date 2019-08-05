@@ -101,6 +101,10 @@ app.use('/autor', autor);
 app.use('/libro', libro);
 app.use('/search', search);
 
+app.get('/', (req, res) => {
+  res.sendFile('landing-page.html', {root: 'public'}); 
+});
+
 app.get('/landing-page', (req, res) => {
   res.sendFile('landing-page.html', {root: 'public'}); 
 });

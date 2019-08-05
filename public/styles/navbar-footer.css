@@ -109,11 +109,10 @@ input:focus {
   opacity: 1;
 }
 
-
 .search-contain {
   display: flex;
   align-items: center;
-  margin-right: 4%;
+  margin-right: 40%;
 }
 
 .search-contain input {
@@ -178,32 +177,8 @@ input:focus {
   margin: 78px 0 0 -200px;
 }
 
-.categorias {
-  background: #DF8931;
-  width: 148px;
-  height: 12px;
-  padding: 25px;
-  margin: 0 20% 0 0;
-  border-radius: 20px;
-  cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.categorias a {
-  color: #821E00;
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.categorias a:hover {
-  color: #f3eded;
-}
 
 .reading-club {
-  background: #DF8931;
   width: 14px;
   height: 12px;
   padding: 25px;
@@ -228,7 +203,7 @@ input:focus {
 
 .shopping-cart {
   position: relative;
-  background: #DF8931;
+
   width: 14px;
   height: 12px;
   padding: 25px;
@@ -256,7 +231,7 @@ input:focus {
 }
 
 .notificaciones {
-  background: #DF8931;
+
   width: 14px;
   height: 12px;
   padding: 25px;
@@ -274,7 +249,7 @@ input:focus {
 }
 
 .avatar {
-  background: #DF8931;
+
   width: 14px;
   height: 12px;
   padding: 25px;

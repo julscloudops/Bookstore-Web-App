@@ -27,9 +27,7 @@
       <input type="text" id="search" placeholder="" maxlength="40" autocomplete="off">
       <p id="tip">Presione enter para buscar</p>
     </div>
-    <div class="categorias">
-      <a href="">Categorías</a>
-    </div>
+   
     <div class="reading-club">
       <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
     </div>
@@ -51,7 +49,7 @@
 
   <div class="wrapper">
     <main>
-      <div class="carrito">
+      <div id="carrito" class="carrito">
         <div class="basket-labels">
           <ul>
             <li class="item item-heading">Libro</li>
@@ -60,7 +58,7 @@
             <li class="subtotal">Subtotal</li>
           </ul>
         </div>
-        <div class="libro-carrito">
+        <!-- <div class="libro-carrito">
           <div class="item">
             <div class="product-image">
               <img src="/images/libroTest.jpg" alt="Placholder Image 2" class="product-frame">
@@ -79,8 +77,8 @@
           <div class="remove"> 
               <button>Eliminar</button>
             </div>
-        </div>
-        <div class="basket-product">
+        </div> -->
+        <!-- <div class="libro-carrito">
           <div class="item">
             <div class="product-image">
               <img src="/images/libroTest.jpg" alt=" Placholder Image 2" class="product-frame">
@@ -99,28 +97,25 @@
           <div class="remove"> 
             <button>Eliminar</button>
           </div>
-        </div>
+        </div> -->
       </div>
       <aside>
         <div class="summary">
-          <div class="summary-total-items"><span class="total-items"></span></div>
+          <div class="summary-total-items"><span class="total-items">Libros en el carrito: 0</span></div>
           <div class="summary-subtotal">
             <div class="subtotal-title">Subtotal</div>
-            <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+            <div class="subtotal-value final-value" id="basket-subtotal">0</div>
 
           </div>
           <div class="summary-delivery">
             <select name="delivery-collection" class="summary-delivery-selection">
               <option value="0" selected="selected">Select Collection or Delivery</option>
-              <option value="collection">Collection</option>
-              <option value="first-class">Royal Mail 1st Class</option>
-              <option value="second-class">Royal Mail 2nd Class</option>
-              <option value="signed-for">Royal Mail Special Delivery</option>
+             
             </select>
           </div>
           <div class="summary-total">
             <div class="total-title">Total</div>
-            <div class="total-value final-value" id="basket-total">130.00</div>
+            <div class="total-value final-value" id="basket-total">0</div>
           </div>
           <div class="summary-checkout">
             <button class="checkout-cta">CHECKOUT</button>

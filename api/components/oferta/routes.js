@@ -45,6 +45,8 @@ router.post('/registro', upload.single('img'), ofertaController.registrarOferta)
 //Listar oferta
 router.get('/JSON/:idOferta', ofertaController.listarOferta);
 router.get('/views/:idOferta', ofertaController.HTMLView);
+router.get('/ofertasNovedosas', ofertaController.listarOfertasNovedosas);
+
 // router.get('/admin/:idOferta', redirectIndex, ofertaController.HTMLViewAdmin);
 
 

@@ -41,9 +41,17 @@ const redirectHome = (req, res, next) => {
   }
 }
 
-const redirectHomeAdmin = (req, res, next) => {
+// const redirectHome = (req, res, next) => {
+//   if(req.session.idAdminLibreria) {
+//     res.redirect('http://localhost:3000/usuario/inicio');
+//   } else {
+//     next()
+//   }
+// }
+
+const SettingsAdminLibreria = (req, res, next) => {
   if(req.session.idAdminLibreria) {
-    res.sendFile('inicio-adminLibreria.html', {root: 'public'});
+    res.sendFile('settings-adminLibreria.html', {root: 'public'}); 
   } else {
     next()
   }
@@ -84,7 +92,7 @@ router.get('/views/:idUsuario', usuarioController.HTMLViewPerfilUsuarios);
 
 router.get('/JSON/:idUsuario', usuarioController.listarUsuario);
 
-router.get('/inicio', redirectHomeAdmin, (req, res) => {
+router.get('/inicio', (req, res) => {
   res.sendFile('inicio.html', {root: 'public'}); 
 
 });
@@ -97,6 +105,11 @@ router.get('/carrito', (req, res) => {
   // let libroId = req.params.id;
     res.sendFile('shopping-cart.html', {root: 'public'}); 
 });
+
+//Settings
+router.get('/settings', SettingsAdminLibreria, (req, res) => {
+  res.sendFile('settings.html', {root: 'public'}); 
+})
 
 // Cerrar sesión
 router.get('/logout', (req, res) => {

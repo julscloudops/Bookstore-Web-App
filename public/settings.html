@@ -5,10 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-
-  <link rel="stylesheet" href="/styles/página-autores.css">
-  <title>Autores</title>
+  <link rel="stylesheet" href="/styles/settings.css">
+  <title>Settings</title>
 </head>
 
 <body>
@@ -16,51 +14,49 @@
     <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
     <div class="down-arrow">
       <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
-      <div class="menu">        
-          <a href="/libreria/listar">Librerías</a>        
-          <a href="/usuario/catalogo">Catálogo</a>          
-          <a href="/autor/listar">Autores</a>
-        </div>
+      <div class="menu">
+        <a href="/libreria/listar">Librerías</a>
+        <a href="/usuario/catalogo">Catálogo</a>
+        <a href="/autor/listar">Autores</a>
+      </div>
     </div>
-
     <div class="search-contain">
       <img src="/images/searchicon.svg" id="search-btn" alt="search button">
-      <input 
-      type="text" 
-      id="search" 
-      placeholder=""
-      maxlength="40"
-      autocomplete="off"
-      >
+      <input type="text" id="search" placeholder="" autofocus maxlength="40" autocomplete="off">
       <p id="tip">Presione enter para buscar</p>
     </div>
     <div class="reading-club">
       <img src="/images/grupos.svg" id="group-btn" alt="reading club button">
     </div>
     <div class="shopping-cart">
-        <a href="/usuario/carrito">  <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
+      <a href="/usuario/carrito"> <img src="/images/carrito.svg" id="shopping-btn" alt="shopping cart button"></a>
     </div>
     <div class="notificaciones">
       <img src="/images/notifications.svg" id="notifications-button" alt="notifications button">
     </div>
     <div id="avatar" class="avatar">
-      <ul id="dropdown" class="dropdown fadeIn first">
-        <li><a href="/usuario/perfil">Perfil</a></li>
-        <li><a href="#">Configuración</a></li>
-        <li><a href="/usuario/logout">Salir sesión</a></li>
-      </ul>
       <img src="/images/avatar.svg" id="avatar-btn" alt="avatar button">
+      <div id="dropdown" class="dropdown">
+        <a href="/usuario/perfil">Perfil</a>
+        <a href="#">Configuración</a>
+        <a id="logout" href="/usuario/logout">Salir sesión</a>
+
+      </div>
     </div>
   </div>
-  
-  <div id="autores-container" class="autores-container"></div>
 
+  <div id="settings-container" class="settings-container">
+    <p>Configuración</p>
+    <div>
+      
+    </div>
+  </div>
 
   <footer>
     <div class="footer-container">
       <div class="container">
         <a href="#">
-          <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="logo">
+          <img id='logoFooter' src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="footerLogo">
         </a>
         <p class="address">San Jose, 11801<br>Costa Rica</p>
         <ul class="footer-links">
@@ -70,10 +66,7 @@
       </div>
     </div>
   </footer>
-
-  <!-- //Carga el javascript para que funcione la barra de búsquedas -->
   <script src="/scripts/search-bar.js"></script>
-  <script src="/scripts/servicios/autores/listarAutores.js"></script>
 </body>
 
 </html>

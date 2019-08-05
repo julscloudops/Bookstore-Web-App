@@ -26,12 +26,9 @@ body {
 .mainText {
   color: #821E00;
   font-weight: 400;
-  font-size: 2rem;
+  font-size: 1.5rem;
   letter-spacing: 0.5px;
-}
-
-.carousel {
-  margin: 2% 0;
+  text-transform: uppercase;
 }
 
 .list {
@@ -380,4 +377,12 @@ footer {
   text-transform: uppercase;
   color: #821e00;
   text-align: center;
+}
+
+/* Carousel ofertas */
+.ofertas a img {
+  width: 850px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
 }

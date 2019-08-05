@@ -20,6 +20,7 @@ const modeloUsuario = new mongoose.Schema({
             password: {type: String},
             isVerified: {type: Boolean, default: false},
             isAdminLibreria: {type: Boolean, default: false},
+            librosComprados: {type: Array}
             
         });
 
