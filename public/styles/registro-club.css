@@ -1,4 +1,4 @@
-@import './navbar-footer-adminLibreria.css';
+@import './navbar-footer.css';
 
 * {
   box-sizing: border-box;
@@ -24,15 +24,21 @@ body {
 }
 
 .formulario {
-  -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
   background: #fff;
-  max-width: 450px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  width: 450px;
   box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
   text-align: center;
+  
 }
 
+.flex-container {
+  display: flex;
+  justify-content: center;
+}
+
+.inner-flex {
+}
 h2 {
   text-align: center;
   font-size: 18px;
@@ -52,6 +58,31 @@ label {
   font-weight: bold;
   font-size: 14px;
 }
+.hidden {
+  display: none;
+}
+
+.text {
+  padding: 10px;
+  font-size: 14px;
+  border: 2px solid #f6f6f6;
+  background-color: #F3EDED;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+.meetingDate {
+  display:inline-block;
+  margin: 1% 0;
+  padding: 8px;
+  font-size: 12px;
+  font-family: 'Montserrat';
+  border: 2px solid #f6f6f6;
+  background-color: #F3EDED;
+  border-radius: 5px 5px 5px 5px;
+  text-align: center;
+}
 
 .description {
   margin-bottom: 2%;
@@ -67,16 +98,6 @@ textarea:focus {
 
 }
 
-.text {
-  width: 44%;
-  padding: 10px;
-  font-size: 14px;
-  border: 2px solid #f6f6f6;
-  background-color: #F3EDED;
-  border-radius: 5px 5px 5px 5px;
-  text-align: center;
-  margin-bottom: 1%;
-}
 
 .textLong {
   width: 90%;
@@ -92,7 +113,6 @@ textarea:focus {
 
 select {
   margin: 1% 0;
-  width: 45%;
   height: 35px;
   font-size: 12px;
   border: 2px solid #f6f6f6;
@@ -101,6 +121,7 @@ select {
   text-align: center;
   margin-bottom: 1%;
   font-family: 'Montserrat';
+  width: 98%;
 }
 
 .autor-hidden {
@@ -156,7 +177,6 @@ select:focus {
 }
 
 /* Botón para subir imagenes */
-
 .input-file-trigger {
   display: block;
   padding: 14px 15px;
@@ -198,17 +218,15 @@ select:focus {
   margin: 0 1%;
 }
 
-.footer-container::before {
+/* .footer-container::before {
   background: none;
 }
 
 .footer-container::after {
   background: none;
-}
-
+} */
 
 /* Estilos para los modals de registrar categoria/editorial */
-
 .modals-test {
   margin: 1% 0;
 }

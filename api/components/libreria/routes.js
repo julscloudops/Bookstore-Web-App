@@ -26,7 +26,7 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/registro', (req, res) => {
+router.get('/registroHTML', (req, res) => {
   res.sendFile('registro-libreria.html', {
     root: 'public'
   });
@@ -35,6 +35,16 @@ router.get('/registro', (req, res) => {
 const redirectIndex = (req, res, next) => {
   if(!req.session.idAdminLibreria) {
     res.redirect('http://localhost:3000/landing-page');
+  } else {
+    next()
+  }
+}
+
+const redirectAdminPagLibreria = (req, res, next) => {
+  if(req.session.idAdminLibreria) {
+    res.sendFile('libreria-adminLibreria.html', {
+      root: 'public'
+    });
   } else {
     next()
   }
@@ -53,8 +63,7 @@ router.get('/listar', libreriaController.listarLibreriasHTML);
 
 //Listar libreria
 router.get('/JSON/:idLibreria', libreriaController.listarLibreria);
-router.get('/views/:idLibreria', libreriaController.HTMLView);
-router.get('/admin/:idLibreria', libreriaController.HTMLViewAdmin);
+router.get('/views', redirectAdminPagLibreria, libreriaController.HTMLView);
 
 
 

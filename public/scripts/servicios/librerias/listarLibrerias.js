@@ -17,7 +17,7 @@ async function listarLibrerias() {
   const imgSrc = await fetch(librerias[i].imgUrl); 
 
   name.textContent = librerias[i].nombreFantasia;  
-  link.href = `/libreria/views/${librerias[i]._id}`;
+  link.href = `/libreria/views?id=${librerias[i]._id}`;
   img.src = imgSrc.url;
 
   libreria.className = 'libreria';

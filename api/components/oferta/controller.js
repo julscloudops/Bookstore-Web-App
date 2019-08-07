@@ -48,7 +48,7 @@ res.redirect(`/usuario/inicio`);
 
 exports.HTMLView = (req, res) => {
   try {
-    res.sendFile('página-oferta.html', {
+    res.sendFile('oferta.html', {
       root: 'public'
     });
   } catch (err) {

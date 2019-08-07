@@ -89,6 +89,7 @@ async function searchEngine(event) {
     let autores = searchContentArray[3];
     let libros = searchContentArray[4];
     let ofertas = searchContentArray[5];
+    let clubes = searchContentArray[6];
 
     for (let i = 0; i < usuarios.length; i++) {
       const usuario = document.createElement('div');
@@ -115,7 +116,7 @@ async function searchEngine(event) {
       const img = document.createElement('img');
       const imgSrc = await fetch(librerias[i].imgUrl);
       name.textContent = librerias[i].nombreFantasia;
-      link.href = `/libreria/views/${librerias[i]._id}`;
+      link.href = `/libreria/views?id=${librerias[i]._id}`;
       img.src = imgSrc.url;
       libreria.className = 'itemSearch';
       name.className = 'nameSearch';
@@ -158,6 +159,9 @@ async function searchEngine(event) {
       title.textContent = libros[i].title;
       link.href = `/libro/views/${libros[i]._id}`;
       img.src = imgSrc.url;
+      img.style.width = '140px';
+      img.style.height = '180px';
+      img.style.objectFit = 'fill';
       libro.className = 'itemSearch';
       title.className = 'nameSearch';
       img.className = 'imgSearch';
@@ -184,6 +188,23 @@ async function searchEngine(event) {
       oferta.append(name, link);
       modalContainer.append(oferta);
 
+    }
+
+    for (let i = 0; i < clubes.length; i++) {
+      const club = document.createElement('div');
+      const name = document.createElement('span');
+      const link = document.createElement('a');
+      const img = document.createElement('img');
+      const imgSrc = await fetch(clubes[i].imgUrl);
+      name.textContent = clubes[i].name;
+      link.href = `/club/views?id=${clubes[i]._id}`;
+      img.src = imgSrc.url;
+      club.className = 'itemSearch';
+      name.className = 'nameSearch';
+      img.className = 'imgSearch';
+      link.append(img);
+      club.append(name, link);
+      modalContainer.append(club);
     }
 
     console.log(searchContentArray);

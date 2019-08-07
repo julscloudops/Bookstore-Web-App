@@ -1,7 +1,7 @@
 const express = require('express'),
       router = express.Router(),
       multer = require('multer'),
-      ofertaController = require("./controller");
+      ofertaController = require('./controller');
 
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
@@ -34,9 +34,20 @@ const redirectIndex = (req, res, next) => {
   }
 }
 
+const redirectAdminPagOferta = (req, res, next) => {
+  if(req.session.idAdminLibreria) {
+    res.sendFile('oferta-adminLibreria.html', {
+      root: 'public'
+    });
+  } else {
+    next()
+  }
+}
+
+
 router.get('/', ofertaController.listarOfertas);
 
-router.get('/registro', ofertaController.registrarOfertaHTML);
+router.get('/registroHTML',  ofertaController.registrarOfertaHTML);
 
 //Registrar oferta
 router.post('/registro', upload.single('img'), ofertaController.registrarOferta);
@@ -44,7 +55,7 @@ router.post('/registro', upload.single('img'), ofertaController.registrarOferta)
 
 //Listar oferta
 router.get('/JSON/:idOferta', ofertaController.listarOferta);
-router.get('/views/:idOferta', ofertaController.HTMLView);
+router.get('/views/:idOferta', redirectAdminPagOferta,  ofertaController.HTMLView);
 router.get('/ofertasNovedosas', ofertaController.listarOfertasNovedosas);
 
 // router.get('/admin/:idOferta', redirectIndex, ofertaController.HTMLViewAdmin);

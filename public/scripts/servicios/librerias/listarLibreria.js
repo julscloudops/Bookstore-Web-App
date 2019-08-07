@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', listarLibreria);
 
-
 async function listarLibreria() {
 
-  //Window.location nos da el URL en el que estamos, utilizo splice para recuperar el ID de un libro específico
-
-  let idLibreria = window.location.pathname.slice(16);
+  let windowUrl = new URL(window.location.href);
+  let idLibreria = windowUrl.searchParams.get('id');
   console.log(idLibreria);
 
   const url = `/libreria/JSON/${idLibreria}`;
@@ -15,7 +13,6 @@ async function listarLibreria() {
   const libreria = await res.json();
 
   console.log(libreria);
-
 
   //Client-side rendering de la libreria 
   let logoContainer = document.getElementById('libreria-logo');
@@ -35,7 +32,7 @@ async function listarLibreria() {
   //Este fetch es para traer la imagen de cloudinary
   const imgSrc = await fetch(libreria.imgUrl);
   logo.src = imgSrc.url;
-  link.href = `/libreria/views/${libreria._id}`;
+  link.href = `/libreria/views?id=${libreria._id}`;
   libreriaImg.className = 'sucursal';
   ratingContainer.className = 'rating-holder';
   seeThroughRating.className = 'c-rating c-rating--sucursal'
@@ -71,31 +68,72 @@ async function listarLibreria() {
 
   infoContainer.append(email, phone, description);
 
-
-
-  // const info = document.getElementById('info-libreria');
-  // const email = document.createElement('span');
-  // email.textContent = libreria.email;
-  // info.append(email);
-
-
-
-
-  // // const img = document.getElementById('');
-  // const descriptionContainer = document.getElementById('description');
-  // const name = document.createElement('p');
-  // const description = document.createElement('p');
-  // name.textContent = data.name;
-
-  // const imgSrc = await fetch(data.imgUrl);
-  // img.src = imgSrc.url;
-
-  // description.textContent = data.description;
-  // img.className = 'img';
-  // name.className = 'name';
-  // descriptionContainer.append(description);
-  // autorContainer.append(name, img);
-
-
-
 }
+
+// const info = document.getElementById('info-libreria');
+// const email = document.createElement('span');
+// email.textContent = libreria.email;
+// info.append(email);
+
+
+
+
+// // const img = document.getElementById('');
+// const descriptionContainer = document.getElementById('description');
+// const name = document.createElement('p');
+// const description = document.createElement('p');
+// name.textContent = data.name;
+
+// const imgSrc = await fetch(data.imgUrl);
+// img.src = imgSrc.url;
+
+// description.textContent = data.description;
+// img.className = 'img';
+// name.className = 'name';
+// descriptionContainer.append(description);
+// autorContainer.append(name, img);
+
+// listarSucursalLibreria(libreria.sucursales);
+
+
+
+// async function listarSucursalLibreria(){
+
+//   const urlSucursales = `http://localhost:3000/sucursal/searchIdLibreria/${idLibreria}`;
+
+//   const resSucursales = await fetch(urlSucursales);
+//   const sucursales = await resSucursales.json();
+
+//   console.log(sucursales);
+
+//   for(let i = 0; i < sucursales.length; i++) {
+//   const container = document.getElementById('sucursales');
+//   const sucursal = document.createElement('div');
+//   const link = document.createElement('a');
+//   const logo = document.createElement('img');    
+//   const ratingContainer = document.createElement('div');
+//   const seeThroughRating = document.createElement('div');
+//   const rating1 = document.createElement('button');
+//   const rating2 = document.createElement('button');
+//   const rating3 = document.createElement('button');
+//   const rating4 = document.createElement('button');
+//   const rating5 = document.createElement('button');
+
+//   //Este fetch es para traer la imagen de cloudinary
+//   const imgSrc = await fetch(sucursales[i].imgUrl);
+//   logo.src = imgSrc.url;
+//   link.href = `/sucursal/views/${sucursales[i]._id}`;
+
+//   sucursal.className = 'sucursal';
+//   ratingContainer.className = 'rating-holder';
+//   seeThroughRating.className = 'c-rating c-rating--sucursal'
+
+//   link.append(logo);
+//   seeThroughRating.append(rating1, rating2, rating3, rating4, rating5);
+//   ratingContainer.append(seeThroughRating);
+//   sucursal.append(link, ratingContainer);
+//   container.append(sucursal);
+
+//   }
+
+// }

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles/registro-club-adminLibreria.css">
+  <title>Registro club</title>
+</head>
+
+<body>
+  <!--Navbar admin-->
+  <div id="nav" class="navbar-container">
+      <img src="/images/pdlogo.png" alt="parrafo digital logo" id="logoNavbar" class="logo">
+      <div class="down-arrow">
+        <img src="/images/downarrow.svg" id="filter-btn" alt="filters">
+        <div class="menu">        
+            <a href="/autor/listar">Autores</a>
+            <a href="/usuario/catalogo">Catálogo</a>
+          </div>
+      </div>
+      <div class="search-contain">
+        <img src="/images/searchicon.svg" id="search-btn" alt="search button">
+        <input 
+        type="text" 
+        id="search" 
+        maxlength="40"
+        placeholder="" 
+        autofocus
+        autocomplete="off">
+        <p id="tip">Presione enter para buscar</p>
+      </div>
+      <div class="settings">
+            <a href="/usuario/settings"> 
+              <img src="/images/settings.svg" id="settings-btn">
+            </a>
+          </div>
+    </div>
+
+  <!--Formulario-->
+  <div class="wrapper ">
+    <div class="formulario">
+      <h2>Registrar club de lectura</h2>
+
+      <form id="form">
+        <div class="flex-container">
+          <div class="inner-flex">
+            <label for="name">Nombre del club</label>
+            <input id="name" type="text" class="text" name="name" autocomplete="off">
+            <label for="type">Categoría</label>
+            <select name="type" id="type">
+              <option value="">Seleccione una categoría</option>
+            </select>
+            <input id='idCategoria' name="idCategoria" class='hidden' type="text">
+
+            <label for="Seleccione la librería">Librería</label>
+            <select name="libreria" id="libreria">
+              <option value="">Seleccione la librería</option>
+            </select>
+            <input id='idLibreria' name="idLibreria" class='hidden' type="text">
+
+          </div>
+          <div class="inner-flex">
+            <label for="meetingDate">Fecha de la reunión</label>
+            <input id="meetingDate" type="date" class="meetingDate" name="meetingDate">
+
+            <label for="">Libro a leer</label>
+            <select name="libroPorLeer" id="libroPorLeer">
+              <option value="">Seleccione el libro a leer</option>
+            </select>
+
+            <label for="sucursal">Sucursal</label>
+            <select name="sucursal" id="sucursal">
+              <option value="">Seleccione la sucursal</option>
+            </select>
+          </div>
+        </div>
+
+
+
+
+        <label for="description">Descripción</label>
+        <textarea id="description" class="description fadeIn second" name="description" cols="40" rows="10"
+          maxlength="1000"></textarea>
+
+        <div class="input-file-container">
+          <input id="img" type="file" class="input-file" name="img" accept=" .png, .jpg, .jpeg" hidden>
+          <label for="img" class="input-file-trigger">Ingresar imágen</label>
+          <p class="file-return"></p>
+        </div>
+        <input id="submit" class="submit-btn" type="button" value="Enviar">
+      </form>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div class="container">
+        <a href="/">
+          <img src="/images/pdlogo-footer.png" alt="parrafo digital logo" class="footerLogo">
+        </a>
+        <p class="address">San Jose, 11801<br>Costa Rica</p>
+        <ul class="footer-links">
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="/scripts/search-bar.js"></script>
+  <script src="/scripts/upload-button.js"></script>
+  <script src="/scripts/servicios/clubes/registrarClub.js"></script>
+</body>
+
+</html>

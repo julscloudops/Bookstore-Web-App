@@ -26,12 +26,6 @@ const upload = multer({
   fileFilter: fileFilter
 });
 
-router.get('/registro', (req, res) => {
-  res.sendFile('registro-sucursal.html', {
-    root: 'public'
-  });
-});
-
 
 const redirectIndex = (req, res, next) => {
   if(!req.session.idAdminLibreria) {
@@ -41,6 +35,23 @@ const redirectIndex = (req, res, next) => {
   }
 }
 
+const redirectAdminPagSucursal = (req, res, next) => {
+  if(req.session.idAdminLibreria) {
+    res.sendFile('sucursal-adminLibreria.html', {
+      root: 'public'
+    });
+  } else {
+    next()
+  }
+}
+
+
+router.get('/registroHTML', (req, res) => {
+  res.sendFile('registro-sucursal.html', {
+    root: 'public'
+  });
+});
+
 //Registro sucursal
  router.post('/registro', upload.single('img'), sucursalController.registrarSucursal);
  
@@ -48,10 +59,9 @@ const redirectIndex = (req, res, next) => {
 // router.get('/', sucursalController.listarSucursales);
 
 //Listar sucursal
-
+router.get('/', sucursalController.listarSucursales);
 router.get('/JSON/:idSucursal', sucursalController.listarSucursal);
-router.get('/views/:idSucursal', sucursalController.HTMLView);
-router.get('/admin/:idSucursal', sucursalController.HTMLViewAdmin);
+router.get('/views/:idSucursal',redirectAdminPagSucursal, sucursalController.HTMLView);
 
       
 module.exports = router;

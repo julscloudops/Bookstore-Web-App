@@ -5,11 +5,53 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Montserrat';
+  color: #821E00;
+  background: #f3eded;
+
+}
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+  box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3);
+  margin: 1% auto 3% auto;
   background: #f3eded;
   color: #821E00;
+  width: 80%;
 }
 
-.settings {
-  background: #DF8931;
+/* .settings-container p a {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #821E00;
+} */
+
+.title {
+  background: #821E00
+
 }
 
+.title p {
+  color: #f3eded;
+  font-size: 20px;
+  text-transform: uppercase;
+
+}
+
+.settings-container div p a:nth-of-type(even){
+  color: #f3eded;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.settings-container div p a:nth-of-type(odd){
+  color: #821E00;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+/* .settings-container p a:nth-of-type(odd){
+  color: #f3eded;
+} */

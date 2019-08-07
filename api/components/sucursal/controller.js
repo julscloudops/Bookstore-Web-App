@@ -8,6 +8,7 @@ exports.registrarSucursal = async (req, res) => {
 
   //Se crea una nueva sucursal
   const newSucursal = new Sucursal({
+    name: `Sucursal de ${req.body.canton}`,
     horario: req.body.horario,
     phone: req.body.phone,
     provincia: req.body.provincia,
@@ -30,7 +31,7 @@ exports.registrarSucursal = async (req, res) => {
 
 exports.HTMLView = (req, res) => {
   try {
-    res.sendFile('página-sucursal.html', {
+    res.sendFile('sucursal.html', {
       root: 'public'
     });
   } catch (err) {
@@ -40,18 +41,20 @@ exports.HTMLView = (req, res) => {
   }
 }
 
-exports.HTMLViewAdmin = (req, res) => {
+
+
+exports.listarSucursales = async (req, res) => {
+ 
   try {
-    res.sendFile('página-sucursal-adminLibreria.html', {
-      root: 'public'
-    });
-  } catch (err) {
+    const sucursales = await Sucursal.find();
+    res.json(sucursales);
+
+  } catch(err){
     res.json({
       message: err
     })
   }
 }
-
 exports.listarSucursal = async (req, res) => {
   try {
     const sucursal = await Sucursal.findById({
@@ -60,6 +63,20 @@ exports.listarSucursal = async (req, res) => {
 
     console.log(sucursal);
     res.json(sucursal);
+  } catch(err){
+    res.json({
+      message: err
+    })
+  }
+}
+
+exports.listarSucursalesLibreria = async (req, res) => {
+  try {
+    const sucursales = await Sucursal.find({
+      idLibreria: req.params.idLibreria
+    });
+    console.log(sucursales);
+    res.json(sucursales);
   } catch(err){
     res.json({
       message: err

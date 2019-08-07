@@ -4,6 +4,12 @@ const cloudinary = require('cloudinary'),
 //Registrar autor
 exports.registrarAutor = async (req, res) => {
 
+  const nameExists = await Autor.findOne({
+    name: req.body.name
+  });
+  if (nameExists) return res.status(400).send('Ya se encuentra un autor registrado con ese nombre');
+
+
   // Se guarda la imagen en cloudinary y la dirección de la imagen en la base de datos
   const result = await cloudinary.v2.uploader.upload(req.file.path);
 
@@ -27,7 +33,7 @@ exports.registrarAutor = async (req, res) => {
 
 exports.HTMLView = async (req, res) => {
   try {
-    res.sendFile('página-autor-adminLibreria.html', {
+    res.sendFile('autor.html', {
       root: 'public'
     });
   } catch (err) {
@@ -52,7 +58,7 @@ exports.listarAutores = async (req, res) => {
 
 exports.listarAutoresHTML = async (req, res) => {
   try {
-    res.sendFile('página-autores.html', {
+    res.sendFile('autores.html', {
       root: 'public'
     });
   } catch (err) {
@@ -76,6 +82,7 @@ exports.listarAutor = async (req, res) => {
   }
 }
 
-exports.deleteAuthor = async (req, res) => {
-  const author = await Autor.findByIdAndDelete({_id: req.params.idAutor});
+exports.borrarAutor = async (req, res) => {
+ await Autor.findByIdAndDelete(req.params.idAutor);
+  res.redirect('/autor/listar');
 }

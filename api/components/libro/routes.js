@@ -33,9 +33,19 @@ const redirectIndex = (req, res, next) => {
     }
   }
 
+  const redirectAdminPagLibro = (req, res, next) => {
+    if(req.session.idAdminLibreria) {
+      res.sendFile('libro-adminLibreria.html', {
+        root: 'public'
+      });
+    } else {
+      next()
+    }
+  }
 
 
-router.get('/registro', (req, res) => {
+
+router.get('/registroHTML', (req, res) => {
   res.sendFile('registro-libro.html', {
     root: 'public'
   });
@@ -46,9 +56,13 @@ router.post('/registro', upload.single('img'), libroController.registrarLibro);
 //Listar libros
 router.get('/', libroController.listarLibros);
 router.get('/JSON/:idLibro', libroController.listarLibro);
-router.get('/views/:idLibro', libroController.HTMLView);
-router.get('admin/views/:idLibro', libroController.HTMLViewAdmin);
+router.delete('/delete/:idLibro', libroController.borrarLibro);
+router.get('/views/:idLibro', redirectAdminPagLibro, libroController.HTMLView);
+
 router.get('/librosNovedosos', libroController.listarLibrosNovedosos);
+
+router.get('/librosAutor/:idAutor', libroController.listarLibrosAutor);
+
 
 module.exports = router;
 

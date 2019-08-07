@@ -30,6 +30,22 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.set('useCreateIndex', true);
 
+//Messaging system
+const io = require('socket.io')(5000)
+const users = {}
+io.on('connection', socket => {
+  socket.on('new-user', name => {
+    users[socket.id] = name
+    socket.broadcast.emit('user-connected', name)
+  })
+  socket.on('send-chat-message', message => {
+    socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
+  })
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('user-disconnected', users[socket.id])
+    delete users[socket.id]
+  })
+})
 
 //Se encarga de los errores CORS
 app.use((req, res, next) => {
@@ -81,12 +97,13 @@ app.use(session({
 
 //Establecer la ruta para archivos estáticos
 app.use(express.static('public'));
-app.use(express.static('./public/uploads'));
+app.use(express.static('/public/uploads'));
 
 //Importación de las rutas
 const usuario = require('./api/components/usuario/routes');
 const libreria = require('./api/components/libreria/routes');
 const sucursal = require('./api/components/sucursal/routes');
+const club = require('./api/components/club/routes');
 const oferta = require('./api/components/oferta/routes');
 const autor = require('./api/components/autor/routes');
 const libro = require('./api/components/libro/routes');
@@ -96,6 +113,7 @@ const search = require('./api/components/search/routes');
 app.use('/usuario', usuario);
 app.use('/libreria', libreria);
 app.use('/sucursal', sucursal);
+app.use('/club', club);
 app.use('/oferta', oferta);
 app.use('/autor', autor);
 app.use('/libro', libro);
@@ -108,6 +126,8 @@ app.get('/', (req, res) => {
 app.get('/landing-page', (req, res) => {
   res.sendFile('landing-page.html', {root: 'public'}); 
 });
+
+
 
 module.exports = app;
 

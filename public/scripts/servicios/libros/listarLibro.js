@@ -51,9 +51,10 @@ async function listarLibro() {
     addToCart.className = 'buy-btn';
     price.innerHTML = '₡ ' + libro.price; 
     addToCart.innerHTML = 'Agregar al carrito';
-
     isbn.innerHTML = `ISBN:  ${libro.isbn}`
     title.innerHTML = `Título: ${libro.title}`;
+    authorLink.href = `/autor/views/${libro.idAutor}`;
+    authorLink.style.color = 'white';
     author.innerHTML = `Autor: ${libro.author}`;
     genre.innerHTML = `Género: ${libro.genre}`;
     editorial.innerHTML = `Editorial: ${libro.editorial}`;
@@ -67,4 +68,21 @@ async function listarLibro() {
     authorLink.append(author); 
     bookInfo.append(isbn, title, authorLink, genre, editorial, description);
 
-}
+  //Permite guardar libros en el carrito 
+  let addToCartBtn = document.querySelector('.buy-btn');
+  console.log('Este es el botón de agregar al carrito', addToCartBtn);
+
+  let CART = [];
+
+    addToCartBtn.addEventListener('click', () => {
+ 
+        CART.push(libro);
+        window.localStorage.setItem('CART', JSON.stringify(CART));
+        let carrito = JSON.parse(localStorage['CART']);
+        console.log('Este es el array que se guarda en localStorage', carrito);
+        console.log(CART);
+      
+    });
+
+  }
+

@@ -110,4 +110,30 @@ async function listarLibrosNovedosos() {
     list.append(book);
   }
 
+addToCart(librosNovedosos);
+
+}
+
+
+function addToCart(librosNovedosos) {
+
+  //Permite guardar libros en el carrito desde otras partes de la página
+  let addToCartBtns = document.querySelectorAll('.buy-btn');
+  console.log('Estos son los botónes de agregar al carrito', addToCartBtns);
+
+  let CART = [];
+
+  for (let i = 0; i < addToCartBtns.length; i++) {
+    addToCartBtns[i].addEventListener('click', () => {
+
+        CART.push(librosNovedosos[i]);
+        window.localStorage.setItem('CART', JSON.stringify(CART));
+        let carrito = JSON.parse(localStorage['CART']);
+        console.log('Este es el array que se guarda en localStorage', carrito);
+        console.log(CART);
+      
+    });
+
+  }
+
 }

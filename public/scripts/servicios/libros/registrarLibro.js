@@ -1,15 +1,16 @@
+document.addEventListener('DOMContentLoaded', listarAutoresSelect);
+
+const submitBtn = document.getElementById('submit');
+submitBtn.addEventListener('click', registrarLibro);
+
 let btnCategoria = document.getElementById('registrar-categoria');
 let btnEditorial = document.getElementById('registrar-editorial');
-
 let modalCategoria = document.getElementById('modal-categoria');
 let modalEditorial = document.getElementById('modal-editorial');
-
 let btnCancelCategoria = document.getElementById('btn-cancel-categoria');
 let btnCancelEditorial = document.getElementById('btn-cancel-editorial');
-
 let btnConfirmCategoria = document.getElementById('btn-confirm-categoria');
 let btnConfirmEditorial = document.getElementById('btn-confirm-editorial');
-
 let backdrop = document.querySelector('.backdrop');
 
 btnConfirmCategoria.addEventListener('click', registrarCategoria);
@@ -17,23 +18,27 @@ btnConfirmCategoria.addEventListener('click', registrarCategoria);
 btnConfirmEditorial.addEventListener('click', registrarEditorial);
 
 btnCancelCategoria.addEventListener('click', (event) => {
+  event.preventDefault();
   modalCategoria.style.display = 'none';
   backdrop.style.display = 'none';
 });
 btnConfirmCategoria.addEventListener('click', (event) => {
+  event.preventDefault();
   modalCategoria.style.display = 'none';
   backdrop.style.display = 'none';
 });
 btnCancelEditorial.addEventListener('click', (event) => {
+  event.preventDefault();
   modalEditorial.style.display = 'none';
   backdrop.style.display = 'none';
 });
 btnConfirmEditorial.addEventListener('click', (event) => {
+  event.preventDefault();
   modalEditorial.style.display = 'none';
   backdrop.style.display = 'none';
 });
 
-document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', () => {
   if (event.keyCode == 27) {
     modalCategoria.style.display = 'none';
     modalEditorial.style.display = 'none';
@@ -43,16 +48,19 @@ document.addEventListener('keydown', (event) => {
 });
 
 btnCategoria.addEventListener('click', (event) => {
+  event.preventDefault();
   modalCategoria.style.display = 'block';
   backdrop.style.display = 'block';
 
 });
 
 btnEditorial.addEventListener('click', (event) => {
+  event.preventDefault();
   modalEditorial.style.display = 'block';
   backdrop.style.display = 'block';
 
 });
+
 
 function registrarCategoria(event) {
   event.preventDefault();
@@ -78,6 +86,34 @@ function registrarEditorial(event) {
 
 
 
+async function listarAutoresSelect() {
+
+  let autorSelect = document.getElementById('author');
+  let idAutor = document.getElementById('idAutor');
+
+  const url = '/autor';
+  const res = await fetch(url);
+  const autores = await res.json();
+  console.log(autores);
+
+  for (let i = 0; i < autores.length; i++) {
+    let option = document.createElement('option');
+    option.textContent = autores[i].name;
+    autorSelect.append(option);
+  }
+
+  autorSelect.addEventListener('change', () => {
+    autores.forEach((autor) => {
+      if (autor.name === autorSelect.value) {
+        idAutor.value = `${autor._id}`
+        console.log(idAutor.value);
+      }
+    })
+  });
+}
+
+
+
 
 // function registrarCategoria(){
 //   let categoria = document.getElementById('registrar-categoria');
@@ -99,16 +135,14 @@ function registrarEditorial(event) {
 // }
 
 
-const submitBtn = document.getElementById('submit');
-submitBtn.addEventListener('click', registrarLibro);
 
 
-function registrarLibro(event) {
 
-  event.preventDefault();
 
+function registrarLibro() {
   const formData = new FormData();
   formData.append('author', document.getElementById('author').value);
+  formData.append('idAutor', document.getElementById('idAutor').value);
   formData.append('price', document.getElementById('price').value);
   formData.append('title', document.getElementById('title').value);
   formData.append('isbn', document.getElementById('isbn').value);
@@ -125,7 +159,10 @@ function registrarLibro(event) {
   }
 
   fetch(url, fetchOptions)
-    .then(res => res)
+    .then(res => {
+     window.location.href = res.url;
+     console.log(res.url);
+    })
     .catch(error => console.error('Error: ' + error));
 
 }

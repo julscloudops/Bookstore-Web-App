@@ -56,7 +56,7 @@ img,
     width: 100%;
 }
 .carrito {
-    background: #DF8931;
+    background: #F5C16C;
     color: #821E00;
     margin-bottom: 2%;
 }
@@ -205,7 +205,7 @@ li.subtotal:before {
 }
 
 .quantity-field {
-    background-color:#DF8931;
+    background-color:#F5C16C;
     border: 1px solid #821E00;
     color: #821E00;
     border-radius: 4px;
@@ -221,8 +221,8 @@ aside {
 }
 
 .summary {
-    background-color: #DF8931;
-    border: 1px solid #aaa;
+    background-color: #F5C16C;
+    border: 1px solid #f3eded;
     padding: 1rem;
     width: 250px;
     -webkit-box-sizing: border-box;
@@ -238,8 +238,8 @@ aside {
 
 .summary-subtotal,
 .summary-total {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #f3eded;
+    border-bottom: 1px solid #f3eded;
     clear: both;
     margin: 1rem 0;
     overflow: hidden;

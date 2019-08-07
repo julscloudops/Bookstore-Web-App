@@ -2,36 +2,37 @@ const express = require('express'),
       router = express.Router(),
       multer = require('multer'),
       usuarioController = require('./controller');
-    
+      
 //Settings de Multer, permite subir imagenes a la página
 const storage = multer.diskStorage({
-  destination: function(req, file, cb){
-  cb(null, './public/uploads')
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads')
   },
   filename: function (req, file, cb) {
-    cb(null,file.fieldname + '-' + new Date().toISOString());
+    cb(null, file.fieldname + '-' + new Date().toISOString());
   }
 });
 
 const fileFilter = (req, file, cb) => {
-if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
-  cb(null, true);
-} else {
-  cb(null, false);
-}};
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
 
 const upload = multer({
   storage: storage,
   fileFilter: fileFilter
 });
 
-const redirectLoginAdmin = (req, res, next) => {
-  if(!req.session.idAdminLibreria) {
-    res.redirect('http://localhost:3000/usuario/login');
-  } else {
-    next()
-  }
-}
+// const redirectLoginAdmin = (req, res, next) => {
+//   if(!req.session.idAdminLibreria) {
+//     res.redirect('http://localhost:3000/usuario/login');
+//   } else {
+//     next()
+//   }
+// }
 
 const redirectHome = (req, res, next) => {
   if(req.session.idUsuario) {
@@ -41,15 +42,15 @@ const redirectHome = (req, res, next) => {
   }
 }
 
-// const redirectHome = (req, res, next) => {
-//   if(req.session.idAdminLibreria) {
-//     res.redirect('http://localhost:3000/usuario/inicio');
-//   } else {
-//     next()
-//   }
-// }
+const redirectHomeAdmin = (req, res, next) => {
+  if(req.session.idAdminLibreria) {
+    res.sendFile('inicio-adminLibreria.html', {root: 'public'}); 
+  } else {
+    next()
+  }
+ }
 
-const SettingsAdminLibreria = (req, res, next) => {
+const settingsAdminLibreria = (req, res, next) => {
   if(req.session.idAdminLibreria) {
     res.sendFile('settings-adminLibreria.html', {root: 'public'}); 
   } else {
@@ -59,17 +60,9 @@ const SettingsAdminLibreria = (req, res, next) => {
 
 
 
-// Registrar administrador de libreria
-router.get('/registro/admin-libreria', (req, res) => {
-  res.sendFile('registro-admin-libreria.html', {root: 'public'}); 
-});
 
 router.post('/registro/admin-libreria', upload.single('img'), usuarioController.registrarAdminLibreria);
 
-// Registrar usuario
-router.get('/registro', (req, res) => {
-  res.sendFile('registro-usuario.html', {root: 'public'}); 
-})
 
 router.post('/registro', upload.single('img'), usuarioController.registrarUsuario);
 
@@ -88,26 +81,44 @@ router.get('/perfil', (req, res) => {
 
 router.get('/perfil/id', usuarioController.visualizarPerfil);
 
-router.get('/views/:idUsuario', usuarioController.HTMLViewPerfilUsuarios);
 
 router.get('/JSON/:idUsuario', usuarioController.listarUsuario);
 
-router.get('/inicio', (req, res) => {
-  res.sendFile('inicio.html', {root: 'public'}); 
 
+
+
+//Staic HTML pages
+
+// Registrar administrador de libreria
+router.get('/registro/admin-libreria', (req, res) => {
+  res.sendFile('registro-admin-libreria.html', {root: 'public'});
 });
+
+// Registrar usuario
+router.get('/registro', (req, res) => {
+  res.sendFile('registro-usuario.html', {root: 'public'}); 
+})
+
+
+router.get('/inicio', redirectHomeAdmin, (req, res) => {
+  res.sendFile('inicio.html', {root: 'public'}); 
+});
+
+router.get('/views/:idUsuario', usuarioController.HTMLViewPerfilUsuarios);
 
 router.get('/catalogo', (req, res) => {
   res.sendFile('catalogo.html', {root: 'public'}); 
 });
 
+//Carrito
 router.get('/carrito', (req, res) => {
   // let libroId = req.params.id;
     res.sendFile('shopping-cart.html', {root: 'public'}); 
 });
 
+
 //Settings
-router.get('/settings', SettingsAdminLibreria, (req, res) => {
+router.get('/settings', settingsAdminLibreria, (req, res) => {
   res.sendFile('settings.html', {root: 'public'}); 
 })
 

@@ -28,7 +28,19 @@ const upload = multer({
   }
 });
 
-router.get('/registro', (req, res) => {
+const redirectAdminPagAutor = (req, res, next) => {
+  if(req.session.idAdminLibreria) {
+    res.sendFile('autor-adminLibreria.html', {
+      root: 'public'
+    });
+  } else {
+    next()
+  }
+}
+
+
+
+router.get('/registroHTML', (req, res) => {
   res.sendFile('registro-autor.html', {
     root: 'public'
   });
@@ -53,11 +65,11 @@ const redirectIndex = (req, res, next) => {
 
 
 // Listar autor
- router.get('/views/:idAutor', autorController.HTMLView);
+ router.get('/views/:idAutor', redirectAdminPagAutor, autorController.HTMLView);
 
  router.get('/JSON/:idAutor', autorController.listarAutor);
 
- router.delete('/JSON/:idAutor', autorController.deleteAuthor);
+ router.delete('/delete/:idAutor', autorController.borrarAutor);
 
 
 

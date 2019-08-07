@@ -4,126 +4,107 @@ body {
   height: 100vh;
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
-  box-sizing: border-box;
+  font-family: 'Montserrat';
   background: #f3eded;
+  color: #f3eded;
 }
 
 
-
-:root {
-  --red: #821e00;
-  --orange: #DF8931;
-  --darkorange: #AA530E;
-}
-
-.autor-container {
+.root {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1% 0 3% 0;
 }
 
-.autor {
+.club {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  margin: 0 0 0 10%;
-  align-items: center;
+  width: 40%;
+  width: 540px;
+  height: 600px;
 
-}
-
-.img {
-  width: 380px;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.name {
-  display: block;
   background: #DF8931;
-  padding: 1% 2%;
-  border-radius: 5px;
-  color: #F3EDED;
-  font-weight: 200;
-  letter-spacing: 2px;
-}
-
-.description {
-  background: #DF8931;
-  border-radius: 20px;
-  color: #F3EDED;
-  font-weight: 200;
-  font-size: 18px;
-  letter-spacing: 1.4px;
-  text-align: justify;
-  margin: 4% 10% 0 1%;
-  padding: 1% 2%;
-
-}
-
-.libros-container p {
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--red);
-}
-
-.libros-autor {
-  display: flex;
-  flex-wrap: wrap;
+  border-radius: 10px;
   justify-content: center;
-  /* background: #DF8931; */
-  border-radius: 20px;
-  margin: 1% 10%;
-  overflow: auto;
-  z-index: 1;
+  align-items: center;
+  padding: 0 4%;
 }
 
-
-/* .libros-autor::-webkit-scrollbar {
-  width: 6px;
-  background-color: #F3EDED;
+.sideContainer {
+  display: flex;
+  flex-direction: column;
+  width: 540px;
+  height: 600px;
+  background: #AA530E;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 4%;
+  margin-left: 1%;
 }
 
-.libros-autor::-webkit-scrollbar-thumb {
-  background-color: #DF8931;
-  border-radius: 40px;
-} */
+.club-sucursal-number {
+  display: flex;
+  justify-content: center;
+}
 
-/* Estilos para que funcione el contenedor de libros */
+.club p {
+  text-align: justify;
+}
+
+.club-img {
+  width: 200px;
+  height: 200px;
+  object-fit: fill;
+  border-radius: 10px;
+  margin: 5% 0 0 0;
+}
+
+.club-label {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin: 3% 0;
+  text-align: center;
+}
+
+.club-text {
+  margin: 0;
+}
+
+.club-description {
+  margin: -1% 0 2% 0;
+  /* overflow: auto; */
+}
+
+/* Estilos para el segundo contenedor */
+
+
 .book {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  margin: 1%;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8%;
 }
 
 .book a img {
-  width: 125px;
-  height: 180px;
-  border-radius: 20px;
-  object-fit: fill;
-  cursor: pointer;
-}
-
-.buy-btn {
-  background: #821E00;
-  padding: 8px;
+  max-width: 145px;
   border-radius: 30px;
-  text-transform: uppercase;
-  font-size: 0.6rem;
-  color: #f3eded;
   cursor: pointer;
-
-}
-
-footer {
-  margin-top: 1%;
 }
 
 
 
-/* Rating system */
+#google-maps {
+  width: 280px;
+  height: 220px;
+  border-radius: 5px;
+
+}
+
+/* Standalone svg star rating system */
+
 .rating-holder {
   display: inline-block;
   border-radius: 1.5625em;

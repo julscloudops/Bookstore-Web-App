@@ -7,7 +7,7 @@
   box-sizing: border-box;
 }
 
-button:focus{
+*:focus{
   outline: none;
 }
 
@@ -469,7 +469,6 @@ nav ul li a {
 }
 
 .nameSearch {
-  padding: 1%;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;

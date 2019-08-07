@@ -36,30 +36,32 @@
         >
         <p id="tip">Presione enter para buscar</p>
       </div>
-    
       <div class="settings">
-        <img src="/images/settings.svg" id="settings-btn">
-        <div class="dropdown">
+            <a href="/usuario/settings"> 
+              <img src="/images/settings.svg" id="settings-btn">
+            </a>
+          </div>
+        <!-- <div class="dropdown">
           <a href="/libreria/registro"><span>Registrar libreria</span></a>
           <a href="/sucursal/registro">Registrar sucursal</a>
           <a href="/autor/registro">Registrar autor</a>
-          <a href="/libro/registro">Registrar libro</a>
+          <a href="/libro/registroHTML">Registrar libro</a>
           <a href="/oferta/registro">Registrar oferta</a>
           <a href="#">Configuración</a>
           <a id="logout" href="/">Salir sesión</a>
         </div>
-      </div>
+      </div> -->
     </div>
-
-    <!-- <form method="POST" action="http://localhost:3000/libro/registro" enctype="multipart/form-data"> -->
-
    <!--Formulario-->
    <div class="wrapper ">
       <div class="formulario">
          <h2>Registrar libro</h2>
          <form>
             <label for="Ingrese el autor"></label>
-            <select name="author" id="author"></select>
+            <select name="author" id="author">
+               <option value="">Seleccione un autor</option>
+            </select>
+            <input id='idAutor' name="idAutor" class='autor-hidden' type="text">
             <input id="price" class="text" type="number" name="price" step="0.01" min=0  placeholder="precio" autocomplete="off">
             <input id="title" type="text" class="textLong" name="title" placeholder="titulo del libro"
                autocomplete="off">
@@ -125,12 +127,12 @@
                name="img" 
                accept=" .png, .jpg, .jpeg" 
                hidden
-               required>
+               >
                <label for="img" class="input-file-trigger">Ingresar portada del libro</label>
                <p class="file-return"></p>
             </div>
 
-            <button id="submit" class="submit-btn" type="submit" class="enviar  fourth">Enviar</button>
+            <button id="submit" class="submit-btn" type="button" class="enviar  fourth">Enviar</button>
          </form>
          </form>
       </div>
@@ -153,7 +155,6 @@
    <!-- Carga el javascript para que funcione la barra de búsquedas -->
    <script src="/scripts/search-bar.js"></script>
    <script src="/scripts/servicios/libros/registrarLibro.js"></script>
-
    <!-- Activa el funcionamiento del botón para subir imágenes -->
    <script src="/scripts/upload-button.js"></script>
 

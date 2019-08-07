@@ -184,12 +184,15 @@ exports.loginUsuario = async (req, res) => {
 
   if (usuario.isAdminLibreria === true) {
     req.session.idAdminLibreria = usuario._id;
+
     console.log(req.session);
     res.sendFile('inicio-adminLibreria.html', {
       root: 'public'
     });
   } else {
     req.session.idUsuario = usuario._id;
+    req.session.Usuario = usuario;
+    
     console.log(req.session);
     res.sendFile('inicio.html', {
       root: 'public'

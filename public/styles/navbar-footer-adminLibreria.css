@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600");
 
 * {
   box-sizing: border-box;
@@ -408,7 +408,6 @@ nav ul li a {
 }
 
 .nameSearch {
-  padding: 1%;
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;

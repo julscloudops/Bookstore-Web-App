@@ -13,6 +13,7 @@ body {
 
 .settings-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   border-radius: 10px 10px 10px 10px;
@@ -23,10 +24,34 @@ body {
   width: 80%;
 }
 
-.settings-container p {
-  font-size: 18px;
+/* .settings-container p a {
+  font-size: 20px;
   text-transform: uppercase;
   color: #821E00;
+} */
+
+.title {
+  background: #821E00;
+}
+
+.title p {
+  color: #f3eded;
+  font-size: 20px;
+  text-transform: uppercase;
 
 }
 
+.settings-container div p a:nth-of-type(even){
+  color: #f3eded;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.settings-container div p a:nth-of-type(odd){
+  color: #821E00;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+/* .settings-container p a:nth-of-type(odd){
+  color: #f3eded;
+} */
