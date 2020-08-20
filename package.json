@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/julscampa/Palo-de-Mango-Solutions#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "cloudinary": "^1.14.0",
     "connect-mongodb-session": "^2.2.0",
     "express": "^4.17.1",
